@@ -10,3 +10,11 @@
 *.lai
 *.la
 *.a
+
+# Custom
+*.zip
+*.cbplugin
+*.layout
+*.dll
+
+objs/
