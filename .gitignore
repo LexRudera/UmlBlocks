@@ -16,5 +16,6 @@
 *.cbplugin
 *.layout
 *.dll
+*.depend
 
 objs/
