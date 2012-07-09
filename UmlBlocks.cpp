@@ -8,9 +8,8 @@
 #include <string>
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
-namespace
-{
-    PluginRegistrant<UmlBlocks> reg(_T("UmlBlocks"));
+namespace {
+PluginRegistrant<UmlBlocks> reg(_T("UmlBlocks"));
 }
 
 
@@ -29,78 +28,68 @@ BEGIN_EVENT_TABLE(UmlBlocks, cbPlugin)
 END_EVENT_TABLE()
 
 // constructor
-UmlBlocks::UmlBlocks()
-{
-    // Make sure our resources are available.
-    // In the generated boilerplate code we have no resources but when
-    // we add some, it will be nice that this code is in place already ;)
-    if(!Manager::LoadResource(_T("UmlBlocks.zip")))
-    {
-        NotifyMissingFile(_T("UmlBlocks.zip"));
-    }
+UmlBlocks::UmlBlocks() {
+	// Make sure our resources are available.
+	// In the generated boilerplate code we have no resources but when
+	// we add some, it will be nice that this code is in place already ;)
+	if(!Manager::LoadResource(_T("UmlBlocks.zip"))) {
+		NotifyMissingFile(_T("UmlBlocks.zip"));
+	}
 }
 
 // destructor
-UmlBlocks::~UmlBlocks()
-{
+UmlBlocks::~UmlBlocks() {
 }
 
-void UmlBlocks::OnAttach()
-{
-    // do whatever initialization you need for your plugin
-    // NOTE: after this function, the inherited member variable
-    // m_IsAttached will be TRUE...
-    // You should check for it in other functions, because if it
-    // is FALSE, it means that the application did *not* "load"
-    // (see: does not need) this plugin...
-Manager::Get()->RegisterEventSink(cbEVT_EDITOR_SWITCHED, new cbEventFunctor<UmlBlocks, CodeBlocksEvent>(this, &UmlBlocks::EditorFileSwitched));
+void UmlBlocks::OnAttach() {
+	// do whatever initialization you need for your plugin
+	// NOTE: after this function, the inherited member variable
+	// m_IsAttached will be TRUE...
+	// You should check for it in other functions, because if it
+	// is FALSE, it means that the application did *not* "load"
+	// (see: does not need) this plugin...
+	Manager::Get()->RegisterEventSink(cbEVT_EDITOR_SWITCHED, new cbEventFunctor<UmlBlocks, CodeBlocksEvent>(this, &UmlBlocks::EditorFileSwitched));
 }
 
-void UmlBlocks::OnRelease(bool appShutDown)
-{
-    // do de-initialization for your plugin
-    // if appShutDown is true, the plugin is unloaded because Code::Blocks is being shut down,
-    // which means you must not use any of the SDK Managers
-    // NOTE: after this function, the inherited member variable
-    // m_IsAttached will be FALSE...
+void UmlBlocks::OnRelease(bool appShutDown) {
+	// do de-initialization for your plugin
+	// if appShutDown is true, the plugin is unloaded because Code::Blocks is being shut down,
+	// which means you must not use any of the SDK Managers
+	// NOTE: after this function, the inherited member variable
+	// m_IsAttached will be FALSE...
 }
 
-int UmlBlocks::Configure()
-{
-    //create and display the configuration dialog for your plugin
-    cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Your dialog title"));
-    cbConfigurationPanel* panel = GetConfigurationPanel(&dlg);
-    if (panel)
-    {
-        dlg.AttachConfigurationPanel(panel);
-        PlaceWindow(&dlg);
-        return dlg.ShowModal() == wxID_OK ? 0 : -1;
-    }
-    return -1;
+int UmlBlocks::Configure() {
+	//create and display the configuration dialog for your plugin
+	cbConfigurationDialog dlg(Manager::Get()->GetAppWindow(), wxID_ANY, _("Your dialog title"));
+	cbConfigurationPanel* panel = GetConfigurationPanel(&dlg);
+	if (panel) {
+		dlg.AttachConfigurationPanel(panel);
+		PlaceWindow(&dlg);
+		return dlg.ShowModal() == wxID_OK ? 0 : -1;
+	}
+	return -1;
 }
 
-void UmlBlocks::BuildMenu(wxMenuBar* menuBar)
-{
-    //The application is offering its menuBar for your plugin,
-    //to add any menu items you want...
-    //Append any items you need in the menu...
-    //NOTE: Be careful in here... The application's menuBar is at your disposal.
-    // Lex: This is a section that can often be the cause of a start up crash
+void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
+	//The application is offering its menuBar for your plugin,
+	//to add any menu items you want...
+	//Append any items you need in the menu...
+	//NOTE: Be careful in here... The application's menuBar is at your disposal.
+	// Lex: This is a section that can often be the cause of a start up crash
 
-    // Multiline version of the sake of better understanding of the code
-    //NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")));
-    //NewFileMenu = NewFileMenu->FindItem(NewFileMenu->FindItem(wxT("New")))->GetSubMenu();
+	// Multiline version of the sake of better understanding of the code
+	//NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")));
+	//NewFileMenu = NewFileMenu->FindItem(NewFileMenu->FindItem(wxT("New")))->GetSubMenu();
 
-    Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG START"));
-    NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(wxT("New")))->GetSubMenu();
+	Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG START"));
+	NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(wxT("New")))->GetSubMenu();
 
+	// The whole find the "Class..." entry ID process won't work properly, so now shit's hardcoded instead.
+	NewFileMenu->Insert(/*NewFileMenu->FindItem(wxT("Class..."))+1*/ 3, NewUmlMenuOptionId, wxT("Uml Diagram..."),wxT("Uml Diagram"),false);
+	Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG END"));
 
-
-    // The whole find the "Class..." entry ID process won't work properly, so now shit's hardcoded instead.
-    NewFileMenu->Insert(/*NewFileMenu->FindItem(wxT("Class..."))+1*/ 3, NewUmlMenuOptionId, wxT("Uml Diagram..."),wxT("Uml Diagram"),false);
-    Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG END"));
-
-    //UML Menu
+	//UML Menu
 	UMLMenu = new wxMenu(wxT(""));
 	menuBar->Insert(menuBar->FindMenu(wxT("Build"))+1, UMLMenu,wxT("Uml"));
 	UMLMenu->Append(NewUmlMenuOptionId,wxT("New Uml Diagram..."),wxT("Create a new Uml Diagram"));
@@ -114,24 +103,22 @@ void UmlBlocks::BuildMenu(wxMenuBar* menuBar)
 	DeactivateUmlTools();
 }
 
-void UmlBlocks::BuildModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data)
-{
-    //Some library module is ready to display a pop-up menu.
-    //Check the parameter \"type\" and see which module it is
-    //and append any items you need in the menu...
-    //TIP: for consistency, add a separator as the first item...
-    NotImplemented(_T("UmlBlocks::BuildModuleMenu()"));
+void UmlBlocks::BuildModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data) {
+	//Some library module is ready to display a pop-up menu.
+	//Check the parameter \"type\" and see which module it is
+	//and append any items you need in the menu...
+	//TIP: for consistency, add a separator as the first item...
+	NotImplemented(_T("UmlBlocks::BuildModuleMenu()"));
 }
 
-bool UmlBlocks::BuildToolBar(wxToolBar* toolBar)
-{
-    //The application is offering its toolbar for your plugin,
-    //to add any toolbar items you want...
-    //Append any items you need on the toolbar...
-    NotImplemented(_T("UmlBlocks::BuildToolBar()"));
+bool UmlBlocks::BuildToolBar(wxToolBar* toolBar) {
+	//The application is offering its toolbar for your plugin,
+	//to add any toolbar items you want...
+	//Append any items you need on the toolbar...
+	NotImplemented(_T("UmlBlocks::BuildToolBar()"));
 
-    // return true if you add toolbar items
-    return false;
+	// return true if you add toolbar items
+	return false;
 }
 
 void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
@@ -142,12 +129,12 @@ void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
 void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("New Uml Class Option Function Invoked"));
 	UmlNewEntityDialog* dlg = new UmlNewEntityDialog(1);
-	if ( dlg->ShowModal() == wxID_OK ){
+	if ( dlg->ShowModal() == wxID_OK ) {
 	}
 	dlg->Destroy();
 	//new UmlClass(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
-    static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
-    static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
+	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
+	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 }
 
 void UmlBlocks::RevEngiMenuOptionFunc(wxCommandEvent& event) {

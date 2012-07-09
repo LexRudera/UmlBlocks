@@ -11,11 +11,12 @@
 *.la
 *.a
 
-# Custom
+# Custom Code::Blocks Plugin
 *.zip
 *.cbplugin
-*.layout
 *.dll
-*.depend
 
+# Custom Code::Blocks Env
+*.layout
+*.depend
 objs/

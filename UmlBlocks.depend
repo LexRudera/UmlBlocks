@@ -4,11 +4,11 @@
 	<sdk.h>
 	"wx/wxsf/CommonFcn.h"
 
-1341432823 c:\dev\umlblocks\umlclass.h
+1341849736 c:\dev\umlblocks\umlclass.h
 	<wx/string.h>
 	<wx/gdicmn.h>
 	<wx/wxsf/DiagramManager.h>
-	<wx/wxsf/RectShape.h>
+	<wx/wxsf/ShapeBase.h>
 
 1300790144 c:\dev\wxmsw-2.8.12\include\wx\string.h
 	"wx/defs.h"
@@ -2800,7 +2800,7 @@
 	<wx/wxsf/Defs.h>
 	<wx/wxsf/ShapeBase.h>
 
-1341561913 source:c:\dev\umlblocks\umlblocks.cpp
+1341846360 source:c:\dev\umlblocks\umlblocks.cpp
 	<sdk.h>
 	<configurationpanel.h>
 	"UmlBlocks.h"
@@ -2816,7 +2816,7 @@
 	<wx/panel.h>
 	<wx/string.h>
 
-1341472164 c:\dev\umlblocks\umlblocks.h
+1341846563 c:\dev\umlblocks\umlblocks.h
 	<wx/wxprec.h>
 	<wx/wx.h>
 	<cbplugin.h>

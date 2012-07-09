@@ -56,6 +56,11 @@
 		<Unit filename="UmlClass.h" />
 		<Unit filename="UmlEditor.cpp" />
 		<Unit filename="UmlEditor.h" />
+		<Unit filename="UmlMemberFunc.cpp" />
+		<Unit filename="UmlMemberFunc.h" />
+		<Unit filename="UmlMemberGlobals.h" />
+		<Unit filename="UmlMemberVar.cpp" />
+		<Unit filename="UmlMemberVar.h" />
 		<Unit filename="UmlNewEntityDialog.cpp" />
 		<Unit filename="UmlNewEntityDialog.h" />
 		<Unit filename="manifest.xml" />

@@ -22,9 +22,7 @@
 class UmlBlocks : public cbPlugin
 {
     public:
-        /** Constructor. */
         UmlBlocks();
-        /** Destructor. */
         virtual ~UmlBlocks();
 
         /** Invoke configuration dialog. */

@@ -2,13 +2,18 @@
 #include <sdk.h>
 #include "wx/wxsf/CommonFcn.h"
 
-UmlClass::UmlClass(wxRealPoint pos, wxSFDiagramManager* man)
-	//: wxSFRectShape(pos, wxRealPoint(50,100), man)
-	{
+UmlClass::UmlClass(wxRealPoint pos, wxSFDiagramManager* man): wxSFShapeBase(){
+    //ctor
 }
 
 UmlClass::~UmlClass() {
 	//dtor
+}
+
+wxRect wxSFShapeBase::GetBoundingBox()
+{
+	// Evaluations to determine how large the class shape is
+	return wxRect();
 }
 
 void UmlClass::Draw(wxDC& dc) {
