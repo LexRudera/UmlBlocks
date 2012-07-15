@@ -36,8 +36,8 @@
 				<Linker>
 					<Add option="-mthreads" />
 					<Add library="codeblocks" />
-					<Add library="wxmsw28u" />
 					<Add library="wxmsw28u_wxsf" />
+					<Add library="wxmsw28u" />
 					<Add directory="$(#cb)\devel" />
 					<Add directory="$(#wx.lib)\gcc_dll" />
 					<Add directory="$(#wxsf)\lib\vc_dll" />

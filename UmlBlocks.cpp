@@ -5,7 +5,6 @@
 #include "UmlCanvas.h"
 #include "UmlClass.h"
 #include "UmlNewEntityDialog.h"
-#include <string>
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
 namespace {
@@ -72,17 +71,12 @@ int UmlBlocks::Configure() {
 }
 
 void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
-	//The application is offering its menuBar for your plugin,
-	//to add any menu items you want...
-	//Append any items you need in the menu...
-	//NOTE: Be careful in here... The application's menuBar is at your disposal.
 	// Lex: This is a section that can often be the cause of a start up crash
 
 	// Multiline version of the sake of better understanding of the code
 	//NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")));
 	//NewFileMenu = NewFileMenu->FindItem(NewFileMenu->FindItem(wxT("New")))->GetSubMenu();
 
-	Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG START"));
 	NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(wxT("New")))->GetSubMenu();
 
 	// The whole find the "Class..." entry ID process won't work properly, so now shit's hardcoded instead.
