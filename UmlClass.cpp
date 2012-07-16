@@ -34,13 +34,21 @@ UmlClass::~UmlClass() {
 wxRect UmlClass::GetBoundingBox()
 {
 	// Evaluations to determine how large the class shape is.
+	UpdateShapeSize();
     return wxRect(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
+}
+
+void UmlClass::UpdateShapeSize()
+{
+
 }
 
 void UmlClass::DrawShape(wxDC* dc)
 {
 	//dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), Conv2Size(m_nRectSize));
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(100,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,30), wxSize(100,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,60), wxSize(100,30));
 }
 
 void UmlClass::DrawNormal(wxDC& dc)

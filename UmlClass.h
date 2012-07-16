@@ -17,6 +17,10 @@ public:
 	UmlClass(const UmlClass& obj);
 	virtual ~UmlClass();
     virtual wxRect GetBoundingBox();
+    void AddVariable();
+    void RemoveVariable();
+    void AddFunction();
+    void RemoveFunction();
 protected:
     virtual void DrawNormal(wxDC& dc);
 	virtual void DrawHover(wxDC& dc);
@@ -29,6 +33,7 @@ private:
 	std::vector<UmlMemberVar> MemberVariables;
 	std::vector<UmlMemberFunc> MemberFunctions;
 
+    void UpdateShapeSize();
     void DrawShape(wxDC* dc);
 };
 
