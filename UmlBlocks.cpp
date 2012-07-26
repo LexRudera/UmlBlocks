@@ -71,9 +71,9 @@ int UmlBlocks::Configure() {
 }
 
 void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
-	// Lex: This is a section that can often be the cause of a start up crash
+	// Lex: This is a section that can often be the cause of a start up crash.
 
-	// Multiline version of the sake of better understanding of the code
+	// Multiline version of the sake of better understanding of the code.
 	//NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")));
 	//NewFileMenu = NewFileMenu->FindItem(NewFileMenu->FindItem(wxT("New")))->GetSubMenu();
 
@@ -127,7 +127,8 @@ void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	}
 	dlg->Destroy();
 	//new UmlClass(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
-	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
+	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
+	static_cast<UmlClass*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50)))->Create(wxT("Class1"));
 	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 }
 

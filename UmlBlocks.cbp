@@ -54,8 +54,12 @@
 		<Unit filename="UmlCanvas.h" />
 		<Unit filename="UmlClass.cpp" />
 		<Unit filename="UmlClass.h" />
+		<Unit filename="UmlClassDialog.cpp" />
+		<Unit filename="UmlClassDialog.h" />
 		<Unit filename="UmlEditor.cpp" />
 		<Unit filename="UmlEditor.h" />
+		<Unit filename="UmlMember.cpp" />
+		<Unit filename="UmlMember.h" />
 		<Unit filename="UmlMemberFunc.cpp" />
 		<Unit filename="UmlMemberFunc.h" />
 		<Unit filename="UmlMemberGlobals.h" />

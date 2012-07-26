@@ -1,25 +1,26 @@
 #ifndef UMLMEMBERFUNC_H
 #define UMLMEMBERFUNC_H
 
-#include <vector>
+#include <list>
 #include <wx/String.h>
 #include "UmlMemberGlobals.h"
 #include "UmlMemberVar.h"
+#include "UmlMember.h"
 
-class UmlMemberFunc
+class UmlMemberFunc : public UmlMember
 {
     public:
         /** Default constructor */
-        UmlMemberFunc();
+        UmlMemberFunc(wxString Name, wxString Type, Accessibility Access = Public, std::list<UmlMemberVar> Parameters = 0, bool Static = false);
         UmlMemberFunc(const UmlMemberFunc&);
         /** Default destructor */
         virtual ~UmlMemberFunc();
+        void RefreshData(UmlClassDialog*);
     protected:
     private:
-        wxString Type;
-        wxString Name;
-        bool Static;
-        Accessibility Access;
-        std::vector<UmlMemberVar> Arguments;
+        bool Constructor;
+        bool Destructor;
+        bool Virtual;
+        std::list<UmlMemberVar> Arguments;
 };
 #endif // UMLMEMBERFUNC_H

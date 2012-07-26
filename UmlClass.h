@@ -2,24 +2,26 @@
 #define UMLCLASS_H
 
 #include <wx/gdicmn.h>
-#include <vector>
+#include <list>
 //#include <wx/wxsf/DiagramManager.h>
 #include <wx/wxsf/ShapeBase.h>
+#include <wx/sizer.h>
 #include "UmlMemberVar.h"
 #include "UmlMemberFunc.h"
 
 class UmlClass : public wxSFShapeBase {
 public:
-    XS_DECLARE_CLONABLE_CLASS(wxSFRectShape);
+    XS_DECLARE_CLONABLE_CLASS(UmlClass);
 
-    UmlClass(void);
+    UmlClass();
 	UmlClass(wxRealPoint pos, wxSFDiagramManager* man);
 	UmlClass(const UmlClass& obj);
+	void Create(wxString ClassName);
 	virtual ~UmlClass();
     virtual wxRect GetBoundingBox();
-    void AddVariable();
+    void AddVariable(wxString Name, wxString Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
     void RemoveVariable();
-    void AddFunction();
+    void AddFunction(wxString Name, wxString Type, Accessibility Access = Public, std::list<UmlMemberVar> Parameters = 0, bool Static = false);
     void RemoveFunction();
 protected:
     virtual void DrawNormal(wxDC& dc);
@@ -28,12 +30,17 @@ protected:
 private:
     wxPen BorderColour;
     wxBrush FillColour;
-	wxRealPoint VarRectSize;
-	wxRealPoint FuncRectSize;
-	std::vector<UmlMemberVar> MemberVariables;
-	std::vector<UmlMemberFunc> MemberFunctions;
+    wxFont Font;
+	wxCoord MinTextWidth;
+	wxCoord VarFieldHeight;
+	wxCoord FuncFieldHeight;
 
-    void UpdateShapeSize();
+    wxString ClassName;
+	std::list<UmlMemberVar> MemberVariables;
+	std::list<UmlMemberFunc> MemberFunctions;
+	wxString Comments;
+
+    void UpdateShapeSize(wxDC* dc);
     void DrawShape(wxDC* dc);
 };
 

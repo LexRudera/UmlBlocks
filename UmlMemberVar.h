@@ -3,23 +3,22 @@
 
 #include <wx/String.h>
 #include "UmlMemberGlobals.h"
+#include "UmlMember.h"
 
-class UmlMemberVar
+class UmlMemberVar : public UmlMember
 {
     public:
         /** Default constructor */
-        UmlMemberVar();
+        UmlMemberVar(wxString Name, wxString Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
         UmlMemberVar(const UmlMemberVar&);
         /** Default destructor */
         virtual ~UmlMemberVar();
+        void RefreshData(UmlClassDialog*);
     protected:
     private:
-        wxString Type;
-        wxString Name;
-        bool Static;
-        Accessibility Access;
-        bool FuncArg;
         int Pointer;
         bool Reference;
+        bool FuncArg;
+        wxString DefaultArg;
 };
 #endif // UMLMEMBERVAR_H

@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1341855710 source:c:\dev\umlblocks\umleditor.cpp
+1341432823 source:c:\dev\umlblocks\umleditor.cpp
 	"UmlEditor.h"
 
-1341855710 c:\dev\umlblocks\umleditor.h
+1341432823 c:\dev\umlblocks\umleditor.h
 	<EditorBase.h>
 	"UmlCanvas.h"
 
@@ -838,7 +838,7 @@
 	<wx/log.h>
 	<csignal>
 
-1341855710 c:\dev\umlblocks\umlcanvas.h
+1341432823 c:\dev\umlblocks\umlcanvas.h
 	<wx/wxsf/wxShapeFramework.h>
 	"UmlEditor.h"
 
@@ -2081,11 +2081,11 @@
 	<wx/wxsf/Defs.h>
 	<wx/wxsf/ShapeBase.h>
 
-1341855710 source:c:\dev\umlblocks\umlnewentitydialog.cpp
+1341432823 source:c:\dev\umlblocks\umlnewentitydialog.cpp
 	"UmlNewEntityDialog.h"
 	<sdk.h>
 
-1341855710 c:\dev\umlblocks\umlnewentitydialog.h
+1341432823 c:\dev\umlblocks\umlnewentitydialog.h
 	<wx/Dialog.h>
 	<wx/radiobox.h>
 	<wx/radiobut.h>
@@ -2798,25 +2798,27 @@
 1340268013 c:\dev\codeblocks svn\src\include\sdk_precomp.h
 	"sdk_common.h"
 
-1341921365 source:c:\dev\umlblocks\umlmemberfunc.cpp
+1343128138 source:c:\dev\umlblocks\umlmemberfunc.cpp
 	"UmlMemberFunc.h"
 
-1342353302 c:\dev\umlblocks\umlmemberfunc.h
-	<vector>
+1343126476 c:\dev\umlblocks\umlmemberfunc.h
+	<list>
 	<wx/String.h>
 	"UmlMemberGlobals.h"
 	"UmlMemberVar.h"
+	"UmlMember.h"
 
-1342042171 c:\dev\umlblocks\umlmemberglobals.h
+1342392094 c:\dev\umlblocks\umlmemberglobals.h
 
-1342351043 c:\dev\umlblocks\umlmembervar.h
+1343258095 c:\dev\umlblocks\umlmembervar.h
 	<wx/String.h>
 	"UmlMemberGlobals.h"
+	"UmlMember.h"
 
-1341921365 source:c:\dev\umlblocks\umlmembervar.cpp
+1343128147 source:c:\dev\umlblocks\umlmembervar.cpp
 	"UmlMemberVar.h"
 
-1342369004 source:c:\dev\umlblocks\umlblocks.cpp
+1342561043 source:c:\dev\umlblocks\umlblocks.cpp
 	<sdk.h>
 	<configurationpanel.h>
 	"UmlBlocks.h"
@@ -2831,19 +2833,40 @@
 	<wx/panel.h>
 	<wx/string.h>
 
-1341921365 c:\dev\umlblocks\umlblocks.h
+1341846563 c:\dev\umlblocks\umlblocks.h
 	<wx/wxprec.h>
 	<wx/wx.h>
 	<cbplugin.h>
 
-1342371308 c:\dev\umlblocks\umlclass.h
+1343127593 c:\dev\umlblocks\umlclass.h
 	<wx/gdicmn.h>
-	<vector>
+	<list>
 	<wx/wxsf/ShapeBase.h>
+	<wx/sizer.h>
 	"UmlMemberVar.h"
 	"UmlMemberFunc.h"
 
-1341855710 source:c:\dev\umlblocks\umlcanvas.cpp
+1341432823 source:c:\dev\umlblocks\umlcanvas.cpp
 	"UmlCanvas.h"
 	<sdk.h>
+
+1343339269 source:c:\dev\umlblocks\umlclass.cpp
+	"UmlClass.h"
+	<sdk.h>
+	"wx/wxsf/ShapeCanvas.h"
+	"wx/wxsf/CommonFcn.h"
+
+1343126993 c:\dev\umlblocks\umlmember.h
+	<wx/string.h>
+	"UmlMemberGlobals.h"
+	"UmlClassDialog.h"
+
+1343127979 source:c:\dev\umlblocks\umlmember.cpp
+	"UmlMember.h"
+
+1343125612 source:c:\dev\umlblocks\umlclassdialog.cpp
+	"UmlClassDialog.h"
+
+1343168959 c:\dev\umlblocks\umlclassdialog.h
+	<wx/Dialog.h>
 
