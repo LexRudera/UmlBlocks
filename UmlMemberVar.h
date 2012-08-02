@@ -4,7 +4,6 @@
 #include <wx/String.h>
 #include "UmlMemberGlobals.h"
 #include "UmlMember.h"
-
 class UmlMemberVar : public UmlMember
 {
     public:

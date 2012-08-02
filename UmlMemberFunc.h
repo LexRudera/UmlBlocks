@@ -6,7 +6,6 @@
 #include "UmlMemberGlobals.h"
 #include "UmlMemberVar.h"
 #include "UmlMember.h"
-
 class UmlMemberFunc : public UmlMember
 {
     public:
@@ -21,6 +20,7 @@ class UmlMemberFunc : public UmlMember
         bool Constructor;
         bool Destructor;
         bool Virtual;
+        bool PureVirtual;
         std::list<UmlMemberVar> Arguments;
 };
 #endif // UMLMEMBERFUNC_H

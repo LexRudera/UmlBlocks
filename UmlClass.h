@@ -5,7 +5,6 @@
 #include <list>
 //#include <wx/wxsf/DiagramManager.h>
 #include <wx/wxsf/ShapeBase.h>
-#include <wx/sizer.h>
 #include "UmlMemberVar.h"
 #include "UmlMemberFunc.h"
 

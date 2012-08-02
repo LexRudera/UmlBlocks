@@ -4,7 +4,8 @@
 
 #include "UmlCanvas.h"
 #include "UmlClass.h"
-#include "UmlNewEntityDialog.h"
+#include "UmlClassDialog.h"
+#include <wx/dialog.h>
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
 namespace {
@@ -92,7 +93,7 @@ void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
 	UMLMenu->AppendSeparator();
 	UMLMenu->Append(RevEngiMenuOptionId,wxT("Reverse Engineer..."),wxT("Reverse engineer code"));
 	UMLMenu->Append(GenCodeMenuOptionId,wxT("Generate Code..."),wxT("Generate code from diagram"));
-	UMLMenu->Append(SaveBmpMenuOptionId,wxT("Save BMP..."),wxT("Create and save a BMP Image"));
+	UMLMenu->Append(SaveBmpMenuOptionId,wxT("Save Image..."),wxT("Create and save a PNG Image"));
 
 	DeactivateUmlTools();
 }
@@ -122,10 +123,10 @@ void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
 
 void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("New Uml Class Option Function Invoked"));
-	UmlNewEntityDialog* dlg = new UmlNewEntityDialog(1);
-	if ( dlg->ShowModal() == wxID_OK ) {
+	UmlClassDialog dlg = UmlClassDialog();
+	if ( dlg.ShowModal() == wxID_OK ) {
+
 	}
-	dlg->Destroy();
 	//new UmlClass(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
 	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
 	static_cast<UmlClass*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50)))->Create(wxT("Class1"));
