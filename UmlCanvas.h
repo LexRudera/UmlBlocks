@@ -10,6 +10,7 @@ public:
 	~UmlCanvas();
 
 	void OnLeftDown(wxMouseEvent& event);
+	void OnLeftDoubleClick (wxMouseEvent &event);
 	void OnLeftUp(wxMouseEvent& event);
 	void OnRightDown(wxMouseEvent& event);
 	void OnKeyDown(wxKeyEvent& event);

@@ -33,6 +33,9 @@ void UmlCanvas::OnLeftDown(wxMouseEvent& event) {
 	HideAllHandles();
 }
 
+void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
+}
+
 void UmlCanvas::OnLeftUp(wxMouseEvent& event) {
 	wxSFShapeCanvas::OnLeftUp(event);
 	HideAllHandles();
