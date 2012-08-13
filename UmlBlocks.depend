@@ -2592,9 +2592,11 @@
 	<wx/wx.h>
 	<cbplugin.h>
 
-1341432823 c:\dev\umlblocks\umlcanvas.h
+1344865886 c:\dev\umlblocks\umlcanvas.h
 	<wx/wxsf/wxShapeFramework.h>
 	"UmlEditor.h"
+	"UmlMember.h"
+	"UmlClass.h"
 
 1327490720 c:\dev\wxsf\include\wx\wxsf\wxshapeframework.h
 	<wx/wxsf/DiagramManager.h>
@@ -2807,7 +2809,7 @@
 	<EditorBase.h>
 	"UmlCanvas.h"
 
-1343557427 c:\dev\umlblocks\umlclass.h
+1344851779 c:\dev\umlblocks\umlclass.h
 	<wx/gdicmn.h>
 	<list>
 	<wx/wxsf/ShapeBase.h>
@@ -2821,9 +2823,10 @@
 
 1342392094 c:\dev\umlblocks\umlmemberglobals.h
 
-1343849574 c:\dev\umlblocks\umlmember.h
+1344865787 c:\dev\umlblocks\umlmember.h
 	<wx/string.h>
 	"UmlMemberGlobals.h"
+	<wx/gdicmn.h>
 
 1343851057 c:\dev\umlblocks\umlmemberfunc.h
 	<list>
@@ -2872,6 +2875,6 @@
 	<wx/radiobox.h>
 	<wx/radiobut.h>
 
-1343894737 source:c:\dev\umlblocks\umlclassdialog.cpp
+1343895412 source:c:\dev\umlblocks\umlclassdialog.cpp
 	"UmlClassDialog.h"
 

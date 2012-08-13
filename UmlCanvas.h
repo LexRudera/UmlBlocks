@@ -3,6 +3,8 @@
 
 #include <wx/wxsf/wxShapeFramework.h>
 #include "UmlEditor.h"
+#include "UmlMember.h"
+#include "UmlClass.h"
 class UmlEditor;
 class UmlCanvas : public wxSFShapeCanvas {
 public:

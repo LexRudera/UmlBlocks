@@ -34,6 +34,13 @@ void UmlCanvas::OnLeftDown(wxMouseEvent& event) {
 }
 
 void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
+    UmlMember* ClickedMember = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
+    if (ClickedMember != 0)
+    {
+        wxDialog* editdiag = new wxDialog();
+        editdiag->ShowModal();
+        editdiag->Destroy();
+    }
 }
 
 void UmlCanvas::OnLeftUp(wxMouseEvent& event) {

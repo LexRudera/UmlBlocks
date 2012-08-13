@@ -22,6 +22,7 @@ public:
     void RemoveVariable();
     void AddFunction(wxString Name, wxString Type, Accessibility Access = Public, std::list<UmlMemberVar> Parameters = 0, bool Static = false);
     void RemoveFunction();
+    UmlMember* GetMemberAtPosition(const wxPoint& Pos);
 protected:
     virtual void DrawNormal(wxDC& dc);
 	virtual void DrawHover(wxDC& dc);

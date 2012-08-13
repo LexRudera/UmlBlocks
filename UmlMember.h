@@ -2,6 +2,7 @@
 #define UMLMEMBER_H
 #include <wx/string.h>
 #include "UmlMemberGlobals.h"
+#include <wx/gdicmn.h>
 //#include "UmlClassDialog.h" //Odd Inclusion loop happened. Forward declaration seems to fix it.
 class UmlClassDialog; // This is called a forward declaration, you dummy.
 class UmlMember // How unconveniently named. Guess i sorta forgot about other kinds of uml diagrams. A member could be anything of anything. blargh.
