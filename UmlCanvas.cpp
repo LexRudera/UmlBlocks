@@ -31,15 +31,24 @@ void UmlCanvas::OnMouseWheel(wxMouseEvent& event) {
 void UmlCanvas::OnLeftDown(wxMouseEvent& event) {
 	wxSFShapeCanvas::OnLeftDown(event);
 	HideAllHandles();
+	if(EditDiag != 0)
+    {
+        EditDiag->Show(false);
+        EditDiag->Destroy();
+    }
 }
 
 void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
-    UmlMember* ClickedMember = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
-    if (ClickedMember != 0)
-    {
-        wxDialog* editdiag = new wxDialog();
-        editdiag->ShowModal();
-        editdiag->Destroy();
+    //UmlMember* ClickedMember = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
+    UmlClass* ClickedClass = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()));
+    UmlMember* ClickedMember = ClickedClass->GetMemberAtPosition(event.GetPosition());
+    if (ClickedClass != 0)
+        if (ClickedMember != 0)
+        {
+            EditDiag = new wxDialog(this,wxID_ANY,_("Odd Edit Dialog"),event.GetPosition(),wxSize(50,50));
+            new wxTextCtrl(EditDiag,wxID_ANY,_())
+            EditDiag->Show(true);
+        }
     }
 }
 
@@ -55,6 +64,10 @@ void UmlCanvas::OnKeyDown(wxKeyEvent& event){
         GetSelectedShapes(sl);
         GetDiagramManager()->RemoveShapes(sl);
         Refresh(false);
+    }
+    if(event.GetKeyCode() == WXK_EXECUTE) // I expect Execute being the Enter button
+    {
+
     }
 }
 

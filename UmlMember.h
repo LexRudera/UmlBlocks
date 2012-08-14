@@ -20,6 +20,7 @@ class UmlMember // How unconveniently named. Guess i sorta forgot about other ki
         wxPoint GetPos() const {return Position;}
         wxSize GetSize() const {return Size;}
         virtual void RefreshData(UmlClassDialog*)=0; // So virtual you would think it was in a computer! Wait, what?
+        virtual ClassMemberGroup GetMemberGroup()=0;
 
     protected: // Time for some notey info. Protected is like Private, though where the private members can't be accessed by derived classes,
                // the protectd can, while still being isolated from outside the scope like the private. It's good costum to not access variables directly on the object.

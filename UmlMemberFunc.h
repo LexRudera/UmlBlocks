@@ -15,6 +15,7 @@ class UmlMemberFunc : public UmlMember
         /** Default destructor */
         virtual ~UmlMemberFunc();
         void RefreshData(UmlClassDialog*);
+        ClassMemberGroup GetMemberGroup(){return Function;}
     protected:
     private:
         bool Constructor;

@@ -13,6 +13,7 @@ class UmlMemberVar : public UmlMember
         /** Default destructor */
         virtual ~UmlMemberVar();
         void RefreshData(UmlClassDialog*);
+        ClassMemberGroup GetMemberGroup(){return Variable;}
     protected:
     private:
         int Pointer;

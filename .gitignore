@@ -17,6 +17,6 @@
 *.dll
 
 # Custom Code::Blocks Env
-*.layout
+
 *.depend
 objs/
