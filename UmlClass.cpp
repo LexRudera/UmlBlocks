@@ -136,3 +136,8 @@ void UmlClass::RemoveVariable() {
 void UmlClass::RemoveFunction() {
 
 }
+
+UmlMember* UmlClass::GetMemberAtPosition(const wxPoint& a_Pos)
+{
+    return 0;
+}

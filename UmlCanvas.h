@@ -5,6 +5,8 @@
 #include "UmlEditor.h"
 #include "UmlMember.h"
 #include "UmlClass.h"
+#include "UmlQuickEditPopup.h"
+
 class UmlEditor;
 class UmlCanvas : public wxSFShapeCanvas {
 public:
@@ -26,7 +28,7 @@ private:
 	// Double click, see if you want it created and shown.
 	// Click anywhere and the box disappears and gets destroyed without changes
 	// Press enter and the box will disappear, change the data according to the dialog and destroy it
-	wxDialog* EditDiag;
+	UmlQuickEditPopup* EditDiag;
 };
 
 #endif // UMLCANVAS_H

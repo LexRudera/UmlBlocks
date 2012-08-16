@@ -67,8 +67,8 @@
 		<Unit filename="UmlMemberVar.h" />
 		<Unit filename="UmlNewEntityDialog.cpp" />
 		<Unit filename="UmlNewEntityDialog.h" />
-		<Unit filename="UmlQuickEditDialog.cpp" />
-		<Unit filename="UmlQuickEditDialog.h" />
+		<Unit filename="UmlQuickEditPopup.cpp" />
+		<Unit filename="UmlQuickEditPopup.h" />
 		<Unit filename="manifest.xml" />
 		<Extensions>
 			<code_completion />

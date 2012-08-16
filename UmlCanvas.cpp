@@ -43,10 +43,10 @@ void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
     UmlClass* ClickedClass = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()));
     UmlMember* ClickedMember = ClickedClass->GetMemberAtPosition(event.GetPosition());
     if (ClickedClass != 0)
+    {
         if (ClickedMember != 0)
         {
-            EditDiag = new wxDialog(this,wxID_ANY,_("Odd Edit Dialog"),event.GetPosition(),wxSize(50,50));
-            new wxTextCtrl(EditDiag,wxID_ANY,_())
+            EditDiag = new UmlQuickEditPopup(event.GetPosition(),ClickedMember->GetMemberGroup());
             EditDiag->Show(true);
         }
     }

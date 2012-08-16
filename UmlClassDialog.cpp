@@ -13,7 +13,7 @@ UmlClassDialog::~UmlClassDialog()
 
 void UmlClassDialog::Create()
 {
-    wxDialog::Create(Manager::Get()->GetAppWindow(),Manager::Get()->GetAppWindow()->GetId(),wxT("New Class"),wxDefaultPosition,wxSize(625,720));
+    wxDialog::Create(Manager::Get()->GetAppWindow(),wxID_ANY,wxT("New Class"),wxDefaultPosition,wxSize(625,720));
     CreateControls();
 }
 
