@@ -1,15 +1,594 @@
 # depslib dependency file v1.0
-1345185930 source:c:\dev\umlblocks\umlclassdialog.cpp
-	"UmlClassDialog.h"
-
-1343844926 c:\dev\umlblocks\umlclassdialog.h
+1345150897 source:c:\dev\umlblocks\umlquickeditpopup.cpp
+	"UmlQuickEditPopup.h"
 	<sdk.h>
+
+1345150580 c:\dev\umlblocks\umlquickeditpopup.h
+	<wx/Popupwin.h>
+	"UmlMemberGlobals.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\popupwin.h
+	"wx/defs.h"
+	"wx/window.h"
+	"wx/msw/popupwin.h"
+	"wx/os2/popupwin.h"
+	"wx/gtk/popupwin.h"
+	"wx/gtk1/popupwin.h"
+	"wx/x11/popupwin.h"
+	"wx/motif/popupwin.h"
+	"wx/mgl/popupwin.h"
+	"wx/mac/popupwin.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\defs.h
+	"wx/platform.h"
+	"wx/features.h"
+	"wx/version.h"
+	"wx/dlimpexp.h"
+	"wx/debug.h"
+	<stddef.h>
+	<sys/types.h>
+	<unistd.h>
+	"wx/msw/winundef.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\platform.h
+	<stddef.h>
+	<AvailabilityMacros.h>
+	<unistd.h>
+	"wx/mac/carbon/config_xcode.h"
+	"wx/setup.h"
+	"wx/chkconf.h"
+	"wx/msw/wince/libraries.h"
+	"wx/msw/libraries.h"
+	"wx/msw/gccpriv.h"
+	<AvailabilityMacros.h>
+
+1300790216 c:\dev\wxmsw-2.8.12\lib\gcc_dll\mswu\wx\setup.h
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\chkconf.h
+	"wx/palmos/chkconf.h"
+	"wx/msw/wince/chkconf.h"
+	"wx/msw/chkconf.h"
+	"wx/mac/chkconf.h"
+	"wx/os2/chkconf.h"
+	"wx/mgl/chkconf.h"
+	"wx/dfb/chkconf.h"
+	"wx/motif/chkconf.h"
+	"wx/x11/chkconf.h"
+	"wx/univ/chkconf.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\chkconf.h
+
+1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\chkconf.h
+
+1300790218 c:\dev\wxmsw-2.8.12\include\wx\univ\chkconf.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\libraries.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\libraries.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\gccpriv.h
+	<_mingw.h>
+	<w32api.h>
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\features.h
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\version.h
+	"wx/cpp.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\cpp.h
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\dlimpexp.h
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\debug.h
+	<assert.h>
+	<limits.h>
+	"wx/wxchar.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\wxchar.h
+	"wx/platform.h"
+	"wx/dlimpexp.h"
+	<stdio.h>
+	<stdarg.h>
+	<sys/types.h>
+	<wchar.h>
+	<wcstr.h>
+	<stdlib.h>
+	<widec.h>
+	<ctype.h>
+	<memory.h>
+	<stddef.h>
+	<stddef.h>
+	<string.h>
+	<ctype.h>
+	<tchar.h>
+	<ctype.h>
+	<ctype.h>
+	<stdio.h>
+	<wctype.h>
+	<stdio.h>
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdio.h>
+	<time.h>
+	<time.h>
+	<string.h>
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\winundef.h
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\window.h
+	"wx/event.h"
+	"wx/list.h"
+	"wx/cursor.h"
+	"wx/font.h"
+	"wx/colour.h"
+	"wx/region.h"
+	"wx/utils.h"
+	"wx/intl.h"
+	"wx/validate.h"
+	"wx/palette.h"
+	"wx/accel.h"
+	"wx/access.h"
+	"wx/palmos/window.h"
+	"wx/msw/window.h"
+	"wx/motif/window.h"
+	"wx/gtk/window.h"
+	"wx/gtk1/window.h"
+	"wx/x11/window.h"
+	"wx/mgl/window.h"
+	"wx/dfb/window.h"
+	"wx/mac/window.h"
+	"wx/cocoa/window.h"
+	"wx/os2/window.h"
+	"wx/univ/window.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\event.h
+	"wx/defs.h"
+	"wx/cpp.h"
+	"wx/object.h"
+	"wx/clntdata.h"
+	"wx/gdicmn.h"
+	"wx/cursor.h"
+	"wx/thread.h"
+	"wx/dynarray.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\object.h
+	"wx/memory.h"
+	"wx/xti.h"
+	"wx/msw/msvcrt.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\memory.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/msgout.h"
+	<stddef.h>
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\string.h
+	"wx/defs.h"
+	<ctype.h>
+	<stdio.h>
+	<string.h>
+	<stdarg.h>
+	<limits.h>
+	<string.h>
+	<stdio.h>
+	<stdarg.h>
+	<limits.h>
+	<stdlib.h>
+	<strings.h>
+	<StringMgr.h>
+	"wx/wxchar.h"
+	"wx/buffer.h"
+	"wx/strconv.h"
+	"wx/beforestd.h"
+	<string>
+	"wx/afterstd.h"
+	"wx/arrstr.h"
+	"wx/iosfwrap.h"
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\buffer.h
+	"wx/wxchar.h"
+	<stdlib.h>
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\strconv.h
+	"wx/defs.h"
+	"wx/wxchar.h"
+	"wx/buffer.h"
+	"typeinfo.h"
+	<stdlib.h>
+	"wx/fontenc.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\fontenc.h
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\beforestd.h
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\afterstd.h
+	"wx/msw/winundef.h"
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\arrstr.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/dynarray.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\dynarray.h
+	"wx/defs.h"
+	"wx/beforestd.h"
+	<vector>
+	<algorithm>
+	"wx/afterstd.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\iosfwrap.h
+	<iostream.h>
+	<iosfwd>
+	"wx/msw/winundef.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\msgout.h
+	"wx/defs.h"
+	"wx/wxchar.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\xti.h
+	"wx/defs.h"
+	"wx/memory.h"
+	"wx/flags.h"
+	"wx/string.h"
+	"wx/arrstr.h"
+	"wx/hashmap.h"
+	"wx/log.h"
+	"wx/intl.h"
+	<typeinfo>
+	"wx/dynarray.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\flags.h
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\hashmap.h
+	"wx/string.h"
+	<unordered_map>
+	<tr1/unordered_map>
+	<ext/hash_map>
+	<hash_map>
+	<stddef.h>
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\log.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/arrstr.h"
+	<time.h>
+	"wx/dynarray.h"
+	"wx/iosfwrap.h"
+	"wx/generic/logg.h"
+	"wx/cocoa/log.h"
+
+1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\logg.h
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\intl.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/fontenc.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\msvcrt.h
+	<stdlib.h>
+	<crtdbg.h>
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\clntdata.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/hashmap.h"
+	"wx/vector.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\vector.h
+	"wx/defs.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\gdicmn.h
+	"wx/defs.h"
+	"wx/list.h"
+	"wx/string.h"
+	"wx/fontenc.h"
+	"wx/hashmap.h"
+	"wx/math.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\list.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/beforestd.h"
+	<algorithm>
+	<iterator>
 	<list>
-	<wx/Dialog.h>
-	<wx/statbox.h>
-	<wx/textctrl.h>
-	"UmlMemberFunc.h"
-	"UmlMemberVar.h"
+	"wx/afterstd.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\math.h
+	"wx/defs.h"
+	<math.h>
+	<float.h>
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\cursor.h
+	"wx/defs.h"
+	"wx/palmos/cursor.h"
+	"wx/msw/cursor.h"
+	"wx/motif/cursor.h"
+	"wx/gtk/cursor.h"
+	"wx/gtk1/cursor.h"
+	"wx/x11/cursor.h"
+	"wx/mgl/cursor.h"
+	"wx/dfb/cursor.h"
+	"wx/mac/cursor.h"
+	"wx/cocoa/cursor.h"
+	"wx/os2/cursor.h"
+	"wx/utils.h"
+
+1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\cursor.h
+	"wx/msw/gdiimage.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\gdiimage.h
+	"wx/gdiobj.h"
+	"wx/gdicmn.h"
+	"wx/list.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\gdiobj.h
+	"wx/object.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\utils.h
+	"wx/object.h"
+	"wx/list.h"
+	"wx/filefn.h"
+	"wx/gdicmn.h"
+	"wx/longlong.h"
+	"wx/platinfo.h"
+	<direct.h>
+	<dirent.h>
+	<unistd.h>
+	<stdio.h>
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\filefn.h
+	"wx/list.h"
+	"wx/arrstr.h"
+	"wx/msw/wince/time.h"
+	"wx/msw/private.h"
+	<time.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<utime.h>
+	<sys/stat.h>
+	<unistd.h>
+	<stat.h>
+	<unistd.h>
+	<unix.h>
+	<process.h>
+	"wx/os2/private.h"
+	<direct.h>
+	<io.h>
+	<unistd.h>
+	<unistd.h>
+	<dirent.h>
+	<direct.h>
+	<dos.h>
+	<io.h>
+	<direct.h>
+	<dos.h>
+	<io.h>
+	<io.h>
+	<unistd.h>
+	<dir.h>
+	<dir.h>
+	<unix.h>
+	<fcntl.h>
+	<sys/types.h>
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\time.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\private.h
+	"wx/msw/wrapwin.h"
+	"wx/msw/microwin.h"
+	"wx/log.h"
+	"wx/gdicmn.h"
+	"wx/colour.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wrapwin.h
+	"wx/platform.h"
+	<windows.h>
+	"wx/msw/winundef.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\microwin.h
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\colour.h
+	"wx/defs.h"
+	"wx/gdiobj.h"
+	"wx/variant.h"
+	"wx/generic/colour.h"
+	"wx/msw/colour.h"
+	"wx/motif/colour.h"
+	"wx/gtk/colour.h"
+	"wx/gtk1/colour.h"
+	"wx/generic/colour.h"
+	"wx/generic/colour.h"
+	"wx/x11/colour.h"
+	"wx/mac/colour.h"
+	"wx/cocoa/colour.h"
+	"wx/os2/colour.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\variant.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/arrstr.h"
+	"wx/list.h"
+	"wx/cpp.h"
+	"wx/datetime.h"
+	"wx/db.h"
+	"wx/iosfwrap.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\datetime.h
+	"wx/defs.h"
+	<time.h>
+	"wx/msw/wince/time.h"
+	<limits.h>
+	"wx/longlong.h"
+	"wx/dynarray.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\longlong.h
+	"wx/defs.h"
+	"wx/string.h"
+	<limits.h>
+	"wx/iosfwrap.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\db.h
+	"wx/defs.h"
+	"wx/string.h"
+	<afxwin.h>
+	"wx/msw/wrapwin.h"
+	"sql.h"
+	"sqlext.h"
+	"odbcinst.h"
+	"wx/msw/wrapwin.h"
+	"wx/isql.h"
+	"wx/isqlext.h"
+	<sql.h>
+	<sqlext.h>
+	<sql.h>
+	<sqlext.h>
+	"wx/object.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\isql.h
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\isqlext.h
+	"wx/isql.h"
+
+1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\colour.h
+	"wx/object.h"
+
+1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\colour.h
+	"wx/object.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\platinfo.h
+	"wx/string.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\thread.h
+	"wx/defs.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\font.h
+	"wx/defs.h"
+	"wx/fontenc.h"
+	"wx/gdiobj.h"
+	"wx/palmos/font.h"
+	"wx/msw/font.h"
+	"wx/motif/font.h"
+	"wx/gtk/font.h"
+	"wx/gtk1/font.h"
+	"wx/x11/font.h"
+	"wx/mgl/font.h"
+	"wx/dfb/font.h"
+	"wx/mac/font.h"
+	"wx/cocoa/font.h"
+	"wx/os2/font.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\font.h
+	"wx/gdicmn.h"
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\region.h
+	"wx/gdiobj.h"
+	"wx/gdicmn.h"
+	"wx/palmos/region.h"
+	"wx/msw/region.h"
+	"wx/gtk/region.h"
+	"wx/gtk1/region.h"
+	"wx/x11/region.h"
+	"wx/mgl/region.h"
+	"wx/dfb/region.h"
+	"wx/mac/region.h"
+	"wx/cocoa/region.h"
+	"wx/os2/region.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\region.h
+
+1300790144 c:\dev\wxmsw-2.8.12\include\wx\validate.h
+	"wx/defs.h"
+	"wx/event.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\palette.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/gdiobj.h"
+	"wx/palmos/palette.h"
+	"wx/msw/palette.h"
+	"wx/motif/palette.h"
+	"wx/generic/paletteg.h"
+	"wx/x11/palette.h"
+	"wx/mgl/palette.h"
+	"wx/mac/palette.h"
+	"wx/os2/palette.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\palette.h
+	"wx/gdiobj.h"
+
+1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\paletteg.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/gdiobj.h"
+	"wx/gdicmn.h"
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\accel.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/generic/accel.h"
+	"wx/msw/accel.h"
+	"wx/motif/accel.h"
+	"wx/gtk/accel.h"
+	"wx/gtk1/accel.h"
+	"wx/mac/accel.h"
+	"wx/generic/accel.h"
+	"wx/os2/accel.h"
+
+1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\accel.h
+
+1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\accel.h
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\access.h
+	"wx/defs.h"
+	"wx/variant.h"
+	"wx/msw/ole/access.h"
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\ole\access.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\window.h
+	"wx/hash.h"
+
+1300790142 c:\dev\wxmsw-2.8.12\include\wx\hash.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/list.h"
+	"wx/dynarray.h"
+
+1300790220 c:\dev\wxmsw-2.8.12\include\wx\univ\window.h
+	"wx/bitmap.h"
+
+1300790140 c:\dev\wxmsw-2.8.12\include\wx\bitmap.h
+	"wx/string.h"
+	"wx/gdicmn.h"
+	"wx/colour.h"
+	"wx/variant.h"
+	"wx/palmos/bitmap.h"
+	"wx/msw/bitmap.h"
+	"wx/x11/bitmap.h"
+	"wx/gtk/bitmap.h"
+	"wx/gtk1/bitmap.h"
+	"wx/x11/bitmap.h"
+	"wx/mgl/bitmap.h"
+	"wx/dfb/bitmap.h"
+	"wx/mac/bitmap.h"
+	"wx/cocoa/bitmap.h"
+	"wx/os2/bitmap.h"
+	"wx/generic/mask.h"
+
+1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\bitmap.h
+	"wx/msw/gdiimage.h"
+	"wx/palette.h"
+
+1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\mask.h
+
+1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\popupwin.h
+
+1344957822 c:\dev\umlblocks\umlmemberglobals.h
 
 1340268013 c:\dev\codeblocks svn\src\include\sdk.h
 	"sdk_common.h"
@@ -124,108 +703,6 @@
 	"wx/mgl/private.h"
 	"wx/wx.h"
 
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\defs.h
-	"wx/platform.h"
-	"wx/features.h"
-	"wx/version.h"
-	"wx/dlimpexp.h"
-	"wx/debug.h"
-	<stddef.h>
-	<sys/types.h>
-	<unistd.h>
-	"wx/msw/winundef.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\platform.h
-	<stddef.h>
-	<AvailabilityMacros.h>
-	<unistd.h>
-	"wx/mac/carbon/config_xcode.h"
-	"wx/setup.h"
-	"wx/chkconf.h"
-	"wx/msw/wince/libraries.h"
-	"wx/msw/libraries.h"
-	"wx/msw/gccpriv.h"
-	<AvailabilityMacros.h>
-
-1300790216 c:\dev\wxmsw-2.8.12\lib\gcc_dll\mswu\wx\setup.h
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\chkconf.h
-	"wx/palmos/chkconf.h"
-	"wx/msw/wince/chkconf.h"
-	"wx/msw/chkconf.h"
-	"wx/mac/chkconf.h"
-	"wx/os2/chkconf.h"
-	"wx/mgl/chkconf.h"
-	"wx/dfb/chkconf.h"
-	"wx/motif/chkconf.h"
-	"wx/x11/chkconf.h"
-	"wx/univ/chkconf.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\chkconf.h
-
-1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\chkconf.h
-
-1300790218 c:\dev\wxmsw-2.8.12\include\wx\univ\chkconf.h
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\libraries.h
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\libraries.h
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\gccpriv.h
-	<_mingw.h>
-	<w32api.h>
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\features.h
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\version.h
-	"wx/cpp.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\cpp.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\dlimpexp.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\debug.h
-	<assert.h>
-	<limits.h>
-	"wx/wxchar.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\wxchar.h
-	"wx/platform.h"
-	"wx/dlimpexp.h"
-	<stdio.h>
-	<stdarg.h>
-	<sys/types.h>
-	<wchar.h>
-	<wcstr.h>
-	<stdlib.h>
-	<widec.h>
-	<ctype.h>
-	<memory.h>
-	<stddef.h>
-	<stddef.h>
-	<string.h>
-	<ctype.h>
-	<tchar.h>
-	<ctype.h>
-	<ctype.h>
-	<stdio.h>
-	<wctype.h>
-	<stdio.h>
-	<stdio.h>
-	<ctype.h>
-	<string.h>
-	<stdio.h>
-	<time.h>
-	<time.h>
-	<string.h>
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\winundef.h
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wrapwin.h
-	"wx/platform.h"
-	<windows.h>
-	"wx/msw/winundef.h"
-
 1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wrapcctl.h
 	"wx/msw/wrapwin.h"
 	<commctrl.h>
@@ -239,229 +716,6 @@
 1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\missing.h
 	"wx/msw/private.h"
 	"shellapi.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\private.h
-	"wx/msw/wrapwin.h"
-	"wx/msw/microwin.h"
-	"wx/log.h"
-	"wx/gdicmn.h"
-	"wx/colour.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\microwin.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\log.h
-	"wx/defs.h"
-	"wx/string.h"
-	"wx/arrstr.h"
-	<time.h>
-	"wx/dynarray.h"
-	"wx/iosfwrap.h"
-	"wx/generic/logg.h"
-	"wx/cocoa/log.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\string.h
-	"wx/defs.h"
-	<ctype.h>
-	<stdio.h>
-	<string.h>
-	<stdarg.h>
-	<limits.h>
-	<string.h>
-	<stdio.h>
-	<stdarg.h>
-	<limits.h>
-	<stdlib.h>
-	<strings.h>
-	<StringMgr.h>
-	"wx/wxchar.h"
-	"wx/buffer.h"
-	"wx/strconv.h"
-	"wx/beforestd.h"
-	<string>
-	"wx/afterstd.h"
-	"wx/arrstr.h"
-	"wx/iosfwrap.h"
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\buffer.h
-	"wx/wxchar.h"
-	<stdlib.h>
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\strconv.h
-	"wx/defs.h"
-	"wx/wxchar.h"
-	"wx/buffer.h"
-	"typeinfo.h"
-	<stdlib.h>
-	"wx/fontenc.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\fontenc.h
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\beforestd.h
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\afterstd.h
-	"wx/msw/winundef.h"
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\arrstr.h
-	"wx/defs.h"
-	"wx/string.h"
-	"wx/dynarray.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\dynarray.h
-	"wx/defs.h"
-	"wx/beforestd.h"
-	<vector>
-	<algorithm>
-	"wx/afterstd.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\iosfwrap.h
-	<iostream.h>
-	<iosfwd>
-	"wx/msw/winundef.h"
-
-1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\logg.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\gdicmn.h
-	"wx/defs.h"
-	"wx/list.h"
-	"wx/string.h"
-	"wx/fontenc.h"
-	"wx/hashmap.h"
-	"wx/math.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\list.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/string.h"
-	"wx/beforestd.h"
-	<algorithm>
-	<iterator>
-	<list>
-	"wx/afterstd.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\object.h
-	"wx/memory.h"
-	"wx/xti.h"
-	"wx/msw/msvcrt.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\memory.h
-	"wx/defs.h"
-	"wx/string.h"
-	"wx/msgout.h"
-	<stddef.h>
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\msgout.h
-	"wx/defs.h"
-	"wx/wxchar.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\xti.h
-	"wx/defs.h"
-	"wx/memory.h"
-	"wx/flags.h"
-	"wx/string.h"
-	"wx/arrstr.h"
-	"wx/hashmap.h"
-	"wx/log.h"
-	"wx/intl.h"
-	<typeinfo>
-	"wx/dynarray.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\flags.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\hashmap.h
-	"wx/string.h"
-	<unordered_map>
-	<tr1/unordered_map>
-	<ext/hash_map>
-	<hash_map>
-	<stddef.h>
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\intl.h
-	"wx/defs.h"
-	"wx/string.h"
-	"wx/fontenc.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\msvcrt.h
-	<stdlib.h>
-	<crtdbg.h>
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\math.h
-	"wx/defs.h"
-	<math.h>
-	<float.h>
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\colour.h
-	"wx/defs.h"
-	"wx/gdiobj.h"
-	"wx/variant.h"
-	"wx/generic/colour.h"
-	"wx/msw/colour.h"
-	"wx/motif/colour.h"
-	"wx/gtk/colour.h"
-	"wx/gtk1/colour.h"
-	"wx/generic/colour.h"
-	"wx/generic/colour.h"
-	"wx/x11/colour.h"
-	"wx/mac/colour.h"
-	"wx/cocoa/colour.h"
-	"wx/os2/colour.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\gdiobj.h
-	"wx/object.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\variant.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/string.h"
-	"wx/arrstr.h"
-	"wx/list.h"
-	"wx/cpp.h"
-	"wx/datetime.h"
-	"wx/db.h"
-	"wx/iosfwrap.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\datetime.h
-	"wx/defs.h"
-	<time.h>
-	"wx/msw/wince/time.h"
-	<limits.h>
-	"wx/longlong.h"
-	"wx/dynarray.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wince\time.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\longlong.h
-	"wx/defs.h"
-	"wx/string.h"
-	<limits.h>
-	"wx/iosfwrap.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\db.h
-	"wx/defs.h"
-	"wx/string.h"
-	<afxwin.h>
-	"wx/msw/wrapwin.h"
-	"sql.h"
-	"sqlext.h"
-	"odbcinst.h"
-	"wx/msw/wrapwin.h"
-	"wx/isql.h"
-	"wx/isqlext.h"
-	<sql.h>
-	<sqlext.h>
-	<sql.h>
-	<sqlext.h>
-	"wx/object.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\isql.h
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\isqlext.h
-	"wx/isql.h"
-
-1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\colour.h
-	"wx/object.h"
-
-1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\colour.h
-	"wx/object.h"
 
 1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\wrapcdlg.h
 	"wx/defs.h"
@@ -551,108 +805,6 @@
 	"wx/validate.h"
 	"wx/valtext.h"
 
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\hash.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/list.h"
-	"wx/dynarray.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\event.h
-	"wx/defs.h"
-	"wx/cpp.h"
-	"wx/object.h"
-	"wx/clntdata.h"
-	"wx/gdicmn.h"
-	"wx/cursor.h"
-	"wx/thread.h"
-	"wx/dynarray.h"
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\clntdata.h
-	"wx/defs.h"
-	"wx/string.h"
-	"wx/hashmap.h"
-	"wx/vector.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\vector.h
-	"wx/defs.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\cursor.h
-	"wx/defs.h"
-	"wx/palmos/cursor.h"
-	"wx/msw/cursor.h"
-	"wx/motif/cursor.h"
-	"wx/gtk/cursor.h"
-	"wx/gtk1/cursor.h"
-	"wx/x11/cursor.h"
-	"wx/mgl/cursor.h"
-	"wx/dfb/cursor.h"
-	"wx/mac/cursor.h"
-	"wx/cocoa/cursor.h"
-	"wx/os2/cursor.h"
-	"wx/utils.h"
-
-1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\cursor.h
-	"wx/msw/gdiimage.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\gdiimage.h
-	"wx/gdiobj.h"
-	"wx/gdicmn.h"
-	"wx/list.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\utils.h
-	"wx/object.h"
-	"wx/list.h"
-	"wx/filefn.h"
-	"wx/gdicmn.h"
-	"wx/longlong.h"
-	"wx/platinfo.h"
-	<direct.h>
-	<dirent.h>
-	<unistd.h>
-	<stdio.h>
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\filefn.h
-	"wx/list.h"
-	"wx/arrstr.h"
-	"wx/msw/wince/time.h"
-	"wx/msw/private.h"
-	<time.h>
-	<sys/types.h>
-	<sys/stat.h>
-	<sys/types.h>
-	<utime.h>
-	<sys/stat.h>
-	<unistd.h>
-	<stat.h>
-	<unistd.h>
-	<unix.h>
-	<process.h>
-	"wx/os2/private.h"
-	<direct.h>
-	<io.h>
-	<unistd.h>
-	<unistd.h>
-	<dirent.h>
-	<direct.h>
-	<dos.h>
-	<io.h>
-	<direct.h>
-	<dos.h>
-	<io.h>
-	<io.h>
-	<unistd.h>
-	<dir.h>
-	<dir.h>
-	<unix.h>
-	<fcntl.h>
-	<sys/types.h>
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\platinfo.h
-	"wx/string.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\thread.h
-	"wx/defs.h"
-
 1300790140 c:\dev\wxmsw-2.8.12\include\wx\app.h
 	"wx/event.h"
 	"wx/build.h"
@@ -704,52 +856,6 @@
 1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\icon.h
 	"wx/bitmap.h"
 
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\bitmap.h
-	"wx/string.h"
-	"wx/gdicmn.h"
-	"wx/colour.h"
-	"wx/variant.h"
-	"wx/palmos/bitmap.h"
-	"wx/msw/bitmap.h"
-	"wx/x11/bitmap.h"
-	"wx/gtk/bitmap.h"
-	"wx/gtk1/bitmap.h"
-	"wx/x11/bitmap.h"
-	"wx/mgl/bitmap.h"
-	"wx/dfb/bitmap.h"
-	"wx/mac/bitmap.h"
-	"wx/cocoa/bitmap.h"
-	"wx/os2/bitmap.h"
-	"wx/generic/mask.h"
-
-1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\bitmap.h
-	"wx/msw/gdiimage.h"
-	"wx/palette.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\palette.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/gdiobj.h"
-	"wx/palmos/palette.h"
-	"wx/msw/palette.h"
-	"wx/motif/palette.h"
-	"wx/generic/paletteg.h"
-	"wx/x11/palette.h"
-	"wx/mgl/palette.h"
-	"wx/mac/palette.h"
-	"wx/os2/palette.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\palette.h
-	"wx/gdiobj.h"
-
-1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\paletteg.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/gdiobj.h"
-	"wx/gdicmn.h"
-
-1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\mask.h
-
 1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\icon.h
 	"wx/msw/gdiimage.h"
 
@@ -771,100 +877,6 @@
 	"wx/object.h"
 	"wx/list.h"
 	"wx/dynarray.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\window.h
-	"wx/event.h"
-	"wx/list.h"
-	"wx/cursor.h"
-	"wx/font.h"
-	"wx/colour.h"
-	"wx/region.h"
-	"wx/utils.h"
-	"wx/intl.h"
-	"wx/validate.h"
-	"wx/palette.h"
-	"wx/accel.h"
-	"wx/access.h"
-	"wx/palmos/window.h"
-	"wx/msw/window.h"
-	"wx/motif/window.h"
-	"wx/gtk/window.h"
-	"wx/gtk1/window.h"
-	"wx/x11/window.h"
-	"wx/mgl/window.h"
-	"wx/dfb/window.h"
-	"wx/mac/window.h"
-	"wx/cocoa/window.h"
-	"wx/os2/window.h"
-	"wx/univ/window.h"
-
-1300790142 c:\dev\wxmsw-2.8.12\include\wx\font.h
-	"wx/defs.h"
-	"wx/fontenc.h"
-	"wx/gdiobj.h"
-	"wx/palmos/font.h"
-	"wx/msw/font.h"
-	"wx/motif/font.h"
-	"wx/gtk/font.h"
-	"wx/gtk1/font.h"
-	"wx/x11/font.h"
-	"wx/mgl/font.h"
-	"wx/dfb/font.h"
-	"wx/mac/font.h"
-	"wx/cocoa/font.h"
-	"wx/os2/font.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\font.h
-	"wx/gdicmn.h"
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\region.h
-	"wx/gdiobj.h"
-	"wx/gdicmn.h"
-	"wx/palmos/region.h"
-	"wx/msw/region.h"
-	"wx/gtk/region.h"
-	"wx/gtk1/region.h"
-	"wx/x11/region.h"
-	"wx/mgl/region.h"
-	"wx/dfb/region.h"
-	"wx/mac/region.h"
-	"wx/cocoa/region.h"
-	"wx/os2/region.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\region.h
-
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\validate.h
-	"wx/defs.h"
-	"wx/event.h"
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\accel.h
-	"wx/defs.h"
-	"wx/object.h"
-	"wx/generic/accel.h"
-	"wx/msw/accel.h"
-	"wx/motif/accel.h"
-	"wx/gtk/accel.h"
-	"wx/gtk1/accel.h"
-	"wx/mac/accel.h"
-	"wx/generic/accel.h"
-	"wx/os2/accel.h"
-
-1300790156 c:\dev\wxmsw-2.8.12\include\wx\generic\accel.h
-
-1300790214 c:\dev\wxmsw-2.8.12\include\wx\msw\accel.h
-
-1300790140 c:\dev\wxmsw-2.8.12\include\wx\access.h
-	"wx/defs.h"
-	"wx/variant.h"
-	"wx/msw/ole/access.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\ole\access.h
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\window.h
-	"wx/hash.h"
-
-1300790220 c:\dev\wxmsw-2.8.12\include\wx\univ\window.h
-	"wx/bitmap.h"
 
 1300790140 c:\dev\wxmsw-2.8.12\include\wx\containr.h
 
@@ -2564,52 +2576,51 @@
 	<list>
 	<algorithm>
 
-1300790144 c:\dev\wxmsw-2.8.12\include\wx\popupwin.h
-	"wx/defs.h"
-	"wx/window.h"
-	"wx/msw/popupwin.h"
-	"wx/os2/popupwin.h"
-	"wx/gtk/popupwin.h"
-	"wx/gtk1/popupwin.h"
-	"wx/x11/popupwin.h"
-	"wx/motif/popupwin.h"
-	"wx/mgl/popupwin.h"
-	"wx/mac/popupwin.h"
-
-1300790216 c:\dev\wxmsw-2.8.12\include\wx\msw\popupwin.h
-
 1340268013 c:\dev\codeblocks svn\src\include\licenses.h
 
 1340268013 c:\dev\codeblocks svn\src\include\sdk_precomp.h
 	"sdk_common.h"
 
-1344952329 c:\dev\umlblocks\umlmemberfunc.h
+1341855710 source:c:\dev\umlblocks\umlnewentitydialog.cpp
+	"UmlNewEntityDialog.h"
+	<sdk.h>
+
+1341855710 c:\dev\umlblocks\umlnewentitydialog.h
+	<wx/Dialog.h>
+	<wx/radiobox.h>
+	<wx/radiobut.h>
+
+1344097055 source:c:\dev\umlblocks\umlmembervar.cpp
+	"UmlMemberVar.h"
+
+1344957822 c:\dev\umlblocks\umlmembervar.h
+	<wx/String.h>
+	"UmlMemberGlobals.h"
+	"UmlMember.h"
+
+1345416246 c:\dev\umlblocks\umlmember.h
+	<wx/string.h>
+	"UmlMemberGlobals.h"
+	<wx/gdicmn.h>
+
+1344097055 source:c:\dev\umlblocks\umlmemberfunc.cpp
+	"UmlMemberFunc.h"
+
+1344957822 c:\dev\umlblocks\umlmemberfunc.h
 	<list>
 	<wx/String.h>
 	"UmlMemberGlobals.h"
 	"UmlMemberVar.h"
 	"UmlMember.h"
 
-1344952094 c:\dev\umlblocks\umlmemberglobals.h
-
-1344952321 c:\dev\umlblocks\umlmembervar.h
-	<wx/String.h>
-	"UmlMemberGlobals.h"
-	"UmlMember.h"
-
-1344952136 c:\dev\umlblocks\umlmember.h
-	<wx/string.h>
-	"UmlMemberGlobals.h"
-	<wx/gdicmn.h>
-
-1341432823 source:c:\dev\umlblocks\umleditor.cpp
+1341855710 source:c:\dev\umlblocks\umleditor.cpp
 	"UmlEditor.h"
 
-1341432823 c:\dev\umlblocks\umleditor.h
+1341855710 c:\dev\umlblocks\umleditor.h
 	<EditorBase.h>
 	"UmlCanvas.h"
 
-1345185930 c:\dev\umlblocks\umlcanvas.h
+1345152363 c:\dev\umlblocks\umlcanvas.h
 	<wx/wxsf/wxShapeFramework.h>
 	"UmlEditor.h"
 	"UmlMember.h"
@@ -2823,32 +2834,30 @@
 	<wx/wxsf/Defs.h>
 	<wx/wxsf/ShapeBase.h>
 
-1344851779 c:\dev\umlblocks\umlclass.h
+1344887147 c:\dev\umlblocks\umlclass.h
 	<wx/gdicmn.h>
 	<list>
 	<wx/wxsf/ShapeBase.h>
 	"UmlMemberVar.h"
 	"UmlMemberFunc.h"
 
-1343560079 source:c:\dev\umlblocks\umlmember.cpp
-	"UmlMember.h"
+1344981684 source:c:\dev\umlblocks\umlclassdialog.cpp
+	"UmlClassDialog.h"
 
-1343560064 source:c:\dev\umlblocks\umlmemberfunc.cpp
+1344097055 c:\dev\umlblocks\umlclassdialog.h
+	<sdk.h>
+	<list>
+	<wx/Dialog.h>
+	<wx/statbox.h>
+	<wx/textctrl.h>
 	"UmlMemberFunc.h"
-
-1343560053 source:c:\dev\umlblocks\umlmembervar.cpp
 	"UmlMemberVar.h"
 
-1341432823 source:c:\dev\umlblocks\umlnewentitydialog.cpp
-	"UmlNewEntityDialog.h"
+1345152613 source:c:\dev\umlblocks\umlcanvas.cpp
+	"UmlCanvas.h"
 	<sdk.h>
 
-1341432823 c:\dev\umlblocks\umlnewentitydialog.h
-	<wx/Dialog.h>
-	<wx/radiobox.h>
-	<wx/radiobut.h>
-
-1343563220 source:c:\dev\umlblocks\umlblocks.cpp
+1344097055 source:c:\dev\umlblocks\umlblocks.cpp
 	<sdk.h>
 	<configurationpanel.h>
 	"UmlBlocks.h"
@@ -2864,26 +2873,8 @@
 	<wx/panel.h>
 	<wx/string.h>
 
-1341846563 c:\dev\umlblocks\umlblocks.h
+1341921365 c:\dev\umlblocks\umlblocks.h
 	<wx/wxprec.h>
 	<wx/wx.h>
 	<cbplugin.h>
-
-1345188373 source:c:\dev\umlblocks\umlclass.cpp
-	"UmlClass.h"
-	<sdk.h>
-	"wx/wxsf/ShapeCanvas.h"
-	"wx/wxsf/CommonFcn.h"
-
-1345185930 source:c:\dev\umlblocks\umlquickeditpopup.cpp
-	"UmlQuickEditPopup.h"
-	<sdk.h>
-
-1345185930 c:\dev\umlblocks\umlquickeditpopup.h
-	<wx/Popupwin.h>
-	"UmlMemberGlobals.h"
-
-1345185930 source:c:\dev\umlblocks\umlcanvas.cpp
-	"UmlCanvas.h"
-	<sdk.h>
 

@@ -143,10 +143,14 @@ UmlMember* UmlClass::GetMemberAtPosition(const wxPoint& a_Pos)
 
     if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
     {
-        for(std::list<UmlMemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
+        for(UmlMember* i = &*MemberVariables.begin(); i != &*MemberVariables.end(); ++i){
+        //for(std::list<UmlMemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i){
+            *i->GetAccess();
             if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
                i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
-               return i;
+               return i; // Oddest fix thingy ever. The iterator behaves like a pointer, ie. a variable that points to another variable,
+               // but is not actually a pointer and does not merely a memory address. Because it behaves like a pointer, it can be dereferenced
+               // to the pointed variable and then referenced to a normal pointer. Funky stuff.
         }
     }
 	if (!MemberFunctions.empty())
@@ -154,7 +158,7 @@ UmlMember* UmlClass::GetMemberAtPosition(const wxPoint& a_Pos)
         for(std::list<UmlMemberFunc>::iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
             if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
                i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
-               return i;
+               return &*i;
         }
     }
     return 0;
