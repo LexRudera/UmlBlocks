@@ -125,7 +125,7 @@ void UmlClass::AddVariable(wxString Name, wxString Type, Accessibility Access, i
 }
 
 void UmlClass::AddFunction(wxString Name, wxString Type, Accessibility Access, std::list<UmlMemberVar> Parameters, bool Static) {
-UmlMemberFunc func = UmlMemberFunc(Name, Type, Access, Parameters, Static);
+    UmlMemberFunc func = UmlMemberFunc(Name, Type, Access, Parameters, Static);
     MemberFunctions.push_back(func);
 }
 
@@ -139,5 +139,23 @@ void UmlClass::RemoveFunction() {
 
 UmlMember* UmlClass::GetMemberAtPosition(const wxPoint& a_Pos)
 {
+    wxPoint Pos = wxPoint(a_Pos.x-GetAbsolutePosition().x,a_Pos.y-GetAbsolutePosition().y);
+
+    if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
+    {
+        for(std::list<UmlMemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
+            if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
+               i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
+               return i;
+        }
+    }
+	if (!MemberFunctions.empty())
+    {
+        for(std::list<UmlMemberFunc>::iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
+            if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
+               i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
+               return i;
+        }
+    }
     return 0;
 }
