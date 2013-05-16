@@ -21,8 +21,6 @@ class UmlMember // How unconveniently named. Guess i sorta forgot about other ki
         virtual void RefreshData(UmlClassDialog*)=0; // So virtual you would think it was in a computer! Wait, what?
         virtual ClassMemberGroup GetMemberGroup()=0;
         Accessibility GetAccess() const {return Access;} // I fucking love enumerators!
-
-        UmlMember& operator*() {return *this;)
     protected: // Time for some notey info. Protected is like Private, though where the private members can't be accessed by derived classes,
                // the protectd can, while still being isolated from outside the scope like the private. It's good costum to not access variables directly on the object.
     private: // And no, you can't reach through your drawer like a ghost and grab your shit. Ghost drawer! OooooOOooOooOo

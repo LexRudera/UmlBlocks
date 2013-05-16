@@ -63,14 +63,14 @@ void UmlClass::UpdateShapeSize(wxDC* dc) {
 	// Evaluate the size of the variables
 	if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
         for(std::list<UmlMemberVar>::const_iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
-            dc->GetTextExtent(*i->GetName(), &EvalWidth, 0);
+            dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
             if (EvalWidth > MinTextWidth)
                 MinTextWidth = EvalWidth;
         }
 	// Evaluate the size of the functions
 	if (!MemberFunctions.empty())
         for(std::list<UmlMemberFunc>::const_iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
-            dc->GetTextExtent(*i->GetName(), &EvalWidth, 0);
+            dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
             if (EvalWidth > MinTextWidth)
                 MinTextWidth = EvalWidth;
         }
@@ -143,12 +143,11 @@ UmlMember* UmlClass::GetMemberAtPosition(const wxPoint& a_Pos)
 
     if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
     {
-        for(UmlMember* i = &*MemberVariables.begin(); i != &*MemberVariables.end(); ++i){
-        //for(std::list<UmlMemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i){
-            *i->GetAccess();
+        //for(UmlMember* i = &*MemberVariables.begin(); i != &*MemberVariables.end(); ++i){
+        for(std::list<UmlMemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i){
             if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
                i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
-               return i; // Oddest fix thingy ever. The iterator behaves like a pointer, ie. a variable that points to another variable,
+               return &*i; // Oddest fix thingy ever. The iterator behaves like a pointer, ie. a variable that points to another variable,
                // but is not actually a pointer and does not merely a memory address. Because it behaves like a pointer, it can be dereferenced
                // to the pointed variable and then referenced to a normal pointer. Funky stuff.
         }
