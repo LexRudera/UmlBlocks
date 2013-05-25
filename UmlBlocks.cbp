@@ -9,7 +9,7 @@
 			<Target title="default">
 				<Option output="UmlBlocks" prefix_auto="1" extension_auto="1" />
 				<Option type="3" />
-				<Option compiler="gnu_gcc_compiler_w_sjlj_unwinding" />
+				<Option compiler="gcc" />
 				<Option host_application="$(#cb)\devel\codeblocks.exe" />
 				<Option run_host_application_in_terminal="0" />
 				<Compiler>
@@ -48,27 +48,27 @@
 				</ExtraCommands>
 			</Target>
 		</Build>
+		<Unit filename="Class.cpp" />
+		<Unit filename="Class.hpp" />
+		<Unit filename="ClassDialog.cpp" />
+		<Unit filename="ClassDialog.hpp" />
+		<Unit filename="Member.cpp" />
+		<Unit filename="Member.hpp" />
+		<Unit filename="MemberFunc.cpp" />
+		<Unit filename="MemberFunc.hpp" />
+		<Unit filename="MemberGlobals.hpp" />
+		<Unit filename="MemberVar.cpp" />
+		<Unit filename="MemberVar.hpp" />
+		<Unit filename="NewEntityDialog.cpp" />
+		<Unit filename="NewEntityDialog.hpp" />
+		<Unit filename="QuickEditPopup.cpp" />
+		<Unit filename="QuickEditPopup.hpp" />
 		<Unit filename="UmlBlocks.cpp" />
-		<Unit filename="UmlBlocks.h" />
+		<Unit filename="UmlBlocks.hpp" />
 		<Unit filename="UmlCanvas.cpp" />
-		<Unit filename="UmlCanvas.h" />
-		<Unit filename="UmlClass.cpp" />
-		<Unit filename="UmlClass.h" />
-		<Unit filename="UmlClassDialog.cpp" />
-		<Unit filename="UmlClassDialog.h" />
+		<Unit filename="UmlCanvas.hpp" />
 		<Unit filename="UmlEditor.cpp" />
-		<Unit filename="UmlEditor.h" />
-		<Unit filename="UmlMember.cpp" />
-		<Unit filename="UmlMember.h" />
-		<Unit filename="UmlMemberFunc.cpp" />
-		<Unit filename="UmlMemberFunc.h" />
-		<Unit filename="UmlMemberGlobals.h" />
-		<Unit filename="UmlMemberVar.cpp" />
-		<Unit filename="UmlMemberVar.h" />
-		<Unit filename="UmlNewEntityDialog.cpp" />
-		<Unit filename="UmlNewEntityDialog.h" />
-		<Unit filename="UmlQuickEditPopup.cpp" />
-		<Unit filename="UmlQuickEditPopup.h" />
+		<Unit filename="UmlEditor.hpp" />
 		<Unit filename="manifest.xml" />
 		<Extensions>
 			<code_completion />

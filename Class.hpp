@@ -1,28 +1,28 @@
-#ifndef UMLCLASS_H
-#define UMLCLASS_H
+#ifndef Class_HPP
+#define Class_HPP
 
 #include <wx/gdicmn.h>
 #include <list>
 //#include <wx/wxsf/DiagramManager.h>
 #include <wx/wxsf/ShapeBase.h>
-#include "UmlMemberVar.h"
-#include "UmlMemberFunc.h"
+#include "MemberVar.hpp"
+#include "MemberFunc.hpp"
 
-class UmlClass : public wxSFShapeBase {
+class Class : public wxSFShapeBase {
 public:
-    XS_DECLARE_CLONABLE_CLASS(UmlClass);
+    XS_DECLARE_CLONABLE_CLASS(Class);
 
-    UmlClass();
-	UmlClass(wxRealPoint pos, wxSFDiagramManager* man);
-	UmlClass(const UmlClass& obj);
+    Class();
+	Class(wxRealPoint pos, wxSFDiagramManager* man);
+	Class(const Class& obj);
 	void Create(wxString ClassName);
-	virtual ~UmlClass();
+	virtual ~Class();
     virtual wxRect GetBoundingBox();
     void AddVariable(wxString Name, wxString Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
     void RemoveVariable();
-    void AddFunction(wxString Name, wxString Type, Accessibility Access = Public, std::list<UmlMemberVar> Parameters = 0, bool Static = false);
+    void AddFunction(wxString Name, wxString Type, Accessibility Access = Public, std::list<MemberVar> Parameters = 0, bool Static = false);
     void RemoveFunction();
-    UmlMember* GetMemberAtPosition(const wxPoint& Pos);
+    Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:
     virtual void DrawNormal(wxDC& dc);
 	virtual void DrawHover(wxDC& dc);
@@ -36,12 +36,12 @@ private:
 	wxCoord FuncFieldHeight;
 
     wxString ClassName;
-	std::list<UmlMemberVar> MemberVariables;
-	std::list<UmlMemberFunc> MemberFunctions;
+	std::list<MemberVar> MemberVariables;
+	std::list<MemberFunc> MemberFunctions;
 	wxString Comments;
 
     void UpdateShapeSize(wxDC* dc);
     void DrawShape(wxDC* dc);
 };
 
-#endif // UMLCLASS_H
+#endif // Class_HPP

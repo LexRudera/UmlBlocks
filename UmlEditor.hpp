@@ -1,8 +1,8 @@
-#ifndef UMLEDITOR_H
-#define UMLEDITOR_H
+#ifndef UMLEDITOR_HPP
+#define UMLEDITOR_HPP
 
 #include <EditorBase.h>
-#include "UmlCanvas.h"
+#include "UmlCanvas.hpp"
 class UmlCanvas;
 class UmlEditor : public EditorBase {
 public:
@@ -26,4 +26,4 @@ private:
 	bool m_rRealtime;
 };
 
-#endif // UMLEDITOR_H
+#endif // UMLEDITOR_HPP

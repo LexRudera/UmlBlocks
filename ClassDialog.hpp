@@ -1,5 +1,5 @@
-#ifndef UMLCLASSDIALOG_H
-#define UMLCLASSDIALOG_H
+#ifndef ClassDIALOG_HPP
+#define ClassDIALOG_HPP
 
 #include <sdk.h>
 #include <list>
@@ -7,25 +7,25 @@
 #include <wx/Dialog.h>
 #include <wx/statbox.h>
 #include <wx/textctrl.h>
-#include "UmlMemberFunc.h"
-#include "UmlMemberVar.h"
-class UmlClassDialog : public wxDialog
+#include "MemberFunc.hpp"
+#include "MemberVar.hpp"
+class ClassDialog : public wxDialog
 {
 
     public:
         /** Default constructor */
-        UmlClassDialog();
+        ClassDialog();
         /** Default destructor */
-        virtual ~UmlClassDialog();
+        virtual ~ClassDialog();
         /** Copy constructor
          *  \param other Object to copy from
          */
-        UmlClassDialog(const UmlClassDialog& other);
+        ClassDialog(const ClassDialog& other);
         /** Assignment operator
          *  \param other Object to assign from
          *  \return A reference to this
          */
-        UmlClassDialog& operator=(const UmlClassDialog& other);
+        ClassDialog& operator=(const ClassDialog& other);
     protected:
     private:
         void Create();
@@ -33,8 +33,8 @@ class UmlClassDialog : public wxDialog
         // Member C-style arrays is pure virtual hell. Har har. very funny. But seriously, what the shit.
         //wxString AccessOptions[];
 
-        std::list<UmlMemberFunc> Functions;
-        std::list<UmlMemberVar> Variables;
+        std::list<MemberFunc> Functions;
+        std::list<MemberVar> Variables;
 
         wxStaticBox* DeclareSBox;
         wxTextCtrl* ClassNameBox;
@@ -78,4 +78,4 @@ class UmlClassDialog : public wxDialog
         wxCheckBox* FuncPure;
 };
 
-#endif // UMLCLASSDIALOG_H
+#endif // ClassDIALOG_HPP

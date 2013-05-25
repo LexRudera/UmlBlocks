@@ -1,15 +1,15 @@
-#ifndef UMLNEWENTITYDIALOG_H
-#define UMLNEWENTITYDIALOG_H
+#ifndef NewEntityDialog_HPP
+#define NewEntityDialog_HPP
 
 #include <wx/Dialog.h>
 #include <wx/radiobox.h>
 #include <wx/radiobut.h>
 
-class UmlNewEntityDialog : public wxDialog
+class NewEntityDialog : public wxDialog
 {
     public:
-        UmlNewEntityDialog(int selection);
-        virtual ~UmlNewEntityDialog();
+        NewEntityDialog(int selection);
+        virtual ~NewEntityDialog();
         bool Create(int);
         void Initialize();
         void ShowWidgetsA();
@@ -21,4 +21,4 @@ class UmlNewEntityDialog : public wxDialog
         wxRadioButton* choice12;
     };
 
-#endif // UMLNEWENTITYDIALOG_H
+#endif // NewEntityDialogHPP

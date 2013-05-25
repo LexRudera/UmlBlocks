@@ -1,17 +1,17 @@
-#include "UmlNewEntityDialog.h"
+#include "NewEntityDialog.hpp"
 #include <sdk.h>
 
-UmlNewEntityDialog::UmlNewEntityDialog(int selection)
+NewEntityDialog::NewEntityDialog(int selection)
 {
     Create(selection);
 }
 
-UmlNewEntityDialog::~UmlNewEntityDialog()
+NewEntityDialog::~NewEntityDialog()
 {
     //dtor
 }
 
-bool UmlNewEntityDialog::Create(int a){
+bool NewEntityDialog::Create(int a){
     Initialize();
     switch (a){
     case 1:
@@ -22,7 +22,7 @@ bool UmlNewEntityDialog::Create(int a){
     }
 }
 
-void UmlNewEntityDialog::Initialize(){
+void NewEntityDialog::Initialize(){
     wxDialog::Create(Manager::Get()->GetAppWindow(),Manager::Get()->GetAppWindow()->GetId(),wxT("dat a class"),wxDefaultPosition,wxSize(500,500));
     radbox1 = new wxRadioBox(this,this->GetId(),wxT("Options"),wxPoint(5,70),wxSize(485,150));
     choice11 = new wxRadioButton(this,this->GetId(),wxT("Choice"),wxPoint(10,20));
@@ -30,7 +30,7 @@ void UmlNewEntityDialog::Initialize(){
     choice12->Enable(false);
 }
 
-void UmlNewEntityDialog::ShowWidgetsA(){
+void NewEntityDialog::ShowWidgetsA(){
     SetTitle(wxT("Add a class"));
     choice11->SetValue(true);
     DeactivateWidgets();
@@ -39,7 +39,7 @@ void UmlNewEntityDialog::ShowWidgetsA(){
     choice12->Show(true);
 }
 
-void UmlNewEntityDialog::DeactivateWidgets(){
+void NewEntityDialog::DeactivateWidgets(){
     radbox1->Show(false);
     choice11->Show(false);
     choice12->Show(false);

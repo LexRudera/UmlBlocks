@@ -1,4 +1,4 @@
-#include "UmlEditor.h"
+#include "UmlEditor.hpp"
 
 BEGIN_EVENT_TABLE(UmlEditor, EditorBase)
 	EVT_SIZE(UmlEditor::OnSize)

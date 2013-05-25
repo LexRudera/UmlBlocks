@@ -1,5 +1,5 @@
-#ifndef UMLMEMBERGLOBALS_H_INCLUDED
-#define UMLMEMBERGLOBALS_H_INCLUDED
+#ifndef UMLMEMBERGLOBALS_HPP_INCLUDED
+#define UMLMEMBERGLOBALS_HPP_INCLUDED
 
 enum Accessibility{
     Public,
@@ -11,4 +11,4 @@ enum ClassMemberGroup{
     Function,
     Variable,
 };
-#endif // UMLMEMBERGLOBALS_H_INCLUDED
+#endif // UMLMEMBERGLOBALS_HPP_INCLUDED

@@ -1,10 +1,10 @@
 #include <sdk.h> // Code::Blocks SDK
 #include <configurationpanel.h>
-#include "UmlBlocks.h"
+#include "UmlBlocks.hpp"
 
-#include "UmlCanvas.h"
-#include "UmlClass.h"
-#include "UmlClassDialog.h"
+#include "UmlCanvas.hpp"
+#include "Class.hpp"
+#include "ClassDialog.hpp"
 #include <wx/dialog.h>
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
@@ -95,7 +95,7 @@ void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
 	UMLMenu->Append(GenCodeMenuOptionId,wxT("Generate Code..."),wxT("Generate code from diagram"));
 	UMLMenu->Append(SaveBmpMenuOptionId,wxT("Save Image..."),wxT("Create and save a PNG Image"));
 
-	DeactivateUmlTools();
+	SetUmlTools(false);
 }
 
 void UmlBlocks::BuildModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data) {
@@ -123,13 +123,13 @@ void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
 
 void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("New Uml Class Option Function Invoked"));
-	UmlClassDialog dlg = UmlClassDialog();
+	ClassDialog dlg = ClassDialog();
 	if ( dlg.ShowModal() == wxID_OK ) {
 
 	}
-	//new UmlClass(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
-	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50));
-	static_cast<UmlClass*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(UmlClass),wxPoint(50,50)))->Create(wxT("Class1"));
+	//new Class(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
+	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50));
+	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))->Create(wxT("Class1"));
 	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 }
 
@@ -149,25 +149,20 @@ void UmlBlocks::EditorFileSwitched(CodeBlocksEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("Editor Switched File"));
 	if (Manager::Get()->GetEditorManager()->GetActiveEditor()->GetTitle().EndsWith(wxT(".cbd"))) {
 		Manager::Get()->GetLogManager()->Log(wxT("File is a diagram"));
-		ActivateUmlTools();
+		SetUmlTools(true);
 	} else {
 		Manager::Get()->GetLogManager()->Log(wxT("File is a text"));
-		DeactivateUmlTools();
+		SetUmlTools(false);
 	}
 }
 
-void UmlBlocks::ActivateUmlTools() {
-	Manager::Get()->GetLogManager()->Log(wxT("Tools Activated"));
-	UMLMenu->Enable(NewClassMenuOptionId,true);
-	UMLMenu->Enable(RevEngiMenuOptionId,true);
-	UMLMenu->Enable(GenCodeMenuOptionId,true);
-	UMLMenu->Enable(SaveBmpMenuOptionId,true);
-}
-
-void UmlBlocks::DeactivateUmlTools() {
-	Manager::Get()->GetLogManager()->Log(wxT("Tools Deactivated"));
-	UMLMenu->Enable(NewClassMenuOptionId,false);
-	UMLMenu->Enable(RevEngiMenuOptionId,false);
-	UMLMenu->Enable(GenCodeMenuOptionId,false);
-	UMLMenu->Enable(SaveBmpMenuOptionId,false);
+void UmlBlocks::SetUmlTools(bool a) {
+    if (a)
+        Manager::Get()->GetLogManager()->Log(wxT("Tools Activated"));
+	else
+        Manager::Get()->GetLogManager()->Log(wxT("Tools Deactivated"));
+	UMLMenu->Enable(NewClassMenuOptionId,a);
+	UMLMenu->Enable(RevEngiMenuOptionId,a);
+	UMLMenu->Enable(GenCodeMenuOptionId,a);
+	UMLMenu->Enable(SaveBmpMenuOptionId,a);
 }

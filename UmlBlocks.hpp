@@ -7,8 +7,8 @@
  * License:   GPL
  **************************************************************/
 
-#ifndef UMLBLOCKS_H_INCLUDED
-#define UMLBLOCKS_H_INCLUDED
+#ifndef UMLBLOCKS_HPP_INCLUDED
+#define UMLBLOCKS_HPP_INCLUDED
 
 // For compilers that support precompilation, includes <wx/wx.h>
 #include <wx/wxprec.h>
@@ -127,10 +127,9 @@ class UmlBlocks : public cbPlugin
 
         void EditorFileSwitched(CodeBlocksEvent&);
 
-        void ActivateUmlTools();
-        void DeactivateUmlTools();
+        void SetUmlTools(bool);
     private:
         DECLARE_EVENT_TABLE();
 };
 
-#endif // UMLBLOCKS_H_INCLUDED
+#endif // UMLBLOCKS_HPP_INCLUDED

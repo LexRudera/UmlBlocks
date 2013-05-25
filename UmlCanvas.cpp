@@ -1,4 +1,4 @@
-#include "UmlCanvas.h"
+#include "UmlCanvas.hpp"
 #include <sdk.h>
 
 BEGIN_EVENT_TABLE(UmlCanvas, wxSFShapeCanvas)
@@ -39,14 +39,14 @@ void UmlCanvas::OnLeftDown(wxMouseEvent& event) {
 }
 
 void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
-    //UmlMember* ClickedMember = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
-    UmlClass* ClickedClass = static_cast<UmlClass*>(GetShapeAtPosition(event.GetPosition()));
-    UmlMember* ClickedMember = ClickedClass->GetMemberAtPosition(event.GetPosition());
+    //Member* ClickedMember = static_cast<Class*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
+    Class* ClickedClass = static_cast<Class*>(GetShapeAtPosition(event.GetPosition()));
+    Member* ClickedMember = ClickedClass->GetMemberAtPosition(event.GetPosition());
     if (ClickedClass != 0)
     {
         if (ClickedMember != 0)
         {
-            EditDiag = new UmlQuickEditPopup(event.GetPosition(),ClickedMember->GetMemberGroup());
+            EditDiag = new QuickEditPopup(event.GetPosition(),ClickedMember->GetMemberGroup());
             EditDiag->Show(true);
         }
     }
