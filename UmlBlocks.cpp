@@ -12,7 +12,6 @@ namespace {
 PluginRegistrant<UmlBlocks> reg(_T("UmlBlocks"));
 }
 
-
 int NewUmlMenuOptionId = wxNewId();
 int NewClassMenuOptionId = wxNewId();
 int RevEngiMenuOptionId = wxNewId();
@@ -37,7 +36,6 @@ UmlBlocks::UmlBlocks() {
 	}
 }
 
-// destructor
 UmlBlocks::~UmlBlocks() {
 }
 
@@ -81,7 +79,7 @@ void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
 	NewFileMenu = menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(menuBar->GetMenu(menuBar->FindMenu(wxT("File")))->FindItem(wxT("New")))->GetSubMenu();
 
 	// The whole find the "Class..." entry ID process won't work properly, so now shit's hardcoded instead.
-	NewFileMenu->Insert(/*NewFileMenu->FindItem(wxT("Class..."))+1*/ 3, NewUmlMenuOptionId, wxT("Uml Diagram..."),wxT("Uml Diagram"),false);
+	NewFileMenu->Insert( 3, NewUmlMenuOptionId, wxT("Uml Diagram..."),wxT("Uml Diagram"),false);
 	Manager::Get()->GetLogManager()->Log(wxT("MENUBAR DEBUG END"));
 
 	//UML Menu
@@ -117,8 +115,37 @@ bool UmlBlocks::BuildToolBar(wxToolBar* toolBar) {
 }
 
 void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
+    wxString FileName = wxT("Untitled.cbd");
+
 	Manager::Get()->GetLogManager()->Log(wxT("New Uml Menu Option Function Invoked"));
-	new UmlCanvas(new wxSFDiagramManager(), new UmlEditor(Manager::Get()->GetAppWindow(),wxT("Untitled.cbd")));
+	new UmlCanvas(new wxSFDiagramManager(), new UmlEditor(Manager::Get()->GetAppWindow(),FileName));
+
+
+	ProjectManager* prjMan = Manager::Get()->GetProjectManager();
+    cbProject* prj = prjMan->GetActiveProject();
+
+    /*ClassWizardDlg dlg(Manager::Get()->GetAppWindow());
+    PlaceWindow(&dlg);
+    if (dlg.ShowModal() == wxID_OK)
+    {*/
+        if (!prj)
+        {
+            cbMessageBox(   _("The new class has been created."),
+                            _("Information"),
+                            wxOK | wxICON_INFORMATION,
+                            Manager::Get()->GetAppWindow());
+        }
+        else if( cbMessageBox( _("The new diagram has been created.\n"
+                                 "Do you want to add it to the current project?"),
+                               _("Add to project?"),
+                               wxYES_NO | wxYES_DEFAULT | wxICON_QUESTION,
+                               Manager::Get()->GetAppWindow()) == wxID_YES)
+        {
+            wxArrayInt targets;
+            prjMan->AddFileToProject(FileName, prj, targets);
+            prjMan->RebuildTree();
+        }
+    //}
 }
 
 void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
@@ -129,7 +156,9 @@ void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	}
 	//new Class(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
 	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50));
-	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))->Create(wxT("Class1"));
+	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())
+	->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))
+	->Init(wxT("Class01"));
 	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 }
 

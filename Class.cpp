@@ -34,7 +34,7 @@ Class::~Class() {
 	Manager::Get()->GetLogManager()->Log(_("Funky Class Dtor"));
 }
 
-void Class::Create(wxString Name) {
+void Class::Init(const wxString& Name) {
 	BorderColour = wxPen(wxColour(0, 0, 0));
 	FillColour = wxBrush(wxColour(255, 255, 255));
 	MinTextWidth = 3;
@@ -119,12 +119,12 @@ void Class::DrawHighlighted(wxDC& dc) {
 	dc.SetPen(wxNullPen);
 }
 
-void Class::AddVariable(wxString Name, wxString Type, Accessibility Access, int Pointer, bool Reference, bool Static) {
+void Class::AddVariable(wxString Name, wxString Type, Member::Accessibility Access, int Pointer, bool Reference, bool Static) {
     MemberVar var = MemberVar(Name, Type, Access, Pointer, Reference, Static);
     MemberVariables.push_back(var);
 }
 
-void Class::AddFunction(wxString Name, wxString Type, Accessibility Access, std::list<MemberVar> Parameters, bool Static) {
+void Class::AddFunction(wxString Name, wxString Type, Member::Accessibility Access, std::list<MemberVar> Parameters, bool Static) {
     MemberFunc func = MemberFunc(Name, Type, Access, Parameters, Static);
     MemberFunctions.push_back(func);
 }

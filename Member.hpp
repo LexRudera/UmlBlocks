@@ -4,10 +4,16 @@
 #include "MemberGlobals.hpp"
 #include <wx/gdicmn.h>
 //#include "ClassDialog.hpp" //Odd Inclusion loop happened. Forward declaration seems to fix it.
-class ClassDialog; // This is called a forward declaration, you dummy.
+//class ClassDialog; // This is called a forward declaration, you dummy.
 class Member // How unconveniently named. Guess i sorta forgot about other kinds of uml diagrams. A member could be anything of anything. blargh.
 {
     public:
+        enum Accessibility{
+            Public,
+            Protected,
+            Private,
+        };
+
         /** Default constructor */ // No shit.
         Member(); // Bobcat?
         /** Default destructor */ // Virtual and all.
@@ -18,9 +24,8 @@ class Member // How unconveniently named. Guess i sorta forgot about other kinds
         bool IsConst() const {return Const;} // Get dat shit!
         virtual wxPoint GetPos() const {return Position;}
         wxSize GetSize() const {return Size;}
-        virtual void RefreshData(ClassDialog*)=0; // So virtual you would think it was in a computer! Wait, what?
-        virtual ClassMemberGroup GetMemberGroup()=0;
-        Accessibility GetAccess() const {return Access;} // I fucking love enumerators!
+        //virtual void RefreshData(ClassDialog*)=0; // So virtual you would think it was in a computer! Wait, what?
+        Accessibility GetAccessLevel() const {return Access;} // I fucking love enumerators!
     protected: // Time for some notey info. Protected is like Private, though where the private members can't be accessed by derived classes,
                // the protectd can, while still being isolated from outside the scope like the private. It's good costum to not access variables directly on the object.
     private: // And no, you can't reach through your drawer like a ghost and grab your shit. Ghost drawer! OooooOOooOooOo

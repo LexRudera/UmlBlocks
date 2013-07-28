@@ -15,6 +15,3 @@ MemberVar::~MemberVar()
     //dtor
 }
 
-void MemberVar::RefreshData(ClassDialog* Data) {
-
-}

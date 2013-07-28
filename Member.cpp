@@ -10,6 +10,3 @@ Member::~Member()
     //dtor
 }
 
-void Member::RefreshData(ClassDialog* Data) {
-
-}

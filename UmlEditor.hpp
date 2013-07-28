@@ -8,7 +8,7 @@ class UmlEditor : public EditorBase {
 public:
 	UmlEditor(wxWindow*, const wxString&);
 	virtual ~UmlEditor();
-	UmlCanvas* GetCanvas() {
+	UmlCanvas* GetCanvas() const {
 		return m_pCanvas;
 	}
 	void SetCanvas(UmlCanvas* a) {

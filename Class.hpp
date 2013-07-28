@@ -5,7 +5,6 @@
 #include <list>
 //#include <wx/wxsf/DiagramManager.h>
 #include <wx/wxsf/ShapeBase.h>
-#include "MemberVar.hpp"
 #include "MemberFunc.hpp"
 
 class Class : public wxSFShapeBase {
@@ -15,12 +14,12 @@ public:
     Class();
 	Class(wxRealPoint pos, wxSFDiagramManager* man);
 	Class(const Class& obj);
-	void Create(wxString ClassName);
+	void Init(const wxString& ClassName);
 	virtual ~Class();
     virtual wxRect GetBoundingBox();
-    void AddVariable(wxString Name, wxString Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
+    void AddVariable(wxString Name, wxString Type, Member::Accessibility Access = Member::Public, int Pointer = 0, bool Reference = false, bool Static = false);
     void RemoveVariable();
-    void AddFunction(wxString Name, wxString Type, Accessibility Access = Public, std::list<MemberVar> Parameters = 0, bool Static = false);
+    void AddFunction(wxString Name, wxString Type, Member::Accessibility Access = Member::Public, std::list<MemberVar> Parameters = 0, bool Static = false);
     void RemoveFunction();
     Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:

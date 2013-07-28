@@ -15,6 +15,3 @@ MemberFunc::~MemberFunc()
     //dtor
 }
 
-void MemberFunc::RefreshData(ClassDialog* Data) {
-
-}
