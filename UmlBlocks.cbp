@@ -52,11 +52,11 @@
 		<Unit filename="Class.hpp" />
 		<Unit filename="ClassDialog.cpp" />
 		<Unit filename="ClassDialog.hpp" />
+		<Unit filename="ClassDialog.xrc" />
 		<Unit filename="Member.cpp" />
 		<Unit filename="Member.hpp" />
 		<Unit filename="MemberFunc.cpp" />
 		<Unit filename="MemberFunc.hpp" />
-		<Unit filename="MemberGlobals.hpp" />
 		<Unit filename="MemberVar.cpp" />
 		<Unit filename="MemberVar.hpp" />
 		<Unit filename="NewEntityDialog.cpp" />

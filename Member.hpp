@@ -1,7 +1,6 @@
 #ifndef Member_HPP
 #define Member_HPP
 #include <wx/string.h>
-#include "MemberGlobals.hpp"
 #include <wx/gdicmn.h>
 //#include "ClassDialog.hpp" //Odd Inclusion loop happened. Forward declaration seems to fix it.
 //class ClassDialog; // This is called a forward declaration, you dummy.
