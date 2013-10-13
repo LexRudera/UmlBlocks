@@ -62,15 +62,18 @@ class UmlBlocks : public cbPlugin
         virtual void BuildModuleMenu(const ModuleType type, wxMenu* menu, const FileTreeData* data = 0);
         virtual bool BuildToolBar(wxToolBar* toolBar);
     protected:
-
         virtual void OnAttach();
         virtual void OnRelease(bool appShutDown);
 
-
+    private:
+		// Variables
         wxMenu* NewFileMenu = 0; //Good old file menu
         wxMenu* UMLMenu = 0; //New Menu
 
+		// Functions
+        void SetUmlTools(bool);
 
+		// Events
         void NewUmlMenuOptionFunc(wxCommandEvent&);
         void NewClassMenuOptionFunc(wxCommandEvent&);
         void RevEngiMenuOptionFunc(wxCommandEvent&);
@@ -78,8 +81,6 @@ class UmlBlocks : public cbPlugin
         void SaveBmpMenuOptionFunc(wxCommandEvent&);
         void EditorFileSwitched(CodeBlocksEvent&);
 
-        void SetUmlTools(bool);
-    private:
         DECLARE_EVENT_TABLE();
 };
 

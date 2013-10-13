@@ -47,6 +47,8 @@ void UmlBlocks::OnAttach() {
 	// is FALSE, it means that the application did *not* "load"
 	// (see: does not need) this plugin...
 	Manager::Get()->RegisterEventSink(cbEVT_EDITOR_SWITCHED, new cbEventFunctor<UmlBlocks, CodeBlocksEvent>(this, &UmlBlocks::EditorFileSwitched));
+
+	cbPlugin::OnAttach();
 }
 
 void UmlBlocks::OnRelease(bool appShutDown) {
@@ -55,6 +57,7 @@ void UmlBlocks::OnRelease(bool appShutDown) {
 	// which means you must not use any of the SDK Managers
 	// NOTE: after this function, the inherited member variable
 	// m_IsAttached will be FALSE...
+	cbPlugin::OnRelease(appShutDown);
 }
 
 int UmlBlocks::Configure() {
@@ -150,16 +153,19 @@ void UmlBlocks::NewUmlMenuOptionFunc(wxCommandEvent& event) {
 
 void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("New Uml Class Option Function Invoked"));
-	ClassDialog dlg = ClassDialog();
-	if ( dlg.ShowModal() == wxID_OK ) {
+	ClassDialog dlg(Manager::Get()->GetAppWindow());
+    PlaceWindow(&dlg);
+	if ( dlg.ShowModal() == wxID_OK )
+	{
 
-	}
 	//new Class(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
 	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50));
 	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())
 	->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))
 	->Init(wxT("Class01"));
 	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
+
+	}
 }
 
 void UmlBlocks::RevEngiMenuOptionFunc(wxCommandEvent& event) {

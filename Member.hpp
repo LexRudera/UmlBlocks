@@ -2,40 +2,68 @@
 #define Member_HPP
 #include <wx/string.h>
 #include <wx/gdicmn.h>
-//#include "ClassDialog.hpp" //Odd Inclusion loop happened. Forward declaration seems to fix it.
-//class ClassDialog; // This is called a forward declaration, you dummy.
-class Member // How unconveniently named. Guess i sorta forgot about other kinds of uml diagrams. A member could be anything of anything. blargh.
+
+enum Accessibility{
+	Public = 0,
+	Protected = 1,
+	Private = 2,
+};
+enum MemberGroup{
+	Variables,
+	Functions,
+};
+
+class Member
 {
     public:
-        enum Accessibility{
-            Public,
-            Protected,
-            Private,
-        };
+        Member(const wxString& a_name = wxT("NewMember"),
+			   const wxString& a_type = wxT("void"),
+			   Accessibility a_access = Public,
+			   int a_array = 0,
+			   unsigned int a_pointer = 0,
+			   bool a_reference = false,
+			   bool a_static = false,
+			   bool a_const = false);
+        virtual ~Member();
 
-        /** Default constructor */ // No shit.
-        Member(); // Bobcat?
-        /** Default destructor */ // Virtual and all.
-        virtual ~Member(); // Like that crane thing with a massive metal ball of death.
-        wxString GetName() const {return Name;} // Because getting your stuff from the drawer is less messy than having it laying it around.
-        wxString GetType() const {return Type;} // *Some other odd metaphor like Lex would have written it* (No, it's not pointers)
-        bool IsStatic() const {return Static;} // Dude, i've already told you the metaphor thing. I dunno, replace drawer with a door, or gate or tiny coffin, i guess it would be different.
-        bool IsConst() const {return Const;} // Get dat shit!
-        virtual wxPoint GetPos() const {return Position;}
-        wxSize GetSize() const {return Size;}
-        //virtual void RefreshData(ClassDialog*)=0; // So virtual you would think it was in a computer! Wait, what?
-        Accessibility GetAccessLevel() const {return Access;} // I fucking love enumerators!
-    protected: // Time for some notey info. Protected is like Private, though where the private members can't be accessed by derived classes,
-               // the protectd can, while still being isolated from outside the scope like the private. It's good costum to not access variables directly on the object.
-    private: // And no, you can't reach through your drawer like a ghost and grab your shit. Ghost drawer! OooooOOooOooOo
-        wxString Name; // No comments.
-        wxString Type; // I can't access it.
-        Accessibility Access; // At least not directly.
-        bool Static; // It's locked inside my metaphorical drawer.
-        bool Const; // Guess public access is like a fruitbasket then.
-        // Giving members some diagram related properties.
-        wxPoint Position;
-        wxSize Size;
+        virtual wxString GetUmlString();
+
+        wxString GetName() const {return m_Name;}
+        wxString GetType() const {return m_Type;}
+        bool IsArray() const {return m_Array;}
+        int GetArraySize() const {return m_ArraySize;}
+        bool GetArray() const {return m_Array;}
+        bool IsStatic() const {return m_Static;}
+        bool IsConst() const {return m_Const;}
+        bool IsPointer() const {return m_Pointer;}
+        int GetPointerDepth() const {return m_PointerDepth;}
+        bool IsReference() const {return m_Reference;}
+        Accessibility GetAccessLevel() const {return m_Access;}
+		virtual MemberGroup GetMemberGroup() = 0;
+
+        void SetName(wxString a) {m_Name = a.Trim(false).Trim();}
+        void SetType(wxString a) {m_Type = a.Trim(false).Trim();}
+        void IsArray(bool a) {m_Array = a;}
+        void SetArraySize(int a) {m_ArraySize = a;}
+        void SetAccessLevel(Accessibility a) {m_Access = a;}
+        void IsPointer(bool a) {m_Pointer = a;}
+        void SetPointerDepth(int a) {m_PointerDepth = a;}
+        void IsReference(bool a) {m_Reference = a;}
+        void IsStatic(bool a) {m_Static = a;}
+        void IsConst(bool a) {m_Const = a;}
+
+    protected:
+    private:
+        wxString m_Name;
+        wxString m_Type;
+        bool m_Array;
+        int m_ArraySize;
+        Accessibility m_Access;
+        bool m_Pointer;
+        int m_PointerDepth;
+		bool m_Reference;
+        bool m_Static;
+        bool m_Const;
 };
 
 #endif // Member_HPP

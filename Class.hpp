@@ -2,7 +2,7 @@
 #define Class_HPP
 
 #include <wx/gdicmn.h>
-#include <list>
+#include <vector>
 //#include <wx/wxsf/DiagramManager.h>
 #include <wx/wxsf/ShapeBase.h>
 #include "MemberFunc.hpp"
@@ -17,9 +17,11 @@ public:
 	void Init(const wxString& ClassName);
 	virtual ~Class();
     virtual wxRect GetBoundingBox();
-    void AddVariable(wxString Name, wxString Type, Member::Accessibility Access = Member::Public, int Pointer = 0, bool Reference = false, bool Static = false);
+    void AddVariable(const MemberVar& m);
+    void AddVariable(const wxString& Name, const wxString& Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
     void RemoveVariable();
-    void AddFunction(wxString Name, wxString Type, Member::Accessibility Access = Member::Public, std::list<MemberVar> Parameters = 0, bool Static = false);
+    void AddFunction(const MemberFunc& m);
+    void AddFunction(const wxString& Name, const wxString& Type, Accessibility Access = Public, std::vector<MemberVar>* Parameters = 0, bool Static = false);
     void RemoveFunction();
     Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:
@@ -35,8 +37,8 @@ private:
 	wxCoord FuncFieldHeight;
 
     wxString ClassName;
-	std::list<MemberVar> MemberVariables;
-	std::list<MemberFunc> MemberFunctions;
+	std::vector<MemberVar> MemberVariables;
+	std::vector<MemberFunc> MemberFunctions;
 	wxString Comments;
 
     void UpdateShapeSize(wxDC* dc);

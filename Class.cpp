@@ -38,7 +38,7 @@ void Class::Init(const wxString& Name) {
 	BorderColour = wxPen(wxColour(0, 0, 0));
 	FillColour = wxBrush(wxColour(255, 255, 255));
 	MinTextWidth = 3;
-	// For Odin's sake, keep this font assignment! All the text width calculations randomly freak out without it.
+	// For Luna's sake, keep this font assignment! All the text width calculations randomly freak out without it.
 	Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 
 	ClassName = Name;
@@ -62,14 +62,14 @@ void Class::UpdateShapeSize(wxDC* dc) {
 
 	// Evaluate the size of the variables
 	if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
-        for(std::list<MemberVar>::const_iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
+        for(std::vector<MemberVar>::const_iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
             if (EvalWidth > MinTextWidth)
                 MinTextWidth = EvalWidth;
         }
 	// Evaluate the size of the functions
 	if (!MemberFunctions.empty())
-        for(std::list<MemberFunc>::const_iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
+        for(std::vector<MemberFunc>::const_iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
             if (EvalWidth > MinTextWidth)
                 MinTextWidth = EvalWidth;
@@ -119,14 +119,22 @@ void Class::DrawHighlighted(wxDC& dc) {
 	dc.SetPen(wxNullPen);
 }
 
-void Class::AddVariable(wxString Name, wxString Type, Member::Accessibility Access, int Pointer, bool Reference, bool Static) {
-    MemberVar var = MemberVar(Name, Type, Access, Pointer, Reference, Static);
-    MemberVariables.push_back(var);
+void Class::AddVariable(const MemberVar& m) {
+	MemberVariables.push_back(m);
 }
 
-void Class::AddFunction(wxString Name, wxString Type, Member::Accessibility Access, std::list<MemberVar> Parameters, bool Static) {
-    MemberFunc func = MemberFunc(Name, Type, Access, Parameters, Static);
-    MemberFunctions.push_back(func);
+void Class::AddVariable(const wxString& Name, const wxString& Type, Accessibility Access, int Pointer, bool Reference, bool Static) {
+    //MemberVar var = MemberVar(Name, Type, Access, Pointer, Reference, Static);
+    //MemberVariables.push_back(var);
+}
+
+void Class::AddFunction(const MemberFunc& m) {
+	MemberFunctions.push_back(m);
+}
+
+void Class::AddFunction(const wxString& Name, const wxString& Type, Accessibility Access, std::vector<MemberVar>* Parameters, bool Static) {
+    //MemberFunc func = MemberFunc(Name, Type, Access, Parameters);
+    //MemberFunctions.push_back(func);
 }
 
 void Class::RemoveVariable() {
@@ -139,12 +147,12 @@ void Class::RemoveFunction() {
 
 Member* Class::GetMemberAtPosition(const wxPoint& a_Pos)
 {
-    wxPoint Pos = wxPoint(a_Pos.x-GetAbsolutePosition().x,a_Pos.y-GetAbsolutePosition().y);
+    /*wxPoint Pos = wxPoint(a_Pos.x-GetAbsolutePosition().x,a_Pos.y-GetAbsolutePosition().y);
 
     if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
     {
         //for(Member* i = &*MemberVariables.begin(); i != &*MemberVariables.end(); ++i){
-        for(std::list<MemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i){
+        for(std::vector<MemberVar>::iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i){
             if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
                i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
                return &*i; // Oddest fix thingy ever. The iterator behaves like a pointer, ie. a variable that points to another variable,
@@ -154,11 +162,11 @@ Member* Class::GetMemberAtPosition(const wxPoint& a_Pos)
     }
 	if (!MemberFunctions.empty())
     {
-        for(std::list<MemberFunc>::iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
+        for(std::vector<MemberFunc>::iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
             if(i->GetPos().x < Pos.x && i->GetPos().y < Pos.y &&
                i->GetSize().GetWidth() > Pos.x && i->GetSize().GetHeight() > Pos.y)
                return &*i;
         }
-    }
+    }*/
     return 0;
 }

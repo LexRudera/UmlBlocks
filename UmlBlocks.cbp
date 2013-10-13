@@ -43,8 +43,9 @@
 					<Add directory="$(#wxsf)/lib/gcc_dll" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="zip -j9 UmlBlocks.zip manifest.xml" />
+					<Add after="zip -j9 UmlBlocks.zip manifest.xml *.xrc" />
 					<Add after="zip -j9 UmlBlocks.cbplugin UmlBlocks.dll UmlBlocks.zip" />
+					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
 		</Build>
@@ -69,10 +70,18 @@
 		<Unit filename="UmlCanvas.hpp" />
 		<Unit filename="UmlEditor.cpp" />
 		<Unit filename="UmlEditor.hpp" />
+		<Unit filename="Untitled.cbd" />
+		<Unit filename="Utilities.cpp" />
+		<Unit filename="Utilities.hpp" />
 		<Unit filename="manifest.xml" />
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="myapp.cpp" main="-- None --" init_handlers="necessary" language="CPP">
+					<load_resource file="ClassDialog.xrc" />
+				</gui>
+			</wxsmith>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

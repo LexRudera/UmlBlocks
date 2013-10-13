@@ -26,7 +26,7 @@
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxTextCtrl" name="ID_TEXTCTRL1">
+												<object class="wxTextCtrl" name="txtClassName">
 													<size>160,20</size>
 												</object>
 												<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
@@ -41,7 +41,7 @@
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxTextCtrl" name="ID_TEXTCTRL2">
+												<object class="wxTextCtrl" name="txtClassDesc">
 													<size>143,99</size>
 													<style>wxTE_MULTILINE</style>
 												</object>
@@ -74,15 +74,14 @@
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxListBox" name="ID_LISTBOX3">
+												<object class="wxListBox" name="lstInherit">
 													<default>-1</default>
 												</object>
 												<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 												<border>5</border>
-												<option>1</option>
 											</object>
 											<object class="sizeritem">
-												<object class="wxButton" name="ID_BUTTON11">
+												<object class="wxButton" name="btnInheritDel">
 													<label>Delete</label>
 												</object>
 												<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
@@ -103,18 +102,21 @@
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxChoice" name="ID_CHOICE1">
+												<object class="wxChoice" name="chcInheritClass">
 													<content>
 														<item>Existing Classes</item>
-														<item>New External Class ↓</item>
+														<item>Class1</item>
+														<item>Class2</item>
+														<item>New External Class</item>
 													</content>
+													<selection>0</selection>
 													<size>106,21</size>
 												</object>
 												<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxStaticText" name="ID_STATICTEXT7">
+												<object class="wxStaticText" name="sxtInheritExtClass">
 													<label>External Class</label>
 													<enabled>0</enabled>
 												</object>
@@ -122,9 +124,15 @@
 												<border>5</border>
 											</object>
 											<object class="sizeritem">
-												<object class="wxTextCtrl" name="ID_TEXTCTRL3">
-													<value>Only when selected above</value>
+												<object class="wxTextCtrl" name="txtInheritExtClass">
 													<enabled>0</enabled>
+												</object>
+												<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+											</object>
+											<object class="sizeritem">
+												<object class="wxButton" name="btnInheritAdd">
+													<label>Add</label>
 												</object>
 												<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 												<border>5</border>
@@ -144,7 +152,7 @@
 									<object class="sizeritem">
 										<object class="wxBoxSizer">
 											<object class="sizeritem">
-												<object class="wxCheckBox" name="ID_CHECKBOX11">
+												<object class="wxCheckBox" name="chkAttAbstrct">
 													<label>Abstract</label>
 													<enabled>0</enabled>
 												</object>
@@ -186,14 +194,7 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxListBox" name="ID_LISTBOX1">
-															<content>
-																<item>Variable01</item>
-																<item>Variable02</item>
-																<item>Variable03</item>
-																<item>Variable04</item>
-																<item>Variable05</item>
-															</content>
+														<object class="wxListBox" name="lstVars">
 															<default>-1</default>
 															<size>169,100</size>
 															<style>wxLB_HSCROLL</style>
@@ -207,7 +208,7 @@
 															<object class="sizeritem">
 																<object class="wxBoxSizer">
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON3">
+																		<object class="wxButton" name="btnVarsNew">
 																			<label>New</label>
 																			<size>20,23</size>
 																		</object>
@@ -216,7 +217,7 @@
 																		<option>1</option>
 																	</object>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON6">
+																		<object class="wxButton" name="btnVarsDel">
 																			<label>Delete</label>
 																			<size>65,23</size>
 																		</object>
@@ -232,7 +233,7 @@
 																<object class="wxBoxSizer">
 																	<orient>wxVERTICAL</orient>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON4">
+																		<object class="wxButton" name="btnVarsUp">
 																			<label>↑</label>
 																			<size>23,23</size>
 																		</object>
@@ -241,7 +242,7 @@
 																		<option>1</option>
 																	</object>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON5">
+																		<object class="wxButton" name="btnVarsDown">
 																			<label>↓</label>
 																			<size>23,23</size>
 																		</object>
@@ -250,7 +251,7 @@
 																		<option>1</option>
 																	</object>
 																</object>
-																<flag>wxSHAPED|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+																<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
 																<border>5</border>
 																<option>1</option>
 															</object>
@@ -282,14 +283,7 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxListBox" name="ID_LISTBOX2">
-															<content>
-																<item>Function01</item>
-																<item>Function02</item>
-																<item>Function03</item>
-																<item>Function04</item>
-																<item>Function05</item>
-															</content>
+														<object class="wxListBox" name="lstFuncs">
 															<default>-1</default>
 															<size>169,100</size>
 															<style>wxLB_HSCROLL</style>
@@ -303,7 +297,7 @@
 															<object class="sizeritem">
 																<object class="wxBoxSizer">
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON7">
+																		<object class="wxButton" name="btnFuncsNew">
 																			<label>New</label>
 																			<size>20,23</size>
 																		</object>
@@ -312,7 +306,7 @@
 																		<option>1</option>
 																	</object>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON8">
+																		<object class="wxButton" name="btnFuncsDel">
 																			<label>Delete</label>
 																			<size>65,23</size>
 																		</object>
@@ -328,7 +322,7 @@
 																<object class="wxBoxSizer">
 																	<orient>wxVERTICAL</orient>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON9">
+																		<object class="wxButton" name="btnFuncsUp">
 																			<label>↑</label>
 																			<size>23,23</size>
 																		</object>
@@ -337,7 +331,7 @@
 																		<option>1</option>
 																	</object>
 																	<object class="sizeritem">
-																		<object class="wxButton" name="ID_BUTTON10">
+																		<object class="wxButton" name="btnFuncsDown">
 																			<label>↓</label>
 																			<size>23,23</size>
 																		</object>
@@ -346,7 +340,7 @@
 																		<option>1</option>
 																	</object>
 																</object>
-																<flag>wxSHAPED|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+																<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
 																<border>5</border>
 																<option>1</option>
 															</object>
@@ -383,7 +377,7 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxTextCtrl" name="ID_TEXTCTRL4">
+														<object class="wxTextCtrl" name="txtMemberName">
 															<size>131,20</size>
 														</object>
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
@@ -397,12 +391,12 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxChoice" name="ID_CHOICE2" />
+														<object class="wxChoice" name="chcMemberType" />
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT10">
+														<object class="wxStaticText" name="sxtMemberExtType">
 															<label>External Type</label>
 															<enabled>0</enabled>
 														</object>
@@ -410,8 +404,8 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxTextCtrl" name="ID_TEXTCTRL5">
-															<value>Text</value>
+														<object class="wxTextCtrl" name="txtMemberExtType">
+															<value>ExtType</value>
 															<enabled>0</enabled>
 														</object>
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
@@ -425,9 +419,43 @@
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxChoice" name="ID_CHOICE3" />
+														<object class="wxChoice" name="chcMemberAccess">
+															<content>
+																<item>Public</item>
+																<item>Protected</item>
+																<item>Private</item>
+															</content>
+														</object>
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxCheckBox" name="chkMemberArray">
+															<label>Array</label>
+														</object>
+														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+														<option>1</option>
+													</object>
+													<object class="sizeritem">
+														<object class="wxStaticText" name="sxtMemberArraySize">
+															<label>Array Size</label>
+															<enabled>0</enabled>
+														</object>
+														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+														<option>1</option>
+													</object>
+													<object class="sizeritem">
+														<object class="wxSpinCtrl" name="spcMemberArraySize">
+															<value>1</value>
+															<min>1</min>
+															<max>100000000</max>
+															<enabled>0</enabled>
+														</object>
+														<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+														<option>1</option>
 													</object>
 												</object>
 												<flag>wxRIGHT|wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL</flag>
@@ -443,28 +471,28 @@
 														<size>170,2</size>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX1">
+														<object class="wxCheckBox" name="chkMemberStatic">
 															<label>Static</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX2">
+														<object class="wxCheckBox" name="chkMemberConst">
 															<label>Const</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX3">
+														<object class="wxCheckBox" name="chkMemberPointer">
 															<label>Pointer</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT11">
+														<object class="wxStaticText" name="sxtMemberPointerDpth">
 															<label>Pointer Depth</label>
 															<enabled>0</enabled>
 														</object>
@@ -473,23 +501,23 @@
 														<option>1</option>
 													</object>
 													<object class="sizeritem">
-														<object class="wxSpinCtrl" name="ID_SPINCTRL1">
+														<object class="wxSpinCtrl" name="spcMemberPointerDpth">
 															<value>1</value>
 															<min>1</min>
 															<enabled>0</enabled>
 														</object>
-														<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX4">
+														<object class="wxCheckBox" name="chkMemberRef">
 															<label>Reference</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX6">
+														<object class="wxCheckBox" name="chkMemberVirtual">
 															<label>Virtual</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
@@ -497,7 +525,7 @@
 														<option>1</option>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX5">
+														<object class="wxCheckBox" name="chkMemberPVirtual">
 															<label>Pure Virtual</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
@@ -520,18 +548,106 @@
 												<object class="wxBoxSizer">
 													<orient>wxVERTICAL</orient>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT12">
+														<object class="wxStaticText" name="sxtParams">
 															<label>Parameters</label>
 														</object>
 														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxListBox" name="ID_LISTBOX4">
+														<object class="wxListBox" name="lstParams">
 															<default>-1</default>
 															<size>160,83</size>
 														</object>
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxBoxSizer">
+															<object class="sizeritem">
+																<object class="wxBoxSizer">
+																	<object class="sizeritem">
+																		<object class="wxButton" name="btnParamsNew">
+																			<label>New</label>
+																			<size>20,23</size>
+																		</object>
+																		<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+																		<border>5</border>
+																		<option>1</option>
+																	</object>
+																	<object class="sizeritem">
+																		<object class="wxButton" name="btnParamsDel">
+																			<label>Delete</label>
+																			<size>65,23</size>
+																		</object>
+																		<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+																		<border>5</border>
+																		<option>1</option>
+																	</object>
+																</object>
+																<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+																<border>5</border>
+															</object>
+															<object class="sizeritem">
+																<object class="wxBoxSizer">
+																	<orient>wxVERTICAL</orient>
+																	<object class="sizeritem">
+																		<object class="wxButton" name="btnParamsUp">
+																			<label>↑</label>
+																			<size>23,23</size>
+																		</object>
+																		<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+																		<border>5</border>
+																		<option>1</option>
+																	</object>
+																	<object class="sizeritem">
+																		<object class="wxButton" name="btnParamsDown">
+																			<label>↓</label>
+																			<size>23,23</size>
+																		</object>
+																		<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+																		<border>5</border>
+																		<option>1</option>
+																	</object>
+																</object>
+																<flag>wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL</flag>
+																<border>5</border>
+																<option>1</option>
+															</object>
+														</object>
+														<flag>wxBOTTOM|wxLEFT|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+														<option>1</option>
+													</object>
+													<object class="sizeritem">
+														<object class="wxCheckBox" name="chkParamsPointer">
+															<label>Pointer</label>
+														</object>
+														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxStaticText" name="sxtParamsPointerDpth">
+															<label>Pointer Depth</label>
+															<enabled>0</enabled>
+														</object>
+														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxSpinCtrl" name="spcParamsPointerDpth">
+															<value>1</value>
+															<min>1</min>
+															<enabled>0</enabled>
+														</object>
+														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxCheckBox" name="chkParamsRef">
+															<label>Reference</label>
+														</object>
+														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 												</object>
@@ -543,77 +659,77 @@
 												<object class="wxBoxSizer">
 													<orient>wxVERTICAL</orient>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT14">
+														<object class="wxStaticText" name="sxtParamsName">
 															<label>Name</label>
 														</object>
 														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxTextCtrl" name="ID_TEXTCTRL6">
-															<value>Text</value>
-														</object>
+														<object class="wxTextCtrl" name="txtParamsName" />
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT15">
+														<object class="wxStaticText" name="sxtParamsType">
 															<label>Type</label>
 														</object>
 														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxChoice" name="ID_CHOICE4" />
+														<object class="wxChoice" name="chcParamsType" />
 														<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxStaticText" name="ID_STATICTEXT16">
+														<object class="wxStaticText" name="sxtParamsExtType">
 															<label>External Type</label>
+															<enabled>0</enabled>
 														</object>
 														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxTextCtrl" name="ID_TEXTCTRL7">
-															<value>Text</value>
+														<object class="wxTextCtrl" name="txtParamsExtType">
+															<value>ExtType</value>
+															<enabled>0</enabled>
 														</object>
 														<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX7">
-															<label>Static</label>
-														</object>
-														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
-														<border>5</border>
-													</object>
-													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX10">
-															<label>Const</label>
+														<object class="wxCheckBox" name="chkParamsArray">
+															<label>Array</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 														<option>1</option>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX8">
-															<label>Pointer</label>
+														<object class="wxStaticText" name="sxtParamsDefVal">
+															<label>Default Value</label>
 														</object>
-														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxSpinCtrl" name="ID_SPINCTRL2">
-															<value>0</value>
+														<object class="wxTextCtrl" name="txtParamsDefVal">
+															<value>Text</value>
 														</object>
 														<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
 													</object>
 													<object class="sizeritem">
-														<object class="wxCheckBox" name="ID_CHECKBOX9">
-															<label>Reference</label>
+														<object class="wxCheckBox" name="chkParamsStatic">
+															<label>Static</label>
+														</object>
+														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														<border>5</border>
+													</object>
+													<object class="sizeritem">
+														<object class="wxCheckBox" name="chkParamsConst">
+															<label>Const</label>
 														</object>
 														<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
 														<border>5</border>
@@ -646,7 +762,7 @@
 			<object class="sizeritem">
 				<object class="wxBoxSizer">
 					<object class="sizeritem">
-						<object class="wxButton" name="ID_BUTTON1">
+						<object class="wxButton" name="btnCreate">
 							<label>Create</label>
 							<default>1</default>
 						</object>
@@ -655,7 +771,7 @@
 						<option>1</option>
 					</object>
 					<object class="sizeritem">
-						<object class="wxButton" name="ID_BUTTON2">
+						<object class="wxButton" name="btnCancel">
 							<label>Cancel</label>
 						</object>
 						<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
