@@ -17,29 +17,31 @@ public:
 	void Init(const wxString& ClassName);
 	virtual ~Class();
     virtual wxRect GetBoundingBox();
-    void AddVariable(const MemberVar& m);
-    void AddVariable(const wxString& Name, const wxString& Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
-    void RemoveVariable();
-    void AddFunction(const MemberFunc& m);
-    void AddFunction(const wxString& Name, const wxString& Type, Accessibility Access = Public, std::vector<MemberVar>* Parameters = 0, bool Static = false);
-    void RemoveFunction();
+
+    void UpdateFunctions(const std::vector<MemberFunc>& a_funcs);
+    void UpdateVariables(const std::vector<MemberVar>& a_vars);
+    const std::vector<MemberFunc>& GetFunctions() const {return m_MemberFunctions;}
+    const std::vector<MemberVar>& GetVariables() const {return m_MemberVariables;}
+
     Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:
     virtual void DrawNormal(wxDC& dc);
 	virtual void DrawHover(wxDC& dc);
 	virtual void DrawHighlighted(wxDC& dc);
 private:
-    wxPen BorderColour;
-    wxBrush FillColour;
-    wxFont Font;
-	wxCoord MinTextWidth;
-	wxCoord VarFieldHeight;
-	wxCoord FuncFieldHeight;
+    wxPen m_BorderColour;
+    wxBrush m_FillColour;
+    wxFont m_Font;
+	wxCoord m_MinTextWidth;
+	wxCoord m_VarFieldHeight;
+	wxCoord m_FuncFieldHeight;
+	bool m_SizeRefresh = true;
+	wxRect m_Size;
 
-    wxString ClassName;
-	std::vector<MemberVar> MemberVariables;
-	std::vector<MemberFunc> MemberFunctions;
-	wxString Comments;
+    wxString m_ClassName;
+	std::vector<MemberVar> m_MemberVariables;
+	std::vector<MemberFunc> m_MemberFunctions;
+	wxString m_Description;
 
     void UpdateShapeSize(wxDC* dc);
     void DrawShape(wxDC* dc);

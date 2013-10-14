@@ -31,48 +31,50 @@ Class::Class(const Class& obj) : wxSFShapeBase(obj) {
 
 Class::~Class() {
 	//dtor
-	Manager::Get()->GetLogManager()->Log(_("Funky Class Dtor"));
 }
 
 void Class::Init(const wxString& Name) {
-	BorderColour = wxPen(wxColour(0, 0, 0));
-	FillColour = wxBrush(wxColour(255, 255, 255));
-	MinTextWidth = 3;
+	m_BorderColour = wxPen(wxColour(0, 0, 0));
+	m_FillColour = wxBrush(wxColour(255, 255, 255));
+	m_MinTextWidth = 3;
 	// For Luna's sake, keep this font assignment! All the text width calculations randomly freak out without it.
-	Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+	m_Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 
-	ClassName = Name;
+	m_ClassName = Name;
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
 // Keep tough calculations away from here.
 wxRect Class::GetBoundingBox() {
-
 	return wxRect(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 }
 
 // This function evaluates and updates the size of the boxes, that contains the class members.
 void Class::UpdateShapeSize(wxDC* dc) {
+	// Check if size calculations is wanted
+	if (!m_SizeRefresh)
+		return;
+	m_SizeRefresh = false;
 	// Initialize evaluation of text sizes.
 	wxCoord EvalWidth;
 	// Evaluate the size of the title.
-	dc->GetTextExtent(ClassName, &EvalWidth, 0);
-	if (EvalWidth > MinTextWidth)
-		MinTextWidth = EvalWidth;
+	dc->GetTextExtent(m_ClassName, &EvalWidth, 0);
+	if (EvalWidth > m_MinTextWidth)
+		m_MinTextWidth = EvalWidth;
 
 	// Evaluate the size of the variables
-	if (!MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
-        for(std::vector<MemberVar>::const_iterator i = MemberVariables.begin(); i != MemberVariables.end(); ++i) {
+	if (!m_MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
+        for(std::vector<MemberVar>::const_iterator i = m_MemberVariables.begin(); i != m_MemberVariables.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
-            if (EvalWidth > MinTextWidth)
-                MinTextWidth = EvalWidth;
+            if (EvalWidth > m_MinTextWidth)
+                m_MinTextWidth = EvalWidth;
         }
 	// Evaluate the size of the functions
-	if (!MemberFunctions.empty())
-        for(std::vector<MemberFunc>::const_iterator i = MemberFunctions.begin(); i != MemberFunctions.end(); ++i) {
+	if (!m_MemberFunctions.empty())
+        for(std::vector<MemberFunc>::const_iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
-            if (EvalWidth > MinTextWidth)
-                MinTextWidth = EvalWidth;
+            if (EvalWidth > m_MinTextWidth)
+                m_MinTextWidth = EvalWidth;
         }
 }
 
@@ -81,20 +83,20 @@ void Class::UpdateShapeSize(wxDC* dc) {
 // times per second like GetBoundingBox is, so more tough calculations is
 void Class::DrawShape(wxDC* dc) {
 	// Setting a font to prevent random errors in the UpdateShapeSize function
-	dc->SetFont(Font);
+	dc->SetFont(m_Font);
 	//dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), Conv2Size(m_nRectSize));
 	//dc->DrawRectangle(wxRect);
 	UpdateShapeSize(dc);
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(MinTextWidth+10,30));
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,30), wxSize(MinTextWidth+10,30));
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,60), wxSize(MinTextWidth+10,30));
-	dc->DrawText(ClassName, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(m_MinTextWidth+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,30), wxSize(m_MinTextWidth+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,60), wxSize(m_MinTextWidth+10,30));
+	dc->DrawText(m_ClassName, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	Manager::Get()->GetLogManager()->Log(wxT("DShape"));
 }
 
 void Class::DrawNormal(wxDC& dc) {
-	dc.SetPen(BorderColour);
-	dc.SetBrush(FillColour);
+	dc.SetPen(m_BorderColour);
+	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
@@ -103,7 +105,7 @@ void Class::DrawNormal(wxDC& dc) {
 
 void Class::DrawHover(wxDC& dc) {
 	dc.SetPen(wxPen(m_nHoverColor, 1));
-	dc.SetBrush(FillColour);
+	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
@@ -112,37 +114,17 @@ void Class::DrawHover(wxDC& dc) {
 
 void Class::DrawHighlighted(wxDC& dc) {
 	dc.SetPen(wxPen(m_nHoverColor, 2));
-	dc.SetBrush(FillColour);
+	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
 	dc.SetPen(wxNullPen);
 }
 
-void Class::AddVariable(const MemberVar& m) {
-	MemberVariables.push_back(m);
+void UpdateFunctions(const std::vector<MemberFunc>& a_funcs) {
 }
 
-void Class::AddVariable(const wxString& Name, const wxString& Type, Accessibility Access, int Pointer, bool Reference, bool Static) {
-    //MemberVar var = MemberVar(Name, Type, Access, Pointer, Reference, Static);
-    //MemberVariables.push_back(var);
-}
-
-void Class::AddFunction(const MemberFunc& m) {
-	MemberFunctions.push_back(m);
-}
-
-void Class::AddFunction(const wxString& Name, const wxString& Type, Accessibility Access, std::vector<MemberVar>* Parameters, bool Static) {
-    //MemberFunc func = MemberFunc(Name, Type, Access, Parameters);
-    //MemberFunctions.push_back(func);
-}
-
-void Class::RemoveVariable() {
-
-}
-
-void Class::RemoveFunction() {
-
+void UpdateVariables(const std::vector<MemberVar>& a_vars) {
 }
 
 Member* Class::GetMemberAtPosition(const wxPoint& a_Pos)
