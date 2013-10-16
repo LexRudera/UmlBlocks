@@ -20,8 +20,10 @@ public:
 
     void UpdateFunctions(const std::vector<MemberFunc>& a_funcs);
     void UpdateVariables(const std::vector<MemberVar>& a_vars);
+    void SetDescription(const wxString& a_desc) {m_Description = a_desc;}
     const std::vector<MemberFunc>& GetFunctions() const {return m_MemberFunctions;}
     const std::vector<MemberVar>& GetVariables() const {return m_MemberVariables;}
+    const wxString& GetDescription() const {return m_Description;}
 
     Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:
@@ -32,7 +34,8 @@ private:
     wxPen m_BorderColour;
     wxBrush m_FillColour;
     wxFont m_Font;
-	wxCoord m_MinTextWidth;
+	wxCoord m_Width;
+	wxCoord m_WidthLimit = 200;
 	wxCoord m_VarFieldHeight;
 	wxCoord m_FuncFieldHeight;
 	bool m_SizeRefresh = true;
