@@ -33,20 +33,20 @@ Class::~Class() {
 	//dtor
 }
 
-void Class::Init(const wxString& Name) {
+void Class::Init(const wxString& a_Name) {
 	m_BorderColour = wxPen(wxColour(0, 0, 0));
 	m_FillColour = wxBrush(wxColour(255, 255, 255));
-	m_MinTextWidth = 3;
+	m_Width = 3;
 	// For Luna's sake, keep this font assignment! All the text width calculations randomly freak out without it.
 	m_Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
-
-	m_ClassName = Name;
+	m_Name = a_Name;
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
 // Keep tough calculations away from here.
 wxRect Class::GetBoundingBox() {
-	return wxRect(Conv2Point(GetAbsolutePosition()), wxSize(m_Width,50));
+	//return wxRect(Conv2Point(GetAbsolutePosition()), wxSize(m_Width,50));
+	return wxRect(Conv2Point(GetAbsolutePosition()), m_BoundingSize);
 }
 
 // This function evaluates and updates the size of the boxes, that contains the class members.
@@ -54,40 +54,51 @@ void Class::UpdateShapeSize(wxDC* dc) {
 	// Check if size calculations is wanted
 	if (!m_SizeRefresh)
 		return;
-	m_SizeRefresh = false;
-	// Initialize evaluation of text sizes.
+	m_SizeRefresh = false; // Then let's run it and check it, that it's done.
+
+	// Initialize evaluation of text widths.
 	wxCoord EvalWidth;
-	// Evaluate the size of the title.
-	dc->GetTextExtent(m_ClassName, &EvalWidth, 0);
-	if (EvalWidth > m_MinTextWidth)
-		m_MinTextWidth = EvalWidth;
+	// Evaluate the width of the title.
+	dc->GetTextExtent(m_Name, &EvalWidth, 0);
+	if (EvalWidth > m_Width)
+		m_Width = EvalWidth;
 
 	// Evaluate the size of the variables
 	if (!m_MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
         for(std::vector<MemberVar>::const_iterator i = m_MemberVariables.begin(); i != m_MemberVariables.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
-            if (EvalWidth > m_MinTextWidth)
+            if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
+    m_VarFieldHeight = 20*m_MemberVariables.size()+10;
+
 	// Evaluate the size of the functions
 	if (!m_MemberFunctions.empty())
         for(std::vector<MemberFunc>::const_iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
             dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
-            if (EvalWidth > m_MinTextWidth)
+            if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
+    m_FuncFieldHeight = 20*m_MemberFunctions.size()+10;
 
 	// Apply width limiter
 	if ( m_WidthLimit !=0 && m_Width > m_WidthLimit)
 		m_Width = m_WidthLimit;
 
 	// Set size
-	m_Size.SetWidth(m_Width);
-	m_Size.SetHeight(30+m_VarFieldHeight+m_FuncFieldHeight);
+	m_NameField.Set(m_Width, 30);
+	m_VarField.Set(m_Width, m_VarFieldHeight);
+	m_FuncField.Set(m_Width, m_FuncFieldHeight);
+	m_BoundingSize.Set(m_Width, 30+m_VarFieldHeight+m_FuncFieldHeight); // Fast BoundingBox carrier.
+
+	// Calculate name text position
+	dc->GetTextExtent(m_Name, &m_NamePos.x, &m_NamePos.y); // Clever. m_NamePos is it's own carrier.
+	m_NamePos.x = m_NameField.x/2 - m_NamePos.x/2;
+	m_NamePos.y = m_NameField.y/2 - m_NamePos.y/2;
 }
 
 // This function is only called when the mouse does anything with the shape.
-// Entering it, clicking it, moving it, that sorta stuff. It isn't call a billion
+// Entering it, clicking it, moving it, that sorta stuff. It isn't called a billion
 // times per second like GetBoundingBox is, so more tough calculations is
 void Class::DrawShape(wxDC* dc) {
 	// Setting a font to prevent random errors in the UpdateShapeSize function
@@ -95,15 +106,20 @@ void Class::DrawShape(wxDC* dc) {
 	UpdateShapeSize(dc); // Self explaining
 
 	// Class name field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(m_MinTextWidth+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), m_NameField);
 	// Function field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,30), wxSize(m_MinTextWidth+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y), wxSize(m_Width+10,30));
 	// Variable field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0,60), wxSize(m_MinTextWidth+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y), wxSize(m_Width+10,30));
 	// Draw class name
-	dc->DrawText(m_ClassName, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
+	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	// Draw Functions
+	for (int i = 0; i < m_MemberFunctions.size(); i++) {
+        dc->DrawText(m_MemberFunctions[i].GetUmlString())
+	}
 	// Draw Variables
+	for (int i = 0; i < m_MemberVariables.size(); i++) {
+	}
 }
 
 void Class::DrawNormal(wxDC& dc) {

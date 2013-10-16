@@ -39,9 +39,14 @@ private:
 	wxCoord m_VarFieldHeight;
 	wxCoord m_FuncFieldHeight;
 	bool m_SizeRefresh = true;
-	wxRect m_Size;
+	wxSize m_BoundingSize;
 
-    wxString m_ClassName;
+	wxSize m_NameField;
+	wxSize m_VarField;
+	wxSize m_FuncField;
+	wxPoint m_NamePos;
+
+    wxString m_Name;
 	std::vector<MemberVar> m_MemberVariables;
 	std::vector<MemberFunc> m_MemberFunctions;
 	wxString m_Description;

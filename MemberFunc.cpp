@@ -30,6 +30,8 @@ MemberFunc::~MemberFunc()
 }
 
 wxString MemberFunc::GetUmlString() {
+    if (!NeedUmlRefresh())
+        return m_UmlString
 	wxString strng = Member::GetUmlString();
 
 	wxString params(wxT("("));

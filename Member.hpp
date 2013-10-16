@@ -53,6 +53,9 @@ class Member
         void IsConst(bool a) {m_Const = a;}
 
     protected:
+        bool NeedUmlRefresh() {return m_UmlRefresh;}
+        void NeedUmlRefresh(bool a = true) {m_UmlRefresh = a;}
+        void SetUmlString(const wxString& a) {m_UmlString = a;}
     private:
         wxString m_Name;
         wxString m_Type;
@@ -64,6 +67,9 @@ class Member
 		bool m_Reference;
         bool m_Static;
         bool m_Const;
+
+        wxString m_UmlString;
+        bool m_UmlRefresh = true;
 };
 
 #endif // Member_HPP

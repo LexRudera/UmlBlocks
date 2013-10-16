@@ -81,6 +81,6 @@ wxString Member::GetUmlString() {
 		strng.Prepend(wxT("-"));
 		break;
 	}
-
-	return strng;
+    m_UmlString = strng;
+	return m_UmlString;
 }
