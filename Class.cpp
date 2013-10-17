@@ -36,10 +36,11 @@ Class::~Class() {
 void Class::Init(const wxString& a_Name) {
 	m_BorderColour = wxPen(wxColour(0, 0, 0));
 	m_FillColour = wxBrush(wxColour(255, 255, 255));
-	m_Width = 3;
+	m_Width = 10;
 	// For Luna's sake, keep this font assignment! All the text width calculations randomly freak out without it.
 	m_Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 	m_Name = a_Name;
+	m_BoundingSize = wxSize(10,10);
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
@@ -108,9 +109,9 @@ void Class::DrawShape(wxDC* dc) {
 	// Class name field
 	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), m_NameField);
 	// Function field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y), wxSize(m_Width+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y), m_VarField);
 	// Variable field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y), wxSize(m_Width+10,30));
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y), m_FuncField);
 	// Draw class name
 	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	// Draw Functions
@@ -123,12 +124,14 @@ void Class::DrawShape(wxDC* dc) {
 }
 
 void Class::DrawNormal(wxDC& dc) {
+Manager::Get()->GetLogManager()->Log(wxT("Start Drawing"));
 	dc.SetPen(m_BorderColour);
 	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
 	dc.SetPen(wxNullPen);
+Manager::Get()->GetLogManager()->Log(wxT("End Drawing"));
 }
 
 void Class::DrawHover(wxDC& dc) {

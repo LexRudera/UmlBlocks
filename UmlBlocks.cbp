@@ -70,7 +70,6 @@
 		<Unit filename="UmlCanvas.hpp" />
 		<Unit filename="UmlEditor.cpp" />
 		<Unit filename="UmlEditor.hpp" />
-		<Unit filename="Untitled.cbd" />
 		<Unit filename="Utilities.cpp" />
 		<Unit filename="Utilities.hpp" />
 		<Unit filename="manifest.xml" />
