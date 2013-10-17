@@ -19,9 +19,9 @@ class MemberVar : public Member
 		//MemberVar(const MemberVar&);
         virtual ~MemberVar();
 
-        virtual wxString GetUmlString();
+        virtual const wxString& GetUmlString();
 
-        wxString& GetDefaultValue() {return m_DefaultVal;}
+        const wxString& GetDefaultValue() {return m_DefaultVal;}
 
         void SetDefaultValue(wxString a) {m_DefaultVal = a.Trim(false).Trim();}
 

@@ -33,7 +33,7 @@ Member::~Member()
     //dtor
 }
 
-wxString Member::GetUmlString() {
+const wxString& Member::GetUmlString() {
 	wxString strng(m_Name);
 
 	if (m_Const)

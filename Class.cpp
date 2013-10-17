@@ -65,8 +65,8 @@ void Class::UpdateShapeSize(wxDC* dc) {
 
 	// Evaluate the size of the variables
 	if (!m_MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
-        for(std::vector<MemberVar>::const_iterator i = m_MemberVariables.begin(); i != m_MemberVariables.end(); ++i) {
-            dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
+        for(std::vector<MemberVar>::iterator i = m_MemberVariables.begin(); i != m_MemberVariables.end(); ++i) {
+            dc->GetTextExtent(i->GetUmlString(), &EvalWidth, 0);
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
@@ -74,8 +74,8 @@ void Class::UpdateShapeSize(wxDC* dc) {
 
 	// Evaluate the size of the functions
 	if (!m_MemberFunctions.empty())
-        for(std::vector<MemberFunc>::const_iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
-            dc->GetTextExtent(i->GetName(), &EvalWidth, 0);
+        for(std::vector<MemberFunc>::iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
+            dc->GetTextExtent(i->GetUmlString(), &EvalWidth, 0);
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
@@ -114,12 +114,12 @@ void Class::DrawShape(wxDC* dc) {
 	// Draw class name
 	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	// Draw Functions
-	for (int i = 0; i < m_MemberFunctions.size(); i++) {
-        dc->DrawText(m_MemberFunctions[i].GetUmlString())
+	/*for (int i = 0; i < m_MemberFunctions.size(); i++) {
+        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i));
 	}
 	// Draw Variables
 	for (int i = 0; i < m_MemberVariables.size(); i++) {
-	}
+	}*/
 }
 
 void Class::DrawNormal(wxDC& dc) {

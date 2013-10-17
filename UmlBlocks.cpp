@@ -6,6 +6,7 @@
 #include "Class.hpp"
 #include "ClassDialog.hpp"
 #include <wx/dialog.h>
+#include "Utilities.hpp"
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
 namespace {
@@ -157,14 +158,13 @@ void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
     PlaceWindow(&dlg);
 	if ( dlg.ShowModal() == wxID_OK )
 	{
+    Manager::Get()->GetLogManager()->Log(wxT("Creating shape!"));
 
-	//new Class(wxRealPoint(50,50), static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager());
-	//static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50));
 	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())
 	->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))
 	->Init(wxT("Class01"));
-	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 
+	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 	}
 }
 

@@ -25,7 +25,7 @@ class MemberFunc : public Member
         virtual ~MemberFunc();
 
         //void UpdateParameters(const std::vector<MemberVar>& newparams) {}
-        virtual wxString GetUmlString();
+        virtual const wxString& GetUmlString();
 
         bool IsVirtual() const {return m_Virtual;}
         bool IsPureVirtual() const {return m_PureVirtual;}

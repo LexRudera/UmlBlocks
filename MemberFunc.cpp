@@ -29,9 +29,9 @@ MemberFunc::~MemberFunc()
     //dtor
 }
 
-wxString MemberFunc::GetUmlString() {
+const wxString& MemberFunc::GetUmlString() {
     if (!NeedUmlRefresh())
-        return m_UmlString
+        return GetRawUmlString();
 	wxString strng = Member::GetUmlString();
 
 	wxString params(wxT("("));
