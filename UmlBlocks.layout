@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="default" />
-	<File name="Class.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4189" topLine="99" />
-		</Cursor>
-	</File>
-	<File name="Class.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1389" topLine="24" />
-		</Cursor>
-	</File>
 	<File name="ClassDialog.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="19902" topLine="171" />
@@ -36,32 +26,42 @@
 	</File>
 	<File name="Member.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="744" topLine="21" />
+			<Cursor1 position="1606" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="Member.hpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Member.hpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="584" topLine="25" />
+			<Cursor1 position="1379" topLine="40" />
 		</Cursor>
 	</File>
-	<File name="MemberFunc.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="MemberFunc.cpp" open="1" top="1" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="684" topLine="23" />
+			<Cursor1 position="1500" topLine="26" />
 		</Cursor>
 	</File>
 	<File name="MemberFunc.hpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="226" topLine="0" />
+			<Cursor1 position="1263" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="MemberVar.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="544" topLine="1" />
+			<Cursor1 position="510" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="Class.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3237" topLine="57" />
 		</Cursor>
 	</File>
 	<File name="MemberVar.hpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="704" topLine="0" />
+			<Cursor1 position="763" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Class.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1389" topLine="24" />
 		</Cursor>
 	</File>
 	<File name="NewEntityDialog.cpp" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -106,7 +106,7 @@
 	</File>
 	<File name="UmlCanvas.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="739" topLine="0" />
+			<Cursor1 position="1138" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="UmlEditor.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

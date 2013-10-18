@@ -25,7 +25,7 @@ class MemberFunc : public Member
         virtual ~MemberFunc();
 
         //void UpdateParameters(const std::vector<MemberVar>& newparams) {}
-        virtual const wxString& GetUmlString();
+        //const wxString& GetUmlString();
 
         bool IsVirtual() const {return m_Virtual;}
         bool IsPureVirtual() const {return m_PureVirtual;}
@@ -35,11 +35,12 @@ class MemberFunc : public Member
         void DeleteParameter(unsigned int i);
         unsigned int GetParameterCount() {return m_Parameters.size();}
 
-        void IsVirtual(bool a) {m_Virtual = a;}
-        void IsPureVirtual(bool a) {m_PureVirtual = a;}
+        void IsVirtual(bool a) {m_Virtual = a; UpdateUmlString();}
+        void IsPureVirtual(bool a) {m_PureVirtual = a; UpdateUmlString();}
 
 		virtual MemberGroup GetMemberGroup() { return Functions; }
     protected:
+        virtual void UpdateUmlString();
     private:
 		bool m_Virtual;
         bool m_PureVirtual;

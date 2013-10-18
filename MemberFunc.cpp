@@ -29,10 +29,9 @@ MemberFunc::~MemberFunc()
     //dtor
 }
 
-const wxString& MemberFunc::GetUmlString() {
-    if (!NeedUmlRefresh())
-        return GetRawUmlString();
-	wxString strng = Member::GetUmlString();
+void MemberFunc::UpdateUmlString() {
+	Member::UpdateUmlString();
+    wxString strng = GetUmlString();
 
 	wxString params(wxT("("));
 	for (int i = 0; i < m_Parameters.size(); i++) {
@@ -43,7 +42,7 @@ const wxString& MemberFunc::GetUmlString() {
 	}
 	params.Append(wxT(")"));
 
-	return strng.insert(strng.First(':')-1,params);
+	SetUmlString(strng.insert(strng.First(':')-1,params));
 }
 
 void MemberFunc::AddParameter(const MemberVar& m, int pos) {
@@ -51,8 +50,10 @@ if (pos == -1 || pos >= m_Parameters.size())
 	m_Parameters.push_back(m);
 else
 	m_Parameters.insert(m_Parameters.begin()+pos, m);
+UpdateUmlString();
 }
 
 void MemberFunc::DeleteParameter(unsigned int i) {
 m_Parameters.erase(m_Parameters.begin()+i);
+UpdateUmlString();
 }

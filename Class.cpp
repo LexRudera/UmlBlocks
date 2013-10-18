@@ -2,6 +2,7 @@
 #include <sdk.h>
 #include "wx/wxsf/ShapeCanvas.h"
 #include "wx/wxsf/CommonFcn.h"
+#include "Utilities.hpp"
 //#include <wx/wx.h>
 
 using namespace wxSFCommonFcn;
@@ -41,6 +42,8 @@ void Class::Init(const wxString& a_Name) {
 	m_Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 	m_Name = a_Name;
 	m_BoundingSize = wxSize(10,10);
+	m_MemberFunctions.push_back(MemberFunc());
+	//m_MemberVariables.push_back(MemberVar());
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
@@ -61,6 +64,7 @@ void Class::UpdateShapeSize(wxDC* dc) {
 	wxCoord EvalWidth;
 	// Evaluate the width of the title.
 	dc->GetTextExtent(m_Name, &EvalWidth, 0);
+	EvalWidth += 10;
 	if (EvalWidth > m_Width)
 		m_Width = EvalWidth;
 
@@ -68,19 +72,29 @@ void Class::UpdateShapeSize(wxDC* dc) {
 	if (!m_MemberVariables.empty()) // In case there is nothing, why even bother trying. Also against potential errors in the list iterator
         for(std::vector<MemberVar>::iterator i = m_MemberVariables.begin(); i != m_MemberVariables.end(); ++i) {
             dc->GetTextExtent(i->GetUmlString(), &EvalWidth, 0);
+            EvalWidth += 10;
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
-    m_VarFieldHeight = 20*m_MemberVariables.size()+10;
+    m_VarFieldHeight = m_Font.GetPointSize()*m_MemberVariables.size()+10;
 
 	// Evaluate the size of the functions
-	if (!m_MemberFunctions.empty())
+	if (!m_MemberFunctions.empty()) {
+	Manager::Get()->GetLogManager()->Log(wxT("MemberFunctions"));
         for(std::vector<MemberFunc>::iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
+	Manager::Get()->GetLogManager()->Log(wxT("FuncIterator"));
+	Manager::Get()->GetLogManager()->Log(i->GetUmlString());
+	Manager::Get()->GetLogManager()->Log(wxT("SizeEval"));
             dc->GetTextExtent(i->GetUmlString(), &EvalWidth, 0);
+	Manager::Get()->GetLogManager()->Log(i->GetUmlString());
+	Manager::Get()->GetLogManager()->Log(int_to_string(EvalWidth));
+            EvalWidth += 10;
+	Manager::Get()->GetLogManager()->Log(int_to_string(EvalWidth));
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
-    m_FuncFieldHeight = 20*m_MemberFunctions.size()+10;
+    }
+    m_FuncFieldHeight = m_Font.GetPointSize()*m_MemberFunctions.size()+10;
 
 	// Apply width limiter
 	if ( m_WidthLimit !=0 && m_Width > m_WidthLimit)
@@ -109,29 +123,31 @@ void Class::DrawShape(wxDC* dc) {
 	// Class name field
 	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), m_NameField);
 	// Function field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y), m_VarField);
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y-1), m_VarField);
 	// Variable field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y), m_FuncField);
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y-2), m_FuncField);
 	// Draw class name
-	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
+	//dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
+	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+m_NamePos);
 	// Draw Functions
 	/*for (int i = 0; i < m_MemberFunctions.size(); i++) {
-        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i));
+        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i-1));
 	}
 	// Draw Variables
 	for (int i = 0; i < m_MemberVariables.size(); i++) {
+        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i-2));
 	}*/
 }
 
 void Class::DrawNormal(wxDC& dc) {
-Manager::Get()->GetLogManager()->Log(wxT("Start Drawing"));
+//Manager::Get()->GetLogManager()->Log(wxT("Start Drawing"));
 	dc.SetPen(m_BorderColour);
 	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
 	dc.SetPen(wxNullPen);
-Manager::Get()->GetLogManager()->Log(wxT("End Drawing"));
+//Manager::Get()->GetLogManager()->Log(wxT("End Drawing"));
 }
 
 void Class::DrawHover(wxDC& dc) {

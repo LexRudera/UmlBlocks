@@ -6,7 +6,6 @@
 class MemberVar : public Member
 {
     public:
-        MemberVar(wxString Name, wxString Type, Accessibility Access = Public, int Pointer = 0, bool Reference = false, bool Static = false);
         MemberVar(const wxString& a_name = wxT("NewVariable"),
 				  const wxString& a_type = wxT("int"),
 				  Accessibility a_access = Public,
@@ -19,14 +18,15 @@ class MemberVar : public Member
 		//MemberVar(const MemberVar&);
         virtual ~MemberVar();
 
-        virtual const wxString& GetUmlString();
+        //virtual const wxString& GetUmlString();
 
         const wxString& GetDefaultValue() {return m_DefaultVal;}
 
-        void SetDefaultValue(wxString a) {m_DefaultVal = a.Trim(false).Trim();}
+        void SetDefaultValue(wxString a) {m_DefaultVal = a.Trim(false).Trim(); UpdateUmlString();}
 
 		virtual MemberGroup GetMemberGroup() { return Variables; }
     protected:
+        virtual void UpdateUmlString();
     private:
 		wxString m_DefaultVal;
 };

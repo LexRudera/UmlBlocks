@@ -25,11 +25,9 @@ MemberVar::~MemberVar()
     //dtor
 }
 
-const wxString& MemberVar::GetUmlString() {
-    if (!NeedUmlRefresh())
-        return GetRawUmlString();
-	wxString strng = Member::GetUmlString();
+void MemberVar::UpdateUmlString() {
+	Member::UpdateUmlString();
+    wxString strng = GetUmlString();
 
-	strng.insert(strng.size()-2,int_to_string(GetArraySize()));
-	return strng;
+	SetUmlString(strng.insert(strng.size()-2,int_to_string(GetArraySize())));
 }

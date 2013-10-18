@@ -26,7 +26,7 @@ class Member
 			   bool a_const = false);
         virtual ~Member();
 
-        virtual const wxString& GetUmlString();
+        virtual const wxString& GetUmlString() const {return m_UmlString;};
 
         const wxString& GetName() const {return m_Name;}
         const wxString& GetType() const {return m_Type;}
@@ -41,22 +41,23 @@ class Member
         Accessibility GetAccessLevel() const {return m_Access;}
 		virtual MemberGroup GetMemberGroup() = 0;
 
-        void SetName(wxString a) {m_Name = a.Trim(false).Trim();}
-        void SetType(wxString a) {m_Type = a.Trim(false).Trim();}
-        void IsArray(bool a) {m_Array = a;}
-        void SetArraySize(int a) {m_ArraySize = a;}
-        void SetAccessLevel(Accessibility a) {m_Access = a;}
-        void IsPointer(bool a) {m_Pointer = a;}
-        void SetPointerDepth(int a) {m_PointerDepth = a;}
-        void IsReference(bool a) {m_Reference = a;}
-        void IsStatic(bool a) {m_Static = a;}
-        void IsConst(bool a) {m_Const = a;}
+        void SetName(wxString a) {m_Name = a.Trim(false).Trim(); UpdateUmlString();}
+        void SetType(wxString a) {m_Type = a.Trim(false).Trim(); UpdateUmlString();}
+        void IsArray(bool a) {m_Array = a; UpdateUmlString();}
+        void SetArraySize(int a) {m_ArraySize = a; UpdateUmlString();}
+        void SetAccessLevel(Accessibility a) {m_Access = a; UpdateUmlString();}
+        void IsPointer(bool a) {m_Pointer = a; UpdateUmlString();}
+        void SetPointerDepth(int a) {m_PointerDepth = a; UpdateUmlString();}
+        void IsReference(bool a) {m_Reference = a; UpdateUmlString();}
+        void IsStatic(bool a) {m_Static = a; UpdateUmlString();}
+        void IsConst(bool a) {m_Const = a; UpdateUmlString();}
 
     protected:
-        bool NeedUmlRefresh() {return m_UmlRefresh;}
-        void DoUmlRefresh(bool a = true) {m_UmlRefresh = a;}
-        const wxString& GetRawUmlString() {return m_UmlString;}
-        void SetRawUmlString(const wxString& a) {m_UmlString = a;}
+        virtual void UpdateUmlString();
+        //bool NeedUmlRefresh() {return m_UmlRefresh;}
+        //void DoUmlRefresh(bool a = true) {m_UmlRefresh = a;}
+        //const wxString& GetRawUmlString() {return m_UmlString;}
+        void SetUmlString(const wxString& a) {m_UmlString = a;}
     private:
         wxString m_Name;
         wxString m_Type;

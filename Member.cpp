@@ -33,7 +33,7 @@ Member::~Member()
     //dtor
 }
 
-const wxString& Member::GetUmlString() {
+void Member::UpdateUmlString() {
 	wxString strng(m_Name);
 
 	if (m_Const)
@@ -82,5 +82,4 @@ const wxString& Member::GetUmlString() {
 		break;
 	}
     m_UmlString = strng;
-	return m_UmlString;
 }
