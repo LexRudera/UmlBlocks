@@ -61,6 +61,7 @@ class Member
         //void DoUmlRefresh(bool a = true) {m_UmlRefresh = a;}
         const wxString& GetRawUmlString() {return m_UmlString;}
         void SetUmlString(const wxString& a) {m_UmlString = a;}
+
     private:
         wxString m_Name;
         wxString m_Type;

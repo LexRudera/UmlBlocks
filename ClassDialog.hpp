@@ -20,11 +20,11 @@ public:
     ~ClassDialog();
 
     // Accessors
-    wxString GetClassName() { return XRCCTRL(*this, "txtClassName", wxTextCtrl)->GetValue(); }
-    wxString GetClassDescription() { return XRCCTRL(*this, "txtClassDesc", wxTextCtrl)->GetValue(); }
-    std::vector<MemberVar>& GetVariableList() { return m_Variables; }
-    std::vector<MemberFunc>& GetFunctionList() { return m_Functions; }
-    std::vector<wxString>& GetInheritanceList() { return m_Inherited; }
+    const wxString& GetClassName() { return XRCCTRL(*this, "txtClassName", wxTextCtrl)->GetValue(); }
+    const wxString& GetClassDescription() { return XRCCTRL(*this, "txtClassDesc", wxTextCtrl)->GetValue(); }
+    const std::vector<MemberVar>& GetVariableList() { return m_Variables; }
+    const std::vector<MemberFunc>& GetFunctionList() { return m_Functions; }
+    const std::vector<wxString>& GetInheritanceList() { return m_Inherited; }
 protected:
 private:
 	// Containers

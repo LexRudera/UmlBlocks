@@ -160,9 +160,14 @@ void UmlBlocks::NewClassMenuOptionFunc(wxCommandEvent& event) {
 	{
     Manager::Get()->GetLogManager()->Log(wxT("Creating shape!"));
 
-	static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())
+	Class* clss = static_cast<Class*>(static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())
 	->GetCanvas()->GetDiagramManager()->AddShape(CLASSINFO(Class),wxPoint(50,50)))
-	->Init(wxT("Class01"));
+	->Init(dlg.GetClassName());
+
+	clss->SetDescription(dlg.GetClassDescription());
+	clss->UpdateFunctions(dlg.GetFunctionList());
+	clss->UpdateVariables(dlg.GetVariableList());
+
 
 	static_cast<UmlEditor*>(Manager::Get()->GetEditorManager()->GetActiveEditor())->GetCanvas()->Refresh(false);
 	}

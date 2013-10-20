@@ -14,16 +14,19 @@ public:
     Class();
 	Class(wxRealPoint pos, wxSFDiagramManager* man);
 	Class(const Class& obj);
-	void Init(const wxString& ClassName);
+	Class* Init(const wxString& ClassName);
 	virtual ~Class();
     virtual wxRect GetBoundingBox();
 
+    void SetName(const wxString& a_name) { m_Name = a_name; }
+    void SetDescription(const wxString& a_desc) {m_Description = a_desc;}
     void UpdateFunctions(const std::vector<MemberFunc>& a_funcs);
     void UpdateVariables(const std::vector<MemberVar>& a_vars);
-    void SetDescription(const wxString& a_desc) {m_Description = a_desc;}
+
+    const wxString& GetName() const { return m_Name; }
+    const wxString& GetDescription() const {return m_Description;}
     const std::vector<MemberFunc>& GetFunctions() const {return m_MemberFunctions;}
     const std::vector<MemberVar>& GetVariables() const {return m_MemberVariables;}
-    const wxString& GetDescription() const {return m_Description;}
 
     Member* GetMemberAtPosition(const wxPoint& Pos);
 protected:

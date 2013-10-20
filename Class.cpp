@@ -34,7 +34,7 @@ Class::~Class() {
 	//dtor
 }
 
-void Class::Init(const wxString& a_Name) {
+Class* Class::Init(const wxString& a_Name) {
 	m_BorderColour = wxPen(wxColour(0, 0, 0));
 	m_FillColour = wxBrush(wxColour(255, 255, 255));
 	m_Width = 10;
@@ -42,8 +42,11 @@ void Class::Init(const wxString& a_Name) {
 	m_Font = wxFont(10, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 	m_Name = a_Name;
 	m_BoundingSize = wxSize(10,10);
-	m_MemberFunctions.push_back(MemberFunc());
-	m_MemberVariables.push_back(MemberVar());
+	//m_MemberFunctions.push_back(MemberFunc());
+	//m_MemberFunctions.push_back(MemberFunc(wxString::FromUTF8("Func2")));
+	//m_MemberVariables.push_back(MemberVar());
+	//m_MemberVariables.push_back(MemberVar(wxString::FromUTF8("SuperVar2!")));
+	return this;
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
@@ -161,10 +164,12 @@ void Class::DrawHighlighted(wxDC& dc) {
 	dc.SetPen(wxNullPen);
 }
 
-void UpdateFunctions(const std::vector<MemberFunc>& a_funcs) {
+void Class::UpdateFunctions(const std::vector<MemberFunc>& a_funcs) {
+m_MemberFunctions = a_funcs;
 }
 
-void UpdateVariables(const std::vector<MemberVar>& a_vars) {
+void Class::UpdateVariables(const std::vector<MemberVar>& a_vars) {
+m_MemberVariables = a_vars;
 }
 
 Member* Class::GetMemberAtPosition(const wxPoint& a_Pos)
