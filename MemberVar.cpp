@@ -13,6 +13,7 @@ MemberVar::MemberVar(const wxString& a_name,
 : Member(a_name, a_type, a_access, a_array, a_pointer, a_reference, a_static, a_const),
 m_DefaultVal(a_defval)
 {
+    UpdateUmlString();
 }
 
 /*MemberVar::MemberVar(const MemberVar& obj)
@@ -25,9 +26,10 @@ MemberVar::~MemberVar()
     //dtor
 }
 
-void MemberVar::UpdateUmlString() {
-	Member::UpdateUmlString();
+void MemberVar::CalcUmlString() {
+	Member::CalcUmlString();
     wxString strng = GetUmlString();
 
-	SetUmlString(strng.insert(strng.size()-2,int_to_string(GetArraySize())));
+	if (IsArray())
+		SetUmlString(strng.insert(strng.size()-2,int_to_string(GetArraySize())));
 }

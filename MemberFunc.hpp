@@ -9,7 +9,7 @@ class MemberFunc : public Member
 {
     public:
         /** Default constructor */
-        MemberFunc(const wxString& a_name = wxT("NewVariable"),
+        MemberFunc(const wxString& a_name = wxT("NewFunction"),
 				   const wxString& a_type = wxT("int"),
 				   Accessibility a_access = Public,
 				   const std::vector<MemberVar>& a_parameters = std::vector<MemberVar>(),
@@ -40,7 +40,7 @@ class MemberFunc : public Member
 
 		virtual MemberGroup GetMemberGroup() { return Functions; }
     protected:
-        virtual void UpdateUmlString();
+        virtual void CalcUmlString();
     private:
 		bool m_Virtual;
         bool m_PureVirtual;

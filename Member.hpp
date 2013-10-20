@@ -26,7 +26,8 @@ class Member
 			   bool a_const = false);
         virtual ~Member();
 
-        virtual const wxString& GetUmlString() const {return m_UmlString;};
+        //virtual const wxString& GetUmlString() const {return m_UmlString;}
+        const wxString& GetUmlString();
 
         const wxString& GetName() const {return m_Name;}
         const wxString& GetType() const {return m_Type;}
@@ -53,10 +54,12 @@ class Member
         void IsConst(bool a) {m_Const = a; UpdateUmlString();}
 
     protected:
-        virtual void UpdateUmlString();
+        //virtual void UpdateUmlString();
+        void UpdateUmlString() {m_UmlRefresh = true;}
+        virtual void CalcUmlString();
         //bool NeedUmlRefresh() {return m_UmlRefresh;}
         //void DoUmlRefresh(bool a = true) {m_UmlRefresh = a;}
-        //const wxString& GetRawUmlString() {return m_UmlString;}
+        const wxString& GetRawUmlString() {return m_UmlString;}
         void SetUmlString(const wxString& a) {m_UmlString = a;}
     private:
         wxString m_Name;

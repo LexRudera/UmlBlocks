@@ -26,7 +26,7 @@ class MemberVar : public Member
 
 		virtual MemberGroup GetMemberGroup() { return Variables; }
     protected:
-        virtual void UpdateUmlString();
+        virtual void CalcUmlString();
     private:
 		wxString m_DefaultVal;
 };

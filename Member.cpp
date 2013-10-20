@@ -1,4 +1,5 @@
 #include "Member.hpp"
+#include "Utilities.hpp"
 
 Member::Member(const wxString& a_name,
 			   const wxString& a_type,
@@ -17,15 +18,13 @@ m_Static(a_static),
 m_Const(a_const),
 m_ArraySize(a_array)
 {
-	if (a_pointer != 0)
-		m_Pointer = true;
-	else
-		m_Pointer = false;
+	if (a_pointer != 0) m_Pointer = true;
+	else m_Pointer = false;
 
-	if (a_array > 0)
-		m_Array = true;
-	else
-		m_Array = false;
+	if (a_array > 0) m_Array = true;
+	else m_Array = false;
+
+		m_UmlString = wxT("undefined");
 }
 
 Member::~Member()
@@ -33,7 +32,15 @@ Member::~Member()
     //dtor
 }
 
-void Member::UpdateUmlString() {
+const wxString& Member::GetUmlString() {
+	if (m_UmlRefresh) {
+		m_UmlRefresh = false;
+		CalcUmlString();
+	}
+	return m_UmlString;
+}
+
+void Member::CalcUmlString() {
 	wxString strng(m_Name);
 
 	if (m_Const)
@@ -81,5 +88,6 @@ void Member::UpdateUmlString() {
 		strng.Prepend(wxT("-"));
 		break;
 	}
+
     m_UmlString = strng;
 }

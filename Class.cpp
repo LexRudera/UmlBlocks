@@ -39,11 +39,11 @@ void Class::Init(const wxString& a_Name) {
 	m_FillColour = wxBrush(wxColour(255, 255, 255));
 	m_Width = 10;
 	// For Luna's sake, keep this font assignment! All the text width calculations randomly freak out without it.
-	m_Font = wxFont(12, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+	m_Font = wxFont(10, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 	m_Name = a_Name;
 	m_BoundingSize = wxSize(10,10);
 	m_MemberFunctions.push_back(MemberFunc());
-	//m_MemberVariables.push_back(MemberVar());
+	m_MemberVariables.push_back(MemberVar());
 }
 
 // This function is called over and over again, as long as the mouse is even inside the diagram.
@@ -76,25 +76,18 @@ void Class::UpdateShapeSize(wxDC* dc) {
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
-    m_VarFieldHeight = m_Font.GetPointSize()*m_MemberVariables.size()+10;
+    m_VarFieldHeight = m_Font.GetPointSize()*m_MemberVariables.size()+15;
 
 	// Evaluate the size of the functions
 	if (!m_MemberFunctions.empty()) {
-	Manager::Get()->GetLogManager()->Log(wxT("MemberFunctions"));
         for(std::vector<MemberFunc>::iterator i = m_MemberFunctions.begin(); i != m_MemberFunctions.end(); ++i) {
-	Manager::Get()->GetLogManager()->Log(wxT("FuncIterator"));
-	Manager::Get()->GetLogManager()->Log(i->GetUmlString());
-	Manager::Get()->GetLogManager()->Log(wxT("SizeEval"));
             dc->GetTextExtent(i->GetUmlString(), &EvalWidth, 0);
-	Manager::Get()->GetLogManager()->Log(i->GetUmlString());
-	Manager::Get()->GetLogManager()->Log(int_to_string(EvalWidth));
             EvalWidth += 10;
-	Manager::Get()->GetLogManager()->Log(int_to_string(EvalWidth));
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
     }
-    m_FuncFieldHeight = m_Font.GetPointSize()*m_MemberFunctions.size()+10;
+    m_FuncFieldHeight = m_Font.GetPointSize()*m_MemberFunctions.size()+15;
 
 	// Apply width limiter
 	if ( m_WidthLimit !=0 && m_Width > m_WidthLimit)
@@ -130,13 +123,13 @@ void Class::DrawShape(wxDC* dc) {
 	//dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+m_NamePos);
 	// Draw Functions
-	/*for (int i = 0; i < m_MemberFunctions.size(); i++) {
+	for (int i = 0; i < m_MemberFunctions.size(); i++) {
         dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i-1));
 	}
 	// Draw Variables
 	for (int i = 0; i < m_MemberVariables.size(); i++) {
-        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i-2));
-	}*/
+        dc->DrawText(m_MemberVariables[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+m_FuncField.y+5+(m_Font.GetPointSize()+2)*i-2));
+	}
 }
 
 void Class::DrawNormal(wxDC& dc) {

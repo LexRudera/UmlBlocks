@@ -1,4 +1,5 @@
 #include "Utilities.hpp"
+#include <sdk.h>
 
 wxString int_to_string(int a) {
 	bool negative = false;
@@ -29,4 +30,19 @@ wxString int_to_string(int a) {
 		// add 48 on top of it, to allign the number with the ASCII character scheme.
 	}
 	return wxString::FromUTF8(num); // Feed to new string and return;
+}
+
+void Log(const char* a) {
+	Manager::Get()->GetLogManager()->Log(wxString::FromUTF8(a));
+}
+
+void Log(const wchar_t* a) {
+	Manager::Get()->GetLogManager()->Log(a);
+}
+
+void Log(bool a) {
+	if (a)
+		Manager::Get()->GetLogManager()->Log(wxString::FromUTF8("true"));
+	else
+		Manager::Get()->GetLogManager()->Log(wxString::FromUTF8("false"));
 }

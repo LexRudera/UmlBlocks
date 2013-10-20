@@ -1,4 +1,5 @@
 #include "MemberFunc.hpp"
+#include "Utilities.hpp"
 
 MemberFunc::MemberFunc(const wxString& a_name,
 					   const wxString& a_type,
@@ -16,7 +17,7 @@ m_Parameters(a_parameters),
 m_Virtual(a_virtual),
 m_PureVirtual(a_purevirtual)
 {
-    //ctor
+    UpdateUmlString();
 }
 
 /*MemberFunc::MemberFunc(const MemberFunc& obj)
@@ -29,8 +30,8 @@ MemberFunc::~MemberFunc()
     //dtor
 }
 
-void MemberFunc::UpdateUmlString() {
-	Member::UpdateUmlString();
+void MemberFunc::CalcUmlString() {
+	Member::CalcUmlString();
     wxString strng = GetUmlString();
 
 	wxString params(wxT("("));
