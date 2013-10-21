@@ -126,12 +126,14 @@ ClassDialog::~ClassDialog() {
 //-------------------------------------------------
 void ClassDialog::SelectMember(MemberGroup l, int selection) {
 	Log("Selecting Member");
+	// If you choose Variables after having Functions selected
 	if (l == Variables && m_SelectedMemberList == Functions) {
 		m_chcMemberType->Delete(0);
 		m_chcMemberType->Delete(0);
 	Log("From Func to Var");
 	}
-	else if (l == Functions && m_SelectedMemberList == Variables){
+	// If you choose Functions and Functions weren't previously selected
+	else if (l == Functions && m_SelectedMemberList != Functions){
 		m_chcMemberType->Insert(wxT("Constructor"),0);
 		m_chcMemberType->Insert(wxT("Destructor"),1);
 	Log("From Var to Func");
@@ -166,6 +168,8 @@ void ClassDialog::LoadMember() {
 			m_chcMemberType->SetSelection(0);
 		else if (mem->GetType() == wxT("dtor"))
 			m_chcMemberType->SetSelection(1);
+		else
+			m_chcMemberType->SetSelection(m_chcMemberType->FindString(mem->GetType()));
 	}
 	else																		// Type
 		m_chcMemberType->SetSelection(m_chcMemberType->FindString(mem->GetType()));
@@ -334,6 +338,8 @@ void ClassDialog::SaveMember() {
 			// Then the destructor, 1
 			else if (m_chcMemberType->GetString(m_chcMemberType->GetSelection()) == wxT("Destructor"))
 				mem->SetType(wxT("dtor"));
+			else
+				mem->SetType(m_chcMemberType->GetString(m_chcMemberType->GetSelection()));
 		}
 		// If it's not a function, valid function or the last selection,
 		// do as expected, use the selected type

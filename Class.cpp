@@ -79,7 +79,7 @@ void Class::UpdateShapeSize(wxDC* dc) {
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
-    m_VarFieldHeight = (m_Font.GetPointSize()+2)*m_MemberVariables.size()+15;
+    m_VarFieldHeight = (m_Font.GetPointSize()+2+2)*m_MemberVariables.size()+15;
 
 	// Evaluate the size of the functions
 	if (!m_MemberFunctions.empty()) {
@@ -90,7 +90,7 @@ void Class::UpdateShapeSize(wxDC* dc) {
                 m_Width = EvalWidth;
         }
     }
-    m_FuncFieldHeight = (m_Font.GetPointSize()+2)*m_MemberFunctions.size()+15;
+    m_FuncFieldHeight = (m_Font.GetPointSize()+2+2)*m_MemberFunctions.size()+15;
 
 	// Apply width limiter
 	if ( m_WidthLimit !=0 && m_Width > m_WidthLimit)
@@ -119,19 +119,19 @@ void Class::DrawShape(wxDC* dc) {
 	// Class name field
 	dc->DrawRectangle(Conv2Point(GetAbsolutePosition()), m_NameField);
 	// Function field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y-1), m_VarField);
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y-1), m_FuncField);
 	// Variable field
-	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_VarField.y-2), m_FuncField);
+	dc->DrawRectangle(Conv2Point(GetAbsolutePosition())+wxSize(0, m_NameField.y+m_FuncField.y-2), m_VarField);
 	// Draw class name
 	//dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+wxPoint(5,2));
 	dc->DrawText(m_Name, Conv2Point(GetAbsolutePosition())+m_NamePos);
 	// Draw Functions
 	for (int i = 0; i < m_MemberFunctions.size(); i++) {
-        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2)*i-1));
+        dc->DrawText(m_MemberFunctions[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+5+(m_Font.GetPointSize()+2+2)*i-1));
 	}
 	// Draw Variables
 	for (int i = 0; i < m_MemberVariables.size(); i++) {
-        dc->DrawText(m_MemberVariables[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+m_FuncField.y+5+(m_Font.GetPointSize()+2)*i-2));
+        dc->DrawText(m_MemberVariables[i].GetUmlString(), Conv2Point(GetAbsolutePosition())+wxPoint(5, m_NameField.y+m_FuncField.y+5+(m_Font.GetPointSize()+2+2)*i-2));
 	}
 }
 
