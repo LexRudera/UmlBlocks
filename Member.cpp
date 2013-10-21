@@ -65,7 +65,7 @@ void Member::CalcUmlString() {
 		strng.Append(m_Type);
 		if (m_Reference)
 			strng.Append(wxT("&"));
-		if (m_Array)
+		if (m_Pointer)
 			for (int i=0;i<m_PointerDepth;i++)
 				strng.Append(wxT("*"));
 		if (m_Array)

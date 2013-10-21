@@ -31,5 +31,5 @@ void MemberVar::CalcUmlString() {
     wxString strng = GetUmlString();
 
 	if (IsArray())
-		SetUmlString(strng.insert(strng.size()-2,int_to_string(GetArraySize())));
+		SetUmlString(strng.insert(strng.size()-1,int_to_string(GetArraySize())));
 }

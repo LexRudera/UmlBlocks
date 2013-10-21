@@ -79,7 +79,7 @@ void Class::UpdateShapeSize(wxDC* dc) {
             if (EvalWidth > m_Width)
                 m_Width = EvalWidth;
         }
-    m_VarFieldHeight = m_Font.GetPointSize()*m_MemberVariables.size()+15;
+    m_VarFieldHeight = (m_Font.GetPointSize()+2)*m_MemberVariables.size()+15;
 
 	// Evaluate the size of the functions
 	if (!m_MemberFunctions.empty()) {
@@ -90,7 +90,7 @@ void Class::UpdateShapeSize(wxDC* dc) {
                 m_Width = EvalWidth;
         }
     }
-    m_FuncFieldHeight = m_Font.GetPointSize()*m_MemberFunctions.size()+15;
+    m_FuncFieldHeight = (m_Font.GetPointSize()+2)*m_MemberFunctions.size()+15;
 
 	// Apply width limiter
 	if ( m_WidthLimit !=0 && m_Width > m_WidthLimit)

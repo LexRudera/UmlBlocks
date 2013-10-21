@@ -58,6 +58,10 @@ void UmlBlocks::OnRelease(bool appShutDown) {
 	// which means you must not use any of the SDK Managers
 	// NOTE: after this function, the inherited member variable
 	// m_IsAttached will be FALSE...
+	for (int i = 0; i < Manager::Get()->GetEditorManager()->GetEditorsCount(); i++)
+		if (Manager::Get()->GetEditorManager()->GetEditor(i)->GetTitle().Contains(wxT(".cbd")))
+			Manager::Get()->GetEditorManager()->GetEditor(i)->Close();
+
 	cbPlugin::OnRelease(appShutDown);
 }
 

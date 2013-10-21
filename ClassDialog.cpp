@@ -1,12 +1,13 @@
 #include "ClassDialog.hpp"
 
 #include <wx/xrc/xmlres.h>
+#include "Utilities.hpp"
 
 // Event table
 BEGIN_EVENT_TABLE(ClassDialog,wxDialog)
 	EVT_CLOSE(								ClassDialog::OnClose)
-    EVT_LISTBOX(XRCID("lstVars"),			ClassDialog::OnVarListBox)
-    EVT_LISTBOX(XRCID("lstFuncs"),			ClassDialog::OnFuncListBox)
+    EVT_LISTBOX(XRCID("lstVars"),			ClassDialog::OnVarsListBox)
+    EVT_LISTBOX(XRCID("lstFuncs"),			ClassDialog::OnFuncsListBox)
     EVT_LISTBOX(XRCID("lstInherit"),		ClassDialog::OnInheritListBox)
     EVT_LISTBOX(XRCID("lstParams"),			ClassDialog::OnParamsListBox)
 
@@ -14,20 +15,27 @@ BEGIN_EVENT_TABLE(ClassDialog,wxDialog)
     EVT_BUTTON(XRCID("btnCancel"),			ClassDialog::OnCancelBtn)
     EVT_BUTTON(XRCID("btnInheritDel"),		ClassDialog::OnInheritDelBtn)
     EVT_BUTTON(XRCID("btnInheritAdd"),		ClassDialog::OnInheritAddBtn)
-    EVT_BUTTON(XRCID("btnVarNew"),			ClassDialog::OnVarNewBtn)
-    EVT_BUTTON(XRCID("btnVarDel"),			ClassDialog::OnVarDelBtn)
-    EVT_BUTTON(XRCID("btnVarUp"),			ClassDialog::OnVarUpBtn)
-    EVT_BUTTON(XRCID("btnVarDown"),			ClassDialog::OnVarDownBtn)
-    EVT_BUTTON(XRCID("btnFuncNew"),			ClassDialog::OnFuncNewBtn)
-    EVT_BUTTON(XRCID("btnFuncDel"),			ClassDialog::OnFuncDelBtn)
-    EVT_BUTTON(XRCID("btnFuncUp"),			ClassDialog::OnFuncUpBtn)
-    EVT_BUTTON(XRCID("btnFuncDown"),		ClassDialog::OnFuncDownBtn)
-    EVT_BUTTON(XRCID("btnParamNew"),		ClassDialog::OnParamNewBtn)
-    EVT_BUTTON(XRCID("btnParamDel"),		ClassDialog::OnParamDelBtn)
-    EVT_BUTTON(XRCID("btnParamUp"),			ClassDialog::OnParamUpBtn)
-    EVT_BUTTON(XRCID("btnParamDown"),		ClassDialog::OnParamDownBtn)
+    EVT_BUTTON(XRCID("btnVarsNew"),			ClassDialog::OnVarsNewBtn)
+    EVT_BUTTON(XRCID("btnVarsDel"),			ClassDialog::OnVarsDelBtn)
+    EVT_BUTTON(XRCID("btnVarsUp"),			ClassDialog::OnVarsUpBtn)
+    EVT_BUTTON(XRCID("btnVarsDown"),		ClassDialog::OnVarsDownBtn)
+    EVT_BUTTON(XRCID("btnFuncsNew"),		ClassDialog::OnFuncsNewBtn)
+    EVT_BUTTON(XRCID("btnFuncsDel"),		ClassDialog::OnFuncsDelBtn)
+    EVT_BUTTON(XRCID("btnFuncsUp"),			ClassDialog::OnFuncsUpBtn)
+    EVT_BUTTON(XRCID("btnFuncsDown"),		ClassDialog::OnFuncsDownBtn)
+    EVT_BUTTON(XRCID("btnParamsNew"),		ClassDialog::OnParamsNewBtn)
+    EVT_BUTTON(XRCID("btnParamsDel"),		ClassDialog::OnParamsDelBtn)
+    EVT_BUTTON(XRCID("btnParamsUp"),		ClassDialog::OnParamsUpBtn)
+    EVT_BUTTON(XRCID("btnParamsDown"),		ClassDialog::OnParamsDownBtn)
 
     EVT_CHOICE(XRCID("chcInheritClass"),	ClassDialog::OnInheritChoice)
+    EVT_CHOICE(XRCID("chcMemberType"),		ClassDialog::OnMemberTypeChoice)
+    EVT_CHOICE(XRCID("chcMemberAccess"),	ClassDialog::OnMemberAccessChoice)
+    EVT_CHOICE(XRCID("chcParamsType"),		ClassDialog::OnParamsTypeChoice)
+
+    EVT_CHECKBOX(XRCID("chkMemberPointer"),	ClassDialog::OnMemberPointerCheck)
+    EVT_CHECKBOX(XRCID("chkMemberArray"),	ClassDialog::OnMemberArrayCheck)
+    EVT_CHECKBOX(XRCID("chkParamsPointer"),	ClassDialog::OnParamsPointerCheck)
 END_EVENT_TABLE()
 
 ClassDialog::ClassDialog(wxWindow* parent) {
@@ -75,7 +83,7 @@ ClassDialog::ClassDialog(wxWindow* parent) {
 	m_chkMemberStatic =		XRCCTRL(*this, "chkMemberStatic",		wxCheckBox);
 	m_chkMemberConst =		XRCCTRL(*this, "chkMemberConst",		wxCheckBox);
 	m_chkMemberPointer =	XRCCTRL(*this, "chkMemberPointer",		wxCheckBox);
-	m_chkMemberReference =	XRCCTRL(*this, "chkMemberReference",	wxCheckBox);
+	m_chkMemberReference =	XRCCTRL(*this, "chkMemberRef",			wxCheckBox);
 	m_chkMemberVirtual =	XRCCTRL(*this, "chkMemberVirtual",		wxCheckBox);
 	m_chkMemberPVirtual =	XRCCTRL(*this, "chkMemberPVirtual",		wxCheckBox);
 	m_chkParamsStatic =		XRCCTRL(*this, "chkParamsStatic",		wxCheckBox);
@@ -117,24 +125,27 @@ ClassDialog::~ClassDialog() {
 // ***Functions***
 //-------------------------------------------------
 void ClassDialog::SelectMember(MemberGroup l, int selection) {
+	Log("Selecting Member");
 	if (l == Variables && m_SelectedMemberList == Functions) {
 		m_chcMemberType->Delete(0);
 		m_chcMemberType->Delete(0);
+	Log("From Func to Var");
 	}
 	else if (l == Functions && m_SelectedMemberList == Variables){
 		m_chcMemberType->Insert(wxT("Constructor"),0);
 		m_chcMemberType->Insert(wxT("Destructor"),1);
+	Log("From Var to Func");
 	}
 
 	m_SelectedMemberList = l;
 	m_SelectedMemberItem = selection;
-
 }
 void ClassDialog::SelectParameter(int selection) {
 	m_SelectedParamItem = selection;
 }
 
 void ClassDialog::LoadMember() {
+	Log("Loading member");
 	// Check if there's even anything chosen
 	if (m_SelectedMemberItem == -1)
 		return; // In that case, don't do anything
@@ -294,6 +305,7 @@ void ClassDialog::LoadMember() {
 	}
 }
 void ClassDialog::SaveMember() {
+	Log("ClassDialog::SaveMember");
 	// Check if there's even anything chosen
 	if (m_SelectedMemberItem == -1)
 		return; // In that case, don't do anything
@@ -305,7 +317,7 @@ void ClassDialog::SaveMember() {
 		mem = &m_Functions[m_SelectedMemberItem];
 
 	// Save shared controls' values
-	mem->SetName(m_txtClassName->GetValue()); 					// Name
+	mem->SetName(m_txtMemberName->GetValue()); 					// Name
 
 	// If we are at the last selection on the list			// Type
 	if (m_chcMemberType->GetSelection()+1 == m_chcMemberType->GetCount())
@@ -339,6 +351,7 @@ void ClassDialog::SaveMember() {
 	mem->IsConst(m_chkMemberConst->GetValue()); 				// Const
 	mem->IsPointer(m_chkMemberPointer->GetValue());				// Pointer
 	mem->SetPointerDepth(m_spcMemberPointerDpth->GetValue());	// Pointer Depth
+	Log(m_chkMemberReference->GetValue());
 	mem->IsReference(m_chkMemberReference->GetValue());			// Reference
 
 	// Variable specifics
@@ -358,6 +371,11 @@ void ClassDialog::SaveMember() {
 		// Save Selected Parameter
 		SaveParameter();
 	}
+
+	if (m_SelectedMemberList == Variables)
+		m_lstVars->SetString(m_SelectedMemberItem, mem->GetUmlString());
+	else
+		m_lstFuncs->SetString(m_SelectedMemberItem, mem->GetUmlString());
 }
 
 void ClassDialog::LoadParameter() {
@@ -454,19 +472,23 @@ m_lstParams->Delete(i); // Deleting the entry
 // ***Events***
 //-------------------------------------------------
 
-void ClassDialog::OnVarListBox(wxCommandEvent& event) {
+void ClassDialog::OnVarsListBox(wxCommandEvent& event) {
+	Log("ClassDialog::OnVarsListBox");
 	// Deselect FunctionList
-	Manager::Get()->GetLogManager()->Log(_T("Doing Deselects on Func"));
+	Log("Doing Deselects on Func");
 	if (m_lstFuncs->GetSelection() != -1)
 		m_lstFuncs->Deselect(m_lstFuncs->GetSelection());
 
+	Log("Saving");
 	SaveMember();
+	Log("Selecting");
 	SelectMember(Variables, m_lstVars->GetSelection());
+	Log("Load");
 	LoadMember();
 }
-void ClassDialog::OnFuncListBox(wxCommandEvent& event) {
+void ClassDialog::OnFuncsListBox(wxCommandEvent& event) {
 	// Deselect VarList
-	Manager::Get()->GetLogManager()->Log(_T("Doing Deselects on Var"));
+	Log("Doing Deselects on Var");
 	if (m_lstVars->GetSelection() != -1)
 		m_lstVars->Deselect(m_lstVars->GetSelection());
 
@@ -498,10 +520,12 @@ void ClassDialog::OnInheritAddBtn(wxCommandEvent& event){
 	m_txtInheritExtClass->SetValue(wxT(""));
 }
 
-void ClassDialog::OnVarNewBtn(wxCommandEvent& event){
+void ClassDialog::OnVarsNewBtn(wxCommandEvent& event){
+	Log("ClassDialog::OnVarNewBtn");
 	CreateMember(Variables);
 }
-void ClassDialog::OnVarDelBtn(wxCommandEvent& event){
+void ClassDialog::OnVarsDelBtn(wxCommandEvent& event){
+	Log("ClassDialog::OnVarDelBtn");
 	if (m_SelectedMemberItem != -1) {
 		DeleteMember(Variables, m_SelectedMemberItem);
 
@@ -512,7 +536,8 @@ void ClassDialog::OnVarDelBtn(wxCommandEvent& event){
 		m_lstVars->SetSelection(m_SelectedMemberItem);
 	}
 }
-void ClassDialog::OnVarUpBtn(wxCommandEvent& event){
+void ClassDialog::OnVarsUpBtn(wxCommandEvent& event){
+	Log("ClassDialog::OnVarUpBtn");
 	if (m_SelectedMemberItem <= 0 || m_SelectedMemberList == Functions)
 		return;
 	m_Variables.insert(m_Variables.begin()+m_SelectedMemberItem-1, m_Variables[m_SelectedMemberItem]);
@@ -522,7 +547,8 @@ void ClassDialog::OnVarUpBtn(wxCommandEvent& event){
 	m_lstVars->Delete(m_SelectedMemberItem+1);
 	m_lstVars->SetSelection(--m_SelectedMemberItem);
 }
-void ClassDialog::OnVarDownBtn(wxCommandEvent& event){
+void ClassDialog::OnVarsDownBtn(wxCommandEvent& event){
+	Log("ClassDialog::OnVarDownBtn");
 	if (m_SelectedMemberItem >= m_Variables.size()-1 || m_SelectedMemberList == Functions)
 		return;
 
@@ -539,10 +565,10 @@ void ClassDialog::OnVarDownBtn(wxCommandEvent& event){
 	m_lstVars->SetSelection(++m_SelectedMemberItem);
 }
 
-void ClassDialog::OnFuncNewBtn(wxCommandEvent& event){
+void ClassDialog::OnFuncsNewBtn(wxCommandEvent& event){
 	CreateMember(Functions);
 }
-void ClassDialog::OnFuncDelBtn(wxCommandEvent& event){
+void ClassDialog::OnFuncsDelBtn(wxCommandEvent& event){
 	if (m_SelectedMemberItem != -1) {
 		DeleteMember(Functions, m_SelectedMemberItem);
 
@@ -553,7 +579,7 @@ void ClassDialog::OnFuncDelBtn(wxCommandEvent& event){
 		m_lstFuncs->SetSelection(m_SelectedMemberItem);
 	}
 }
-void ClassDialog::OnFuncUpBtn(wxCommandEvent& event){
+void ClassDialog::OnFuncsUpBtn(wxCommandEvent& event){
 	if (m_SelectedMemberItem <= 0 || m_SelectedMemberList == Variables)
 		return;
 	m_Functions.insert(m_Functions.begin()+m_SelectedMemberItem-1, m_Functions[m_SelectedMemberItem]);
@@ -563,7 +589,7 @@ void ClassDialog::OnFuncUpBtn(wxCommandEvent& event){
 	m_lstFuncs->Delete(m_SelectedMemberItem+1);
 	m_lstFuncs->SetSelection(--m_SelectedMemberItem);
 }
-void ClassDialog::OnFuncDownBtn(wxCommandEvent& event){
+void ClassDialog::OnFuncsDownBtn(wxCommandEvent& event){
 	if (m_SelectedMemberItem >= m_Functions.size()-1 || m_SelectedMemberList == Variables)
 		return;
 
@@ -580,10 +606,16 @@ void ClassDialog::OnFuncDownBtn(wxCommandEvent& event){
 	m_lstFuncs->SetSelection(++m_SelectedMemberItem);
 }
 
-void ClassDialog::OnParamNewBtn(wxCommandEvent& event){
+void ClassDialog::OnParamsNewBtn(wxCommandEvent& event){
+	if (m_SelectedMemberList != Functions)
+		return;
+
 	CreateParameter();
 }
-void ClassDialog::OnParamDelBtn(wxCommandEvent& event){
+void ClassDialog::OnParamsDelBtn(wxCommandEvent& event){
+	if (m_SelectedMemberList != Functions)
+		return;
+
 	if (m_SelectedParamItem != -1) {
 		DeleteParameter(m_SelectedParamItem);
 
@@ -594,7 +626,10 @@ void ClassDialog::OnParamDelBtn(wxCommandEvent& event){
 		m_lstParams->SetSelection(m_SelectedParamItem);
 	}
 }
-void ClassDialog::OnParamUpBtn(wxCommandEvent& event){
+void ClassDialog::OnParamsUpBtn(wxCommandEvent& event){
+	if (m_SelectedMemberList != Functions)
+		return;
+
 	std::vector<MemberVar>& Params = m_Functions[m_SelectedParamItem].m_Parameters;
 
 	if (m_SelectedParamItem <= 0)
@@ -606,7 +641,10 @@ void ClassDialog::OnParamUpBtn(wxCommandEvent& event){
 	m_lstParams->Delete(m_SelectedParamItem+1);
 	m_lstParams->SetSelection(--m_SelectedParamItem);
 }
-void ClassDialog::OnParamDownBtn(wxCommandEvent& event){
+void ClassDialog::OnParamsDownBtn(wxCommandEvent& event){
+	if (m_SelectedMemberList != Functions)
+		return;
+
 	std::vector<MemberVar>& Params = m_Functions[m_SelectedParamItem].m_Parameters;
 
 	if (m_SelectedParamItem >= Params.size()-1)
@@ -637,13 +675,26 @@ void ClassDialog::OnInheritChoice(wxCommandEvent& event){
 	}
 }
 
+void ClassDialog::OnMemberTypeChoice(wxCommandEvent& event) {
+}
+void ClassDialog::OnMemberAccessChoice(wxCommandEvent& event) {}
+void ClassDialog::OnParamsTypeChoice(wxCommandEvent& event) {}
+
+void ClassDialog::OnMemberPointerCheck(wxCommandEvent& event) {}
+void ClassDialog::OnMemberArrayCheck(wxCommandEvent& event) {}
+void ClassDialog::OnParamsPointerCheck(wxCommandEvent& event) {}
+
 void ClassDialog::OnCreateBtn(wxCommandEvent& event) {
-EndModal(wxID_OK);
+	if (m_txtClassName->GetValue().empty()) {
+		wxMessageBox(wxT("Please specify class name"),wxT("Error"),wxOK|wxCENTER|wxICON_ERROR, this);
+		return;
+	}
+	EndModal(wxID_OK);
 }
 void ClassDialog::OnCancelBtn(wxCommandEvent& event) {
-EndModal(wxID_CANCEL);
+	EndModal(wxID_CANCEL);
 }
 
 void ClassDialog::OnClose(wxCloseEvent& event){
-EndModal(wxID_CLOSE);
+	EndModal(wxID_CLOSE);
 }
