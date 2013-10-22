@@ -397,17 +397,17 @@ void ClassDialog::LoadParameter() {
 	m_chkParamsStatic->SetValue(param->IsStatic());				// Static
 	m_chkParamsConst->SetValue(param->IsConst());				// Const
 
-	m_chkParamsPointer->Disable();
-	m_chkParamsReference->Disable();
-	m_spcParamsPointerDpth->Disable();
-	m_sxtParamsPointerDpth->Disable();
+	m_chkParamsPointer->Enable();
+	m_chkParamsReference->Enable();
+	m_spcParamsPointerDpth->Enable();
+	m_sxtParamsPointerDpth->Enable();
 	if (param->IsPointer()) {
-		m_chkParamsPointer->Enable();
-		m_spcParamsPointerDpth->Enable();
-		m_sxtParamsPointerDpth->Enable();
+		m_chkParamsReference->Disable();
 	}
 	if (param->IsReference()) {
-		m_chkParamsReference->Enable();
+		m_chkParamsPointer->Disable();
+		m_spcParamsPointerDpth->Disable();
+		m_sxtParamsPointerDpth->Disable();
 	}
 	m_chkParamsPointer->SetValue(param->IsPointer());			// Pointer
 	m_spcParamsPointerDpth->SetValue(param->GetPointerDepth());	// Pointer Depth
@@ -671,7 +671,12 @@ void ClassDialog::OnMemberAccessChoice(wxCommandEvent& event) {}
 void ClassDialog::OnParamsTypeChoice(wxCommandEvent& event) {}
 
 void ClassDialog::OnMemberPointerCheck(wxCommandEvent& event) {}
-void ClassDialog::OnMemberArrayCheck(wxCommandEvent& event) {}
+void ClassDialog::OnMemberArrayCheck(wxCommandEvent& event) {
+	if (m_chkMemberArray->GetValue())
+		m_spcMemberArraySize->Enable();
+	else
+		m_spcMemberArraySize->Disable();
+}
 void ClassDialog::OnParamsPointerCheck(wxCommandEvent& event) {}
 
 void ClassDialog::OnCreateBtn(wxCommandEvent& event) {
