@@ -125,18 +125,15 @@ ClassDialog::~ClassDialog() {
 // ***Functions***
 //-------------------------------------------------
 void ClassDialog::SelectMember(MemberGroup l, int selection) {
-	Log("Selecting Member");
 	// If you choose Variables after having Functions selected
 	if (l == Variables && m_SelectedMemberList == Functions) {
 		m_chcMemberType->Delete(0);
 		m_chcMemberType->Delete(0);
-	Log("From Func to Var");
 	}
 	// If you choose Functions and Functions weren't previously selected
 	else if (l == Functions && m_SelectedMemberList != Functions){
 		m_chcMemberType->Insert(wxT("Constructor"),0);
 		m_chcMemberType->Insert(wxT("Destructor"),1);
-	Log("From Var to Func");
 	}
 
 	m_SelectedMemberList = l;
@@ -147,7 +144,6 @@ void ClassDialog::SelectParameter(int selection) {
 }
 
 void ClassDialog::LoadMember() {
-	Log("Loading member");
 	// Check if there's even anything chosen
 	if (m_SelectedMemberItem == -1)
 		return; // In that case, don't do anything
@@ -309,7 +305,6 @@ void ClassDialog::LoadMember() {
 	}
 }
 void ClassDialog::SaveMember() {
-	Log("ClassDialog::SaveMember");
 	// Check if there's even anything chosen
 	if (m_SelectedMemberItem == -1)
 		return; // In that case, don't do anything
@@ -357,7 +352,6 @@ void ClassDialog::SaveMember() {
 	mem->IsConst(m_chkMemberConst->GetValue()); 				// Const
 	mem->IsPointer(m_chkMemberPointer->GetValue());				// Pointer
 	mem->SetPointerDepth(m_spcMemberPointerDpth->GetValue());	// Pointer Depth
-	Log(m_chkMemberReference->GetValue());
 	mem->IsReference(m_chkMemberReference->GetValue());			// Reference
 
 	// Variable specifics
@@ -479,22 +473,16 @@ m_lstParams->Delete(i); // Deleting the entry
 //-------------------------------------------------
 
 void ClassDialog::OnVarsListBox(wxCommandEvent& event) {
-	Log("ClassDialog::OnVarsListBox");
 	// Deselect FunctionList
-	Log("Doing Deselects on Func");
 	if (m_lstFuncs->GetSelection() != -1)
 		m_lstFuncs->Deselect(m_lstFuncs->GetSelection());
 
-	Log("Saving");
 	SaveMember();
-	Log("Selecting");
 	SelectMember(Variables, m_lstVars->GetSelection());
-	Log("Load");
 	LoadMember();
 }
 void ClassDialog::OnFuncsListBox(wxCommandEvent& event) {
 	// Deselect VarList
-	Log("Doing Deselects on Var");
 	if (m_lstVars->GetSelection() != -1)
 		m_lstVars->Deselect(m_lstVars->GetSelection());
 
@@ -527,11 +515,9 @@ void ClassDialog::OnInheritAddBtn(wxCommandEvent& event){
 }
 
 void ClassDialog::OnVarsNewBtn(wxCommandEvent& event){
-	Log("ClassDialog::OnVarNewBtn");
 	CreateMember(Variables);
 }
 void ClassDialog::OnVarsDelBtn(wxCommandEvent& event){
-	Log("ClassDialog::OnVarDelBtn");
 	if (m_SelectedMemberItem != -1) {
 		DeleteMember(Variables, m_SelectedMemberItem);
 
@@ -543,7 +529,6 @@ void ClassDialog::OnVarsDelBtn(wxCommandEvent& event){
 	}
 }
 void ClassDialog::OnVarsUpBtn(wxCommandEvent& event){
-	Log("ClassDialog::OnVarUpBtn");
 	if (m_SelectedMemberItem <= 0 || m_SelectedMemberList == Functions)
 		return;
 	m_Variables.insert(m_Variables.begin()+m_SelectedMemberItem-1, m_Variables[m_SelectedMemberItem]);
@@ -554,7 +539,6 @@ void ClassDialog::OnVarsUpBtn(wxCommandEvent& event){
 	m_lstVars->SetSelection(--m_SelectedMemberItem);
 }
 void ClassDialog::OnVarsDownBtn(wxCommandEvent& event){
-	Log("ClassDialog::OnVarDownBtn");
 	if (m_SelectedMemberItem >= m_Variables.size()-1 || m_SelectedMemberList == Functions)
 		return;
 

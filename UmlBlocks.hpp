@@ -78,7 +78,7 @@ class UmlBlocks : public cbPlugin
         void NewClassMenuOptionFunc(wxCommandEvent&);
         void RevEngiMenuOptionFunc(wxCommandEvent&);
         void GenCodeMenuOptionFunc(wxCommandEvent&);
-        void SaveBmpMenuOptionFunc(wxCommandEvent&);
+        void SavePngMenuOptionFunc(wxCommandEvent&);
         void EditorFileSwitched(CodeBlocksEvent&);
 
         DECLARE_EVENT_TABLE();

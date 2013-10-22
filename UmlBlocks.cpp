@@ -17,14 +17,14 @@ int NewUmlMenuOptionId = wxNewId();
 int NewClassMenuOptionId = wxNewId();
 int RevEngiMenuOptionId = wxNewId();
 int GenCodeMenuOptionId = wxNewId();
-int SaveBmpMenuOptionId = wxNewId();
+int SavePngMenuOptionId = wxNewId();
 // events handling
 BEGIN_EVENT_TABLE(UmlBlocks, cbPlugin)
 	EVT_MENU(NewUmlMenuOptionId, UmlBlocks::NewUmlMenuOptionFunc)
 	EVT_MENU(NewClassMenuOptionId, UmlBlocks::NewClassMenuOptionFunc)
 	EVT_MENU(RevEngiMenuOptionId, UmlBlocks::RevEngiMenuOptionFunc)
 	EVT_MENU(GenCodeMenuOptionId, UmlBlocks::GenCodeMenuOptionFunc)
-	EVT_MENU(SaveBmpMenuOptionId, UmlBlocks::SaveBmpMenuOptionFunc)
+	EVT_MENU(SavePngMenuOptionId, UmlBlocks::SavePngMenuOptionFunc)
 END_EVENT_TABLE()
 
 // constructor
@@ -99,7 +99,7 @@ void UmlBlocks::BuildMenu(wxMenuBar* menuBar) {
 	UMLMenu->AppendSeparator();
 	UMLMenu->Append(RevEngiMenuOptionId,wxT("Reverse Engineer..."),wxT("Reverse engineer code"));
 	UMLMenu->Append(GenCodeMenuOptionId,wxT("Generate Code..."),wxT("Generate code from diagram"));
-	UMLMenu->Append(SaveBmpMenuOptionId,wxT("Save Image..."),wxT("Create and save a PNG Image"));
+	UMLMenu->Append(SavePngMenuOptionId,wxT("Save Image..."),wxT("Create and save a PNG Image"));
 
 	SetUmlTools(false);
 }
@@ -185,8 +185,8 @@ void UmlBlocks::GenCodeMenuOptionFunc(wxCommandEvent& event) {
 	Manager::Get()->GetLogManager()->Log(wxT("Gen Code Menu Option Function Invoked"));
 }
 
-void UmlBlocks::SaveBmpMenuOptionFunc(wxCommandEvent& event) {
-	Manager::Get()->GetLogManager()->Log(wxT("Save Bmp Menu Option Function Invoked"));
+void UmlBlocks::SavePngMenuOptionFunc(wxCommandEvent& event) {
+	Manager::Get()->GetLogManager()->Log(wxT("Save Png Menu Option Function Invoked"));
 }
 
 void UmlBlocks::EditorFileSwitched(CodeBlocksEvent& event) {
@@ -208,5 +208,5 @@ void UmlBlocks::SetUmlTools(bool a) {
 	UMLMenu->Enable(NewClassMenuOptionId,a);
 	UMLMenu->Enable(RevEngiMenuOptionId,a);
 	UMLMenu->Enable(GenCodeMenuOptionId,a);
-	UMLMenu->Enable(SaveBmpMenuOptionId,a);
+	UMLMenu->Enable(SavePngMenuOptionId,a);
 }

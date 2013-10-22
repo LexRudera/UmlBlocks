@@ -31,33 +31,22 @@ MemberFunc::~MemberFunc()
 }
 
 void MemberFunc::CalcUmlString() {
-Log("MemberFunc::CalcUmlString");
 	Member::CalcUmlString();
-Log("1");
     wxString strng = GetUmlString();
-Log(strng.c_str());
-Log("2");
 
 	wxString params(wxT("("));
-Log(strng.c_str());
-Log("3");
 	for (int i = 0; i < m_Parameters.size(); i++) {
 		params.Append(m_Parameters[i].GetName() + wxT(":") + m_Parameters[i].GetType());
 		if (m_Parameters[i].GetDefaultValue() != wxT(""))
 			params.Append(wxT(" = ") + m_Parameters[i].GetDefaultValue());
 		params.Append(wxT(", "));
 	}
-Log("4");
 	params.Append(wxT(")"));
-Log(strng.c_str());
 
-Log("5");
 if (GetType() == wxT("ctor") || GetType() == wxT("dtor"))
 	SetUmlString(strng.append(params));
 else
 	SetUmlString(strng.insert(strng.First(':')-1,params));
-Log(strng.c_str());
-Log("6");
 }
 
 void MemberFunc::AddParameter(const MemberVar& m, int pos) {

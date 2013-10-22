@@ -42,10 +42,6 @@ Class* Class::Init(const wxString& a_Name) {
 	m_Font = wxFont(10, wxFONTFAMILY_ROMAN, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
 	m_Name = a_Name;
 	m_BoundingSize = wxSize(10,10);
-	//m_MemberFunctions.push_back(MemberFunc());
-	//m_MemberFunctions.push_back(MemberFunc(wxString::FromUTF8("Func2")));
-	//m_MemberVariables.push_back(MemberVar());
-	//m_MemberVariables.push_back(MemberVar(wxString::FromUTF8("SuperVar2!")));
 	return this;
 }
 
@@ -136,14 +132,12 @@ void Class::DrawShape(wxDC* dc) {
 }
 
 void Class::DrawNormal(wxDC& dc) {
-//Manager::Get()->GetLogManager()->Log(wxT("Start Drawing"));
 	dc.SetPen(m_BorderColour);
 	dc.SetBrush(m_FillColour);
 	//dc.DrawRectangle(Conv2Point(GetAbsolutePosition()), wxSize(50,50));
 	DrawShape(&dc);
 	dc.SetBrush(wxNullBrush);
 	dc.SetPen(wxNullPen);
-//Manager::Get()->GetLogManager()->Log(wxT("End Drawing"));
 }
 
 void Class::DrawHover(wxDC& dc) {

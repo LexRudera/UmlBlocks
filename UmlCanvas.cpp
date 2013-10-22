@@ -31,18 +31,12 @@ void UmlCanvas::OnMouseWheel(wxMouseEvent& event) {
 }
 
 void UmlCanvas::OnLeftDown(wxMouseEvent& event) {
-        Manager::Get()->GetLogManager()->Log(_("lc1"));
 	wxSFShapeCanvas::OnLeftDown(event);
-        Manager::Get()->GetLogManager()->Log(_("lc2"));
 	HideAllHandles();
-        Manager::Get()->GetLogManager()->Log(_("lc3"));
 	if(EditDiag != 0)
     {
-            Manager::Get()->GetLogManager()->Log(_("lc4"));
         EditDiag->Show(false);
-            Manager::Get()->GetLogManager()->Log(_("lc5"));
         EditDiag->Destroy();
-            Manager::Get()->GetLogManager()->Log(_("lc6"));
     }
 }
 
@@ -50,20 +44,15 @@ void UmlCanvas::OnLeftDoubleClick(wxMouseEvent& event) {
     //wxSFShapeCanvas::OnLeftDoubleClick(event);
     //Member* ClickedMember = static_cast<Class*>(GetShapeAtPosition(event.GetPosition()))->GetMemberAtPosition(event.GetPosition());
     Class* ClickedClass = static_cast<Class*>(GetShapeAtPosition(event.GetPosition()));
-        Manager::Get()->GetLogManager()->Log(_("dc1"));
     if (ClickedClass != 0)
     {
         Member* ClickedMember = ClickedClass->GetMemberAtPosition(event.GetPosition());
-            Manager::Get()->GetLogManager()->Log(_("dc2"));
         if (ClickedMember != 0)
         {
             //EditDiag = new QuickEditPopup(event.GetPosition(),ClickedMember->GetMemberGroup());
             //EditDiag->Show(true);
-                Manager::Get()->GetLogManager()->Log(_("dc3"));
         }
-            Manager::Get()->GetLogManager()->Log(_("dc4"));
     }
-        Manager::Get()->GetLogManager()->Log(_("dc5"));
 }
 
 void UmlCanvas::OnLeftUp(wxMouseEvent& event) {
