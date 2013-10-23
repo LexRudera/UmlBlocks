@@ -103,12 +103,6 @@
 											</object>
 											<object class="sizeritem">
 												<object class="wxChoice" name="chcInheritClass">
-													<content>
-														<item>Existing Classes</item>
-														<item>Class1</item>
-														<item>Class2</item>
-														<item>New External Class</item>
-													</content>
 													<selection>0</selection>
 													<size>106,21</size>
 												</object>

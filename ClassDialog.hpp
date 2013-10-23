@@ -138,8 +138,11 @@ private:
     void OnParamsTypeChoice(wxCommandEvent& event);
 
     void OnMemberPointerCheck(wxCommandEvent& event);
+    void OnMemberRefCheck(wxCommandEvent& event);
     void OnMemberArrayCheck(wxCommandEvent& event);
     void OnParamsPointerCheck(wxCommandEvent& event);
+    void OnParamsRefCheck(wxCommandEvent& event);
+    void OnMemberVirtualCheck(wxCommandEvent& event);
 
     void OnClose(wxCloseEvent& event);
 
