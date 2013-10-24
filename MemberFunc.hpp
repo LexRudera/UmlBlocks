@@ -31,7 +31,7 @@ class MemberFunc : public Member
         bool IsPureVirtual() const {return m_PureVirtual;}
 
         MemberVar& GetParameter(int a) {return m_Parameters[a];}
-        void AddParameter(const MemberVar&, int pos = -1);
+        MemberVar& AddParameter(const MemberVar&, int pos = 0);
         void DeleteParameter(unsigned int i);
         unsigned int GetParameterCount() {return m_Parameters.size();}
 

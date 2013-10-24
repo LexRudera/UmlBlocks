@@ -49,15 +49,16 @@ else
 	SetUmlString(strng.insert(strng.First(':')-1,params));
 }
 
-void MemberFunc::AddParameter(const MemberVar& m, int pos) {
-if (pos == -1 || pos >= m_Parameters.size())
-	m_Parameters.push_back(m);
-else
-	m_Parameters.insert(m_Parameters.begin()+pos, m);
-UpdateUmlString();
+MemberVar& MemberFunc::AddParameter(const MemberVar& m, int pos) {
+	//if (pos == -1 || pos >= m_Parameters.size())
+	//	m_Parameters.push_back(m);
+	//else
+		m_Parameters.insert(m_Parameters.begin()+pos, m);
+	UpdateUmlString();
+	return m_Parameters[pos];
 }
 
 void MemberFunc::DeleteParameter(unsigned int i) {
-m_Parameters.erase(m_Parameters.begin()+i);
-UpdateUmlString();
+	m_Parameters.erase(m_Parameters.begin()+i);
+	UpdateUmlString();
 }

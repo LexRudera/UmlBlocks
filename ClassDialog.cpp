@@ -488,8 +488,11 @@ void ClassDialog::DeleteMember(MemberGroup l, int i) {
 	}
 }
 void ClassDialog::CreateParameter() {
-m_Functions[m_SelectedMemberItem].AddParameter(MemberVar(wxT("NewParam"))); // Creating the data
-m_lstParams->Append(wxT("NewParam")); // Creating the entry
+MemberVar m(wxT("NewParam"));
+
+m_Functions[m_SelectedMemberItem].AddParameter(m); // Creating the data
+wxString ms = m.GetUmlString();
+m_lstParams->Append(ms.erase(0, 1)); // Creating the entry
 }
 void ClassDialog::DeleteParameter(int i) {
 m_Functions[m_SelectedMemberItem].DeleteParameter(i); // Deleting the data
